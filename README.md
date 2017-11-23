@@ -6,17 +6,17 @@ Claudio DAFFRA
 daffra.claudio@gmail.com
 ------------------------
 
-W - Visual
+W - Wysywyg  / Visual
 O - Object
 O - Oriented
-B - Basic
+B - Beginner / Basic
 Y - Yet
 
-*
+
 # work / tested
 
-- Windows 10 : Chrome, Opera, Firefox, Brave (V) Edge, IE 11 (X)
-
+- Windows 10 : Chrome, Firefox, Edge, IE 11 (X)
+- Ubuntu     : Chromium 
 
 # what's WOOBY ?
 
