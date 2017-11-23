@@ -1,0 +1,279 @@
+
+
+// *************************************************** Prepare PNG IMAGE
+
+$('#viewPGN').click(function (event)
+{
+	var canvas = document.getElementById("_canvas");
+	// draw to canvas...
+	canvas.toBlob(function(blob) 
+	{
+		saveAs(blob, "mandelbroat.png");
+	});
+
+});;
+
+// *************************************************** Change Canvas Resolution
+
+$('#resolution').change ( function(e) 
+{
+	var w,h ;
+	
+	
+	switch ( $('#resolution').val() )
+	{
+		case "300x300"		: w=300;h=300 ;break ;
+		case "640x480"		: w=640;h=480 ;break ;
+		case "1024x768"		: w=1024;h=768 ;break ;
+		case "1920x1080"	: w=1920;h=1080 ;break ;   
+	}
+
+	console.log ( w,h );
+	
+	$('#_canvas').css ( 'width'  , w );
+	$('#_canvas').css ( 'height' , h );
+	$('#_canvas').attr ( 'width'  , w );
+	$('#_canvas').attr ( 'height' , h );  
+
+	$('#wbAreaSelectDiv').css ( 'width'  , w );
+	$('#wbAreaSelectDiv').css ( 'height' , h );
+	
+	window.areaSelect.setOptions(
+	{ 
+		imageWidth  : w ,
+		imageHeight : h
+	});
+
+	$('#wbAreaSelectContainer').css ( 'width'  , w );
+	$('#wbAreaSelectContainer').css ( 'height' , h );
+	
+});
+ 
+//****** 
+//		wbAreaSelectEnd
+//******  
+
+window._x1 = -2.5
+window._x2 = +1.5
+window._y1 = -2.0
+window._y2 = +2.0
+
+function wbAreaSelectEnd(img,selection)
+{
+	// Ricalcola Le nuove coordinate dopo averle selezionate con Area Select
+	var obj = wbAreaSelectGetInfo ( selection ) 
+	
+	// Mandel Broat Ricalcolo Area
+
+	// Recupero Coordinate Area Mandelbroat
+	
+	var x1 = parseFloat ( $('#CxMin').val() )
+	var x2 = parseFloat ( $('#CxMax').val() )
+	var y1 = parseFloat ( $('#CyMin').val() )
+	var y2 = parseFloat ( $('#CyMax').val() )
+
+	console.log ( '#Valori iniziali' ) ;	
+	console.log ( x1,' / ',x2,' / ',y1,' / ',y2 ) ;
+	
+	// Calcolo Distanza Assi X,Y
+	
+	var dx = Math.sqrt ( Math.pow ( (x2 - x1) , 2 ) );
+	var dy = Math.sqrt ( Math.pow ( (y2 - y1) , 2 ) );
+	
+	console.log ( '#dist (x,y)' ) ;	
+	console.log ( dx,dy );
+
+	// -2 x1 , 1.5 y2 , dx = 4
+	// calcolo i valori della nuova area ( scostamento )
+
+	console.log ( '#obj.perc' ) ;		
+	console.log ( obj.perc );
+	
+	var sx1 = perc.x1 * dx / 100.0 ;
+	var sx2 = dx - ( perc.x2 * dx / 100.0 )	
+	var sy1 = perc.y1 * dx / 100.0 ;
+	var sy2 = dy - ( perc.y2 * dx / 100.0 )
+
+	console.log ( '#scostamento' ) ;	
+	console.log ( sx1 )
+	console.log ( sx2 )
+	console.log ( sy1 )
+	console.log ( sy2 )
+
+	// calcolo nuovi valori
+	
+	var tx1 = x1<0 ? sx1 : -sx1 ;
+	var tx2 = x2<0 ? sx2 : -sx2 ;	
+	var ty1 = y1<0 ? sy1 : -sy1 ;
+	var ty2 = y2<0 ? sy2 : -sy2 ;	
+
+	console.log ( '#Inc/Dec' ) ;	
+	console.log ( tx1 )
+	console.log ( tx2 )
+	console.log ( ty1 )
+	console.log ( ty2 )
+
+	x1 += tx1 ;
+	x2 += tx2 ;
+	y1 += ty1 ;
+	y2 += ty2 ;
+	
+	console.log ( '#Valori finali' ) ;	
+
+	// update Finale
+	
+	window._x1 = x1
+	window._x2 = x2
+	window._y1 = y1
+	window._y2 = y2
+	
+	console.log ( window._x1 )
+	console.log ( window._x2 )
+	console.log ( window._y1 )
+	console.log ( window._y2 )	
+
+
+}	
+
+ 
+//****** 
+//		READY
+//******  
+
+$( document ).ready(function() 
+{
+
+	// ************  
+	//				init
+	// ************ 
+
+		$('#_canvas').css ( 'width'  , 300 );
+		$('#_canvas').css ( 'height' , 300 );
+		$('#_canvas').attr ( 'width'  , 300 );
+		$('#_canvas').attr ( 'height' , 300 );  
+
+		$("img#wbAreaSelectContainer").css ( 'width'  , 300 );
+		$("img#wbAreaSelectContainer").css ( 'height' , 300 );		
+
+
+		window.areaSelect = $("img#wbAreaSelectContainer").imgAreaSelect(
+			{
+				instance	: true ,
+				handles		: true,
+				onSelectEnd	: wbAreaSelectEnd,
+				imageWidth	: parseInt ( $('#_canvas').css ( 'width' ) ) ,
+				imageHeight	: parseInt ( $('#_canvas').css ( 'height' ) )
+			}
+		);
+		
+	// ************  
+	//				Main Event Calc
+	// ************
+
+	$('#calc').click( function()
+	{
+	
+		$('#CxMin').val(window._x1) 
+		$('#CxMax').val(window._x2) 
+		$('#CyMin').val(window._y1) 
+		$('#CyMax').val(window._y2) 
+
+		window.areaSelect.setOptions(
+		{ 
+			hide  : true 
+
+		});	
+	
+		// **************************************************** Clear Canvas
+		var canvas = document.getElementById("_canvas");
+		var context = canvas.getContext("2d");
+		context.clearRect(0, 0, canvas.width, canvas.height);
+			
+		var a = $('#algorithm').val()
+
+		// **************************************************** Algorithm Sequential
+		
+		if (a=='seq') 
+		{
+		    console.log ('sequenziale');			
+			mandelbroat_calc() ;
+		}
+		
+		// **************************************************** Algorithm Pool Thread	
+		
+		if (a=='at' ) 
+		{
+		    console.log ('pool Thread');	
+			
+			//****************
+			//                 THREAD INIT
+			//****************	
+
+			var iXmax = 	parseInt ( $('#_canvas').css ( 'width'  ) )
+			var iYmax = 	parseInt ( $('#_canvas').css ( 'height'  ) )
+			
+			var CORE = parseInt(iYmax/2) ;
+
+			var MT = new ThreadPool();
+
+			var workerFunction = function (param, done) 
+			{
+				done();
+			};
+
+			for(var no = 1; no < CORE ; no++) 
+			{
+				MT.run(workerFunction, no, thread(no) )
+			}
+
+			//****************
+			//                 THREAD RUN
+			//****************
+			
+			function thread ( n )
+			{
+				var w = 	parseInt ( $('#_canvas').css ( 'width'  ) )
+				var h = 	parseInt ( $('#_canvas').css ( 'height'  ) )				
+				
+				var step =  parseInt ( h / (CORE-1) )
+				
+				var starth = parseInt( (n-1)*step	);	
+				var stoph  = parseInt( ((n  )*step)-1	);	
+				 
+				if ( n==CORE-1 ) stoph = h ; // correzioncina
+				
+				  console.log ( " # " + n + ' . ' + starth +' '+ stoph ) ;
+				  
+				  mandelbroat_calc_poolthread(starth,stoph) ;
+			  
+			}
+		  
+		}
+
+		// **************************************************** Algorithm Async.js	
+		
+		if (a=='aa' ) 
+		{
+		   console.log ('Async.js');
+			var c = "" ; 
+
+			var iXmax = 	parseInt ( $('#_canvas').css ( 'width'  ) )
+			var iYmax = 	parseInt ( $('#_canvas').css ( 'height'  ) )			
+			
+			c+='		async.parallel(['
+			c+=''	
+
+			for (i=0;i<iYmax;i+=1)
+			{	
+				c+='			function(callback){ mandelbroat_calc_asyncjs('+i+','+(i+1)+') ; },'
+			}
+		
+			c+=''
+			c+='		], function(err, results) 	{	});'
+
+			eval ( c ) ;			
+		}
+	});
+
+});
+

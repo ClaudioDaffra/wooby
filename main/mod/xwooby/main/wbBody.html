@@ -1,0 +1,61 @@
+
+
+<style>
+#tabsMAIN
+{
+	position:relative;
+	left:0%;
+	top:0%;
+	height:100%;
+	width:100%;
+	overflow-y:scroll;
+	background:ivory;
+
+}
+#tabsPROJECT
+{
+	height:100%;
+	overflow-y:scroll;
+}
+</style>
+
+
+<div id="tabsMAIN">
+	<ul>
+		<li><a href="#tabsPROJECT">Project</a></li>
+		<li><a href="#tabsHTML">HTML</a></li>
+		<li><a href="#tabsMain">Web Main</a></li>
+	</ul>
+	<div id="tabsPROJECT">
+		<!-- load tabsPROJECT.html -->
+	</div>
+	<div id="tabsHTML">
+		<!-- load tabsHTML.html -->	
+	</div>
+	<div id="tabsMain">
+		<!-- load webMainEditor.html -->		
+	</div>
+	
+</div>
+
+<script>
+
+$( "#tabsMAIN" ).tabs({heightStyle: "fill"});
+
+  
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

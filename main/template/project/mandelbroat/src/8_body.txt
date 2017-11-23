@@ -1,0 +1,134 @@
+<div class="widget wbmPage" style="border: none; left: 0%; top: 0%; position: absolute;">
+	<div class="wbGradH wbmPageHeader">
+		<div class="widget wbfimageDIV" style="position: absolute; left: 0%; top: 0%; width: 20%; height: 100%; border: none;">
+			<img class="wbfimage" src="img/picture/w1.png" alt="HTML 5" style="position: absolute; top: 0%; left: 0%; width: 100%; height: 100%; ">
+		</div> 
+		<div class="widget wbDIV" style="position: absolute; left: 0%; top: 0%; width: 80%; height: 100%; border: none; ">
+			<div class="widget wbDIV" style="position: absolute; left: 25%; top: 0%; width: 99%; height: 100%; border: none;">
+				<div id="_id_divVert2-j6w30cco">
+					<div class="wbDIV wbDIVo2Top">
+						<div id="_id_divHoriz2-j6w31709"> 
+							<div class="wbDIV wbDIV2Left">
+								<div id="_id_divHoriz2-j6w31e8i">
+									<div class="wbDIV wbDIV2Left">
+										<button id="calc" style="width:100%;height:100%;">calc</button>
+									</div>
+									<div class="wbDIV wbDIV2Right" style="text-align: center; ">
+										Res.
+									</div>
+								</div>
+							</div>
+							<div class="wbDIV wbDIV2Right" style="text-align: center;">
+								<div id="_id_divHoriz2-j6w31guy">
+									<div class="wbDIV wbDIV2Left" style="text-align: center; ">
+										iT Max
+									</div>
+									<div class="wbDIV wbDIV2Right" style="text-align: center;">
+										Alg.
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="wbDIV wbDIVo2Bottom">
+						<div id="_id_divHoriz2-j6w31a16">
+							<div class="wbDIV wbDIV2Left">
+								<div id="_id_divHoriz2-j6w31mps">
+									<div class="wbDIV wbDIV2Left">
+										<button id="viewPGN"  style="width:100%;height:100%;">PNG</button>
+									</div>
+									<div class="wbDIV wbDIV2Right">
+										<select id="resolution" style="width: 100%; ">
+											<option value="300x300">300x300</option>
+											<option value="640x480">640x480</option>
+											<option value="1024x768">1024x768</option>
+											<option value="1920x1080">1920x1080</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							<div class="wbDIV wbDIV2Right">
+								<div id="_id_divHoriz2-j6w31t5a">
+									<div class="wbDIV wbDIV2Left">
+										<input id="itMax" value="1000" style="width: 100%; ">
+									</div>
+									<div class="wbDIV wbDIV2Right">
+										<select id="algorithm" style="width:100%;height:100%;">
+											<option value="seq">SEQ.</option>
+											<option value="at">a.Thread</option>
+											<option value="aa">Async.js</option>
+										</select>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div> 
+	<div class="wbGradH wbmPageBody" style="overflow: auto;">
+		<div class="widget wbAreaSelectDiv" style="position: absolute; border: none;">
+			<img id="wbAreaSelectContainer">
+			
+		</div>	
+		<div class="widget wbCanvasTransparent" style="width: 300px; height: 300px; position: absolute; left: 0%; top: 0%; border: none;">
+			<div id="_canvasp" style="position:absolute;top:0%;height:0%;width:100%;height:100%;">
+				<canvas id="_canvas" class="wbCanvas" style="position: absolute; top: 0%; left: 0%; width: 100%; height: 100%; ">
+				</canvas> 
+			</div> 
+		</div>
+	</div> 
+	<div class="wbGradH wbmPageFooter" style="text-align:center">
+		<div id="_id_divHoriz2-j6wjcef5">
+			<div class="wbDIV wbDIV2Left">
+				<div id="_id_divVert2-j6wje839">
+					<div class="wbDIV wbDIVo2Top">
+						<div id="_id_divHoriz3466-j6wjfge7">
+							<div class="wbDIV wbDIV2Left34">
+								x1
+							</div>
+							<div class="wbDIV wbDIV2Right66">
+								<input id="CxMin" value="-2.5" style="width: 95%">
+							</div>
+						</div>
+					</div>
+					<div class="wbDIV wbDIVo2Bottom">
+						<div id="_id_divHoriz3466-j6wjg3wi">
+							<div class="wbDIV wbDIV2Left34">
+								y1
+							</div>
+							<div class="wbDIV wbDIV2Right66">
+								<input id="CyMin" value="-2.0" style="width: 95%">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="wbDIV wbDIV2Right">
+				<div id="_id_divVert2-j6wjejq7">
+					<div class="wbDIV wbDIVo2Top">
+						<div id="_id_divHoriz3466-j6wjfxu5">
+							<div class="wbDIV wbDIV2Left34">
+								x2
+							</div>
+							<div class="wbDIV wbDIV2Right66">
+								<input id="CxMax" value="1.5" style="width: 95%">
+							</div>
+						</div>
+					</div>
+					<div class="wbDIV wbDIVo2Bottom">
+						<div id="_id_divHoriz3466-j6wjg8fo">
+							<div class="wbDIV wbDIV2Left34">
+								y2
+							</div>
+							<div class="wbDIV wbDIV2Right66">
+								<input id="CyMax" value="2.0" style="width: 95%">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

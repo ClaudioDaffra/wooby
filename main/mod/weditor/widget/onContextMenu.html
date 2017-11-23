@@ -1,0 +1,970 @@
+
+<!-- ############## -->
+<!-- onContextMenu  -->
+<!-- ############## --> 
+
+
+<style>
+
+.wbContextMenu
+{
+	position:absolute;
+	width:120px;
+	height:277px;
+	background:silver;
+	border:groove;
+	z-index:999;
+}
+.wbCMsliderWidth
+{
+	position:relative;
+	width:90px;
+	height:20px;
+	left:10px;
+	top:135px;
+}
+.wbCMsliderHeight
+{
+	position:relative;
+	width:20px;
+	height:90px;
+	left:115px;
+	top:25px;
+}
+
+</style>
+
+
+
+<div  id="wbCM" class="wbContextMenu" >
+	<label	  id="wbCMelement" title="" 	
+	style="position:absolute;left:15px;top:5px;max-width:100px;color:blue;display: block; width: 100px;"></label>
+	
+	<button   id="wbCMx" 			style="width:25px ;position:absolute;left:95px;top:3px;color:red"><strong>X</button>	
+	
+	<button   id="wbCMedit" 		style="width:100px;position:absolute;left:010px;top:30px;">SEARCH</button>
+	<button   id="wbCMdelete" 		class="wbReadOnly" style="width:100px;position:absolute;left:010px;top:55px;">DELETE</button>
+	
+	<button   id="wbCMclone" 		class="wbReadOnly" style="height:25px;width:50px;position:absolute;left:010px;top:80px;"><small>clone</small></button>
+	<button   id="wbCMnewid" 		class="wbReadOnly" style="height:25px;width:50px;position:absolute;left:060px;top:80px;"><small>newID</small></button>
+	
+	<button   id="wbCMcopy" 		class="wbReadOnly" style="height:25px;width:50px;position:absolute;left:010px;top:107px;"><small>copy</small></button>
+	<button   id="wbCMpaste" 		class="wbReadOnly" style="height:25px;width:50px;position:absolute;left:060px;top:107px;"><small>paste</small></button>
+
+	<button   id="wbCMclear" 		class="wbReadOnly" style="width:50px;position:absolute;left:010px;top:134px;">Clear</button>
+	<button   id="wbCMselect" 		class="wbReadOnly" style="width:50px;position:absolute;left:060px;top:134px;">Select</button>	
+	
+	<button id="wbCMwidthBUTTON"    class="wbReadOnly" style="width:80px;position:absolute;left:10px;top:160px;width:40px;">W</button>
+	<button id="wbCMheightBUTTON"   class="wbReadOnly" style="width:80px;position:absolute;left:10px;top:180px;width:40px;">H</button>
+	<button id="wbCMleftBUTTON"     class="wbReadOnly" style="width:80px;position:absolute;left:10px;top:200px;width:40px;">L</button>
+	<button id="wbCMtopBUTTON" 	    class="wbReadOnly" style="width:80px;position:absolute;left:10px;top:220px;width:40px;">T</button>
+<!--	
+	<input  id="wbCMwidthINPUT"  	class="wbReadOnly" list='wbCMperc' style="width:60px;position:absolute;left:50px;top:160px;">
+	<input  id="wbCMheightINPUT" 	class="wbReadOnly" list='wbCMperc' style="width:60px;position:absolute;left:50px;top:180px;">
+	<input  id="wbCMleftINPUT"  	class="wbReadOnly" list='wbCMperc' style="width:60px;position:absolute;left:50px;top:200px;">
+	<input  id="wbCMtopINPUT" 		class="wbReadOnly" list='wbCMperc' style="width:60px;position:absolute;left:50px;top:220px;">
+-->	
+	
+	<button  id="wbCMfull" 			class="wbReadOnly" style="width:100px;position:absolute;left:10px;top:247px;">Responsive</button>
+
+<!--
+		
+	<datalist id='wbCMperc'>
+		<option value="0%">
+		<option value="10%">
+		<option value="20%">
+		<option value="25%">
+		<option value="33%">
+		<option value="50%">
+		<option value="66%">
+		<option value="75%">
+		<option value="80%">
+		<option value="95%">
+		<option value="100%">
+		<option value="0px">
+		<option value="10px">
+		<option value="20px">
+		<option value="30px">
+		<option value="50px">
+		<option value="75px">
+		<option value="100px">
+		<option value="120px">
+		<option value="150px">
+		<option value="200px">
+		<option value="300px">		 
+	</datalist>
+-->
+
+<style>
+#wbSelectWLTH_2col 
+{
+    -webkit-column-count: 2; /* Chrome, Safari, Opera */
+    -moz-column-count: 2; /* Firefox */
+    column-count: 2;
+	
+    -webkit-column-width: 100px; /* Chrome, Safari, Opera */
+    -moz-column-width: 100px; /* Firefox */
+    column-width: 100px;
+}
+</style>
+
+
+
+<div id ="wbSelectWLTH_2col" style="border:3px outset darkgray;position:absolute;width:220px;left:100px;top:10px;background:silver;z-index:1000;" hidden>
+
+	<div   >
+		<ul class="wbSelectWLTH_2colCLASS" id='wbCMperc'>
+			<li class="wbSelectWLTH_2col_LI">0%</li>
+			<li class="wbSelectWLTH_2col_LI">10%</li>
+			<li class="wbSelectWLTH_2col_LI">20%</li>
+			<li class="wbSelectWLTH_2col_LI">25%</li>
+			<li class="wbSelectWLTH_2col_LI">33%</li>
+			<li class="wbSelectWLTH_2col_LI">50%</li>
+			<li class="wbSelectWLTH_2col_LI">66%</li>
+			<li class="wbSelectWLTH_2col_LI">75%</li>
+			<li class="wbSelectWLTH_2col_LI">80%</li>
+			<li class="wbSelectWLTH_2col_LI">95%</li>
+			<li class="wbSelectWLTH_2col_LI">100%</li>			
+		</ul>	
+	</div>
+
+	<div   >
+	
+		<ul class="wbSelectWLTH_2colCLASS"id='wbCMpixel'>
+			<button id="wbSelectWLTH_2col_BTN_X" onclick="$('#wbSelectWLTH_2col').hide()" style="float:right">X</button>
+			<br>
+			<li class="wbSelectWLTH_2col_LI">0px</li>
+			<li class="wbSelectWLTH_2col_LI">1px</li>
+			<li class="wbSelectWLTH_2col_LI">2px</li>
+			<li class="wbSelectWLTH_2col_LI">30px</li>
+			<li class="wbSelectWLTH_2col_LI">50px</li>
+			<li class="wbSelectWLTH_2col_LI">75px</li>
+			<li class="wbSelectWLTH_2col_LI">100px</li>
+			<li class="wbSelectWLTH_2col_LI">120px</li>
+			<li class="wbSelectWLTH_2col_LI">150px</li>
+			<li class="wbSelectWLTH_2col_LI">200px</li>
+			<li class="wbSelectWLTH_2col_LI">300px</li>		 
+		</ul>		
+	</div>
+
+
+</div>
+
+	<input  id="wbCMwidthINPUT"  			class="wbReadOnly"											style="width:40px;position:absolute;left:50px;top:160px;">
+	<button class="wbSelectWLTH_2col_BTN	wbReadOnly" 						name="wbCMwidthINPUT"	style="width:10px;position:absolute;left:95px;top:160px;"><div style="margin-left:-6px">&#9660;</div></button>
+
+	<input  id="wbCMheightINPUT" 			class="wbReadOnly" 											style="width:40px;position:absolute;left:50px;top:180px;">
+	<button class="wbSelectWLTH_2col_BTN	wbReadOnly"							name="wbCMheightINPUT"	style="width:10px;position:absolute;left:95px;top:180px;"><div style="margin-left:-6px">&#9660;</div></button>
+
+	<input  id="wbCMleftINPUT"  			class="wbReadOnly"  										style="width:40px;position:absolute;left:50px;top:200px;">
+	<button class="wbSelectWLTH_2col_BTN	wbReadOnly"							name="wbCMleftINPUT"	style="width:10px;position:absolute;left:95px;top:200px;"><div style="margin-left:-6px">&#9660;</div></button>
+
+	<input  id="wbCMtopINPUT" 				class="wbReadOnly"  										style="width:40px;position:absolute;left:50px;top:220px;">
+	<button class="wbSelectWLTH_2col_BTN	wbReadOnly"							name="wbCMtopINPUT"		style="width:10px;position:absolute;left:95px;top:220px;"><div style="margin-left:-6px">&#9660;</div></button>
+
+</div>
+
+
+<script>
+
+
+$('.wbSelectWLTH_2col_BTN').click(function()
+{
+	var t= parseInt ( $(this).css( 'top') ) +5 +'px' ;
+	var l = parseInt ( $(this).css( 'left') ) +5 +'px' ;
+	console.log ( t,l ) ;
+
+	$('#wbSelectWLTH_2col').show()		
+	$('#wbSelectWLTH_2col').css( 'position' ,	'absolute' ) 	
+	$('#wbSelectWLTH_2col').css( 'top' ,	t ) 
+	$('#wbSelectWLTH_2col').css( 'left' ,	l )
+
+	window.wbSelectedLi = '#'+$(this).attr('name');	
+	console.log ( window.wbSelectedLi ) ;
+
+}) ;
+
+$('.wbSelectWLTH_2col_LI').mouseenter(function()
+{
+	$(this).css( 'background' ,'gold' );
+
+}) ; 
+$('.wbSelectWLTH_2col_LI').mouseleave(function()
+{
+	$(this).css( 'background' ,'' );
+
+}) ; 
+
+$('.wbSelectWLTH_2col_LI').click(function()
+{
+	console.log (window.selectedLi ) 
+
+	$(window.wbSelectedLi).val( $(this).html() );
+
+	$('#wbSelectWLTH_2col').hide();
+
+}) ; 
+</script>
+
+<script>
+
+//************ 
+//		CONTEXT MENU
+//************ 
+
+// ........................................ getSelectionText
+function getSelectionText() 
+{
+	return window.getSelection().toString()
+}
+// ........................................ getSelectionHtml
+function getSelectionHtml() 
+{
+    var html = "";
+    if (typeof window.getSelection != "undefined") {
+        var sel = window.getSelection();
+        if (sel.rangeCount) {
+            var container = document.createElement("div");
+            for (var i = 0, len = sel.rangeCount; i < len; ++i) {
+                container.appendChild(sel.getRangeAt(i).cloneContents());
+            }
+            html = container.innerHTML;
+        }
+    } else if (typeof document.selection != "undefined") {
+        if (document.selection.type == "Text") {
+            html = document.selection.createRange().htmlText;
+        }
+    }
+
+   return html
+}
+// ........................................ ReplaceSelectionWithHtml
+function replaceSelectionWithHtml(html) 
+{
+    var range;
+    if (window.getSelection && window.getSelection().getRangeAt) {
+        range = window.getSelection().getRangeAt(0);
+        range.deleteContents();
+        var div = document.createElement("div");
+        div.innerHTML = html;
+        var frag = document.createDocumentFragment(), child;
+        while ( (child = div.firstChild) ) {
+            frag.appendChild(child);
+        }
+        range.insertNode(frag);
+    } else if (document.selection && document.selection.createRange) {
+        range = document.selection.createRange();
+        range.pasteHTML(html);
+    }
+}
+function getSelectionParentElement() 
+{
+    var parentEl = null, sel;
+    if (window.getSelection) {
+        sel = window.getSelection();
+        if (sel.rangeCount) {
+            parentEl = sel.getRangeAt(0).commonAncestorContainer;
+            if (parentEl.nodeType != 1) {
+                parentEl = parentEl.parentNode;
+            }
+        }
+    } else if ( (sel = document.selection) && sel.type != "Control") {
+        parentEl = sel.createRange().parentElement();
+    }
+    return parentEl;
+}
+
+$('#wbWorkAreaVisualHtml').oncontextmenu = function() 
+{
+	return false;
+};
+
+//********************  
+// Context Menu Widget
+//*********************  
+
+window.selText = null ;
+window.selHtml = null ;
+window.onContextMenuElement = null ;
+window.selParent = null ;
+		
+$('#wbCM').hide().draggable();
+
+function wbCMWidgetShow ( ) 
+{
+	console.log ( "#wbCMWidgetShow " ) ;
+			
+	window.CMelementUnderMouse = elementUnderMouse.target ; // memorizza il widget scelto, spostando il mouse può cambiare
+
+	$('#wbCM').show() ;
+
+	 // prevent CHROME to open context menu in wbBody ! in questo caso il Context menu è legato a #main
+	document.getElementById('main').addEventListener('contextmenu', function(evt){evt.preventDefault();})	
+	
+	$('#wbCM').css('position' ,'absolute' ); 
+	$('#wbCM').css('top' ,60+mouse.y+'px' );  
+	$('#wbCM').css('left',180+mouse.x+'px' );
+	$('#wbCM').css('zIndex','1000' );
+	
+	var id  = $(elementUnderMouse.target).attr('id') ;
+	var tag = $(elementUnderMouse.target)[0].nodeName ;  
+
+	if ( id == undefined ) id = '?' ;
+
+	$('#wbCMelement').html(tag+'')
+	$('#wbCMelement').attr('title','id : < '+id+' >') ;
+
+
+	$('#wbCM').draggable(); 
+	 
+}
+
+// **********************************************************************  chiudi context menu
+
+$('#wbCMx').click(function()
+{
+	$('#wbCM').hide();
+}) ;
+
+$('#wbWorkAreaVisualHtml').mousedown(function(e)
+{ 
+	if( e.button == 2 ) 
+	{
+	    // spostando il mouse l'elemento target del menu contestuale così non cambia.
+		window.onContextMenuElement = window.elementUnderMouse.target ; 
+	
+		 // prevent CHROME to open context menu in wbBody !  in questo caso Mouse Right è legato a #wbWorkAreaVisualHtml
+		document.getElementById('wbWorkAreaVisualHtml').addEventListener('contextmenu', function(evt){evt.preventDefault();})
+			 
+		var ID = $(window.elementUnderMouse.target).attr('id');
+
+		// se non c'è ID alcuni elementi rimangono readonly
+		console.log ( "#ID",ID ) ;
+		
+		if ( ID==undefined )
+		{
+			$('.wbReadOnly').prop( "disabled", true );
+		}
+		else
+		{
+			$('.wbReadOnly').prop( "disabled", false );
+			
+			
+					// se il widget non contiene <p> non è selezionabile
+
+					if  ( ($('#'+ID).html() ).search('<p>') == -1 ) // se non contiene nessun elemento selectable
+					{
+						$('#wbCMselect').css( "color", "red" );		
+					}
+					else
+					{
+						$('#wbCMselect').css( "color", "green" );		
+					}		
+			
+		}
+		
+	    window.selText 		= getSelectionText()
+		window.selHtml 		= getSelectionHtml()
+		//window.selParent 	= getSelectionParentElement()
+	
+//		window.selParent	= window.getSelection().anchorNode.parentElement
+	
+		console.log ( '#wbGetSelectedText' )
+		console.log ( window.selText,window.selText.length ) 
+		console.log ( window.selHtml,window.selHtml.length ) 
+		
+		if ( window.selText.length == 0 )
+		{
+			console.log ( "#open CM Widget" ) ;
+			wbCMWidgetShow (window.onContextMenuElement) ;
+		}
+		else
+		{
+			console.log ( "#open CM Widget" ) ;
+			wbCMWidgetShow (window.onContextMenuElement) ;	
+		}
+		
+		return false;
+	}
+	return true ;
+});
+
+// **********************************************************************  edit/search  widget
+
+$('#wbCMedit').click(function()
+{
+	console.log ( '#wbCMedit' ) ;
+	
+    if ( window.onContextMenuElement != null ) 
+	{
+		var StringaRicerca = null ;
+		
+		var id  = $(window.onContextMenuElement).attr('id');
+
+		console.debug ( '#string search::ID' )			
+		console.debug ( id )	
+		
+		if ( id!=undefined )
+		{
+			console.debug ( '#string search::ID::html' )			
+			StringaRicerca = $(elementUnderMouse.target).html()		// ID + HTML
+		}
+		else
+		{
+			StringaRicerca = window.selHtml
+			console.debug ( '#string search::window.selHtml' )
+			/*
+			if ( StringaRicerca!="" )
+			{
+				window.selHtml = StringaRicerca
+			}
+			*/
+		}
+
+		console.debug ( '#string search' )
+		console.debug ( StringaRicerca )
+		
+		wbVisualizzaWidgetInCM( StringaRicerca ) ;
+	}
+	
+}) ;
+
+// **********************************************************************  change/select W H L T
+
+function wbSetWHLT ( x ) 
+{
+	console.log ('#wbCM'+x+'BUTTON' ) 
+	console.log (window.onContextMenuElement ) 
+	var ID = '#'+$(window.onContextMenuElement).attr('id');
+	
+	if ( ID.length>0 )
+	{
+		var val = $('#wbCM'+x+'INPUT').val() 
+		if ( val!="" )
+		{
+			if ( val.indexOf('px')==-1 )
+				if ( val.indexOf('%')==-1 ) 
+					val=val+'%';
+			
+			console.debug ( '#wbCMwidthBUTTON::'+x+':',val ) ;
+			$(ID).css(x,val);
+			$('#wbCM'+x+'INPUT').val('') 
+		}
+	}
+}
+
+$('#wbCMwidthBUTTON').click(function(e)
+{
+	wbSetWHLT ( 'width' )  ;
+});
+
+$('#wbCMheightBUTTON').click(function(e)
+{
+	wbSetWHLT ( 'height' )  ;
+});
+$('#wbCMleftBUTTON').click(function(e)
+{
+	wbSetWHLT ( 'left' )  ;
+});
+$('#wbCMtopBUTTON').click(function(e)
+{
+	wbSetWHLT ( 'top' )  ;
+})
+
+// **********************************************************************  New ID
+
+$('#wbCMnewid').click(function(e)
+{
+	console.log ( '#wbCMnewid' ) ;	
+	var ID = '#'+$(window.onContextMenuElement).attr('id');	
+	
+	$( '#wbCMnewid' ).effect( 'highlight',{}, 500 );
+
+	var contatore =  ( +Date.now() ).toString(36);
+	var id = 'id_'+contatore;
+	
+	console.log ( '#wbCMnewid::', id );
+	$( ID ).attr('id',id)
+			
+	$(wbCMelement).attr('title',id);
+
+	$('#wbCM').hide().draggable();
+})
+
+// ********************************************************************** Responsive
+
+$('#wbCMfull').click(function(e)
+{
+	console.debug ( '#wbCMresponsivel' ) ;
+	var ID = '#'+$(window.onContextMenuElement).attr('id');	
+	
+	$(ID).css('position','absolute');
+	$(ID).css('top','0%');
+	$(ID).css('left','0%');
+	$(ID).css('width','100%');
+	$(ID).css('height','100%');
+
+});
+
+// ********************************************************************** clone
+
+$('#wbCMclone').click(function(e)
+{
+	console.debug ( '#wbCMclone' ) ;
+	var ID = '#'+$(window.onContextMenuElement).attr('id');	
+
+	var figlio = $(ID) ;
+
+	console.debug ( 'wbCMclone::',figlio  ) ;
+
+	var padre  = $(figlio).parent()
+	var pecora = $(figlio).clone();
+
+	console.debug ( "figlio::",figlio )
+	console.debug ( "pecora::",pecora )
+
+	var unita = wbGetUnit ( $(figlio).css('left') ) 
+	console.debug ('wbCMclone:unita::',unita);
+	
+	var posx = (parseInt($(figlio).css('left')) *1.20) + unita ;
+	var posy = (parseInt($(figlio).css('top')) *1.20) + unita ;
+
+	console.debug ( posx,posy ); 
+	
+	$(pecora).css('position','absolute');
+	$(pecora).css('left',posx);
+	$(pecora).css('top',posy);
+	$(pecora).attr('id',( +Date.now() ).toString(36) )
+	
+	console.debug ( '# element ID duplicate' ) ;
+				
+	$(pecora).appendTo(padre);
+
+});
+
+// ********************************************************************** DELETE
+
+$('#wbCMdelete').click(function(e)
+{
+	console.debug ( '#wbCMclone' ) ;
+	var ID = '#'+$(window.onContextMenuElement).attr('id');	
+
+	$(ID).animate({opacity:0},1000, function() 
+	{	
+		$(ID).remove() ; 
+	});
+    $('#wbCM').hide().draggable();
+});
+
+// ********************************************************************** copyToClipboard
+
+window.CMcliboard = undefined ;
+
+$('#wbCMcopy').click(function(e)
+{
+	console.debug ( '#wbCMcopy' ) ;
+	var ID = '#'+$(window.onContextMenuElement).attr('id');	
+	
+	var clipboard = new Clipboard('#wbCMcopy', 
+	{
+        text: function() 
+		{
+			$( "#wbCMcopy" ).effect( 'highlight',{}, 500 )
+
+			console.debug('#cliboard::copy');	    
+			console.debug(e);
+		
+			return window.CMcliboard = $(ID).html();
+        }
+    });
+
+    clipboard.on('success', function(e) 
+	{
+        console.debug('#cliboard::copy');	    
+        console.debug(e);
+    });
+
+    clipboard.on('error', function(e) 
+	{
+        console.debug('? cliboard::copy');	    
+        console.error(e);
+    });
+});
+
+// ********************************************************************** copyToClipboard
+
+$('#wbCMpaste').click(function(e)
+{
+	console.debug ( '#wbCMpaste' ) ;
+	var ID = '#'+$(window.onContextMenuElement).attr('id');	
+	
+	$( "#wbCMpaste" ).effect( 'highlight',{}, 500 )	
+	
+	if ( window.CMcliboard != undefined )
+	{
+		console.debug('#cliboard::paste');	    
+		console.debug(window.CMcliboard);	
+		$(ID).html( window.CMcliboard ) 
+	}
+
+});
+
+
+/**/
+/**/
+/**/
+
+//************************* 
+// Context Menu Widget Text
+//************************* 
+
+$('#wbCMtext').hide().draggable() ;
+
+function wbCMWidgetShowText ( ) 
+{
+	console.log ( "#wbCMWidgetShowText " ) ;
+			
+	window.CMelementUnderMouse = elementUnderMouse.target ; // memorizza il widget scelto, spostando il mouse può cambiare
+
+	$('#wbCMtext').show() ;
+
+	 // prevent CHROME to open context menu in wbBody ! in questo caso il Context menu è legato a #main
+	document.getElementById('main').addEventListener('contextmenu', function(evt){evt.preventDefault();})	
+	
+	$('#wbCMtext').css('position' ,'absolute' ); 
+	$('#wbCMtext').css('top' ,60+mouse.y+'px' );  
+	$('#wbCMtext').css('left',180+mouse.x+'px' );
+	$('#wbCMtext').css('zIndex','1000' );
+
+	var tag = 'text'
+
+	$('#wbCMelementText').html(tag+'')
+
+	$('#wbCMelementText').attr('title','sel : < '+window.selText+' >') ;
+
+	$('#wbCMtext').draggable(); 
+ 
+}
+
+// **********************************************************************  chiudi context menu
+
+$('#wbCMxText').click(function()
+{
+	$('#wbCMtext').hide();
+}) ;
+
+$("#wbWorkAreaVisualHtml").mouseenter(function(e)
+{
+	console.debug ("#wbWorkAreaVisualHtml::enter" ) 
+	
+		$(document).bind('keydown',function(e) // necessario Bind / Unbid per codemirror
+		{
+			var key = (window.event) ? e.keyCode : e.which;
+			
+			console.log ( '#key', key ) ;
+			
+			window.selText 		= getSelectionText()
+			window.selHtml 		= getSelectionHtml()
+			
+			if ( window.selHtml.length<=0 )
+			{
+				console.error ( "? window.selHtml.length<=0" ) ;
+				return 
+			}
+			
+			window.selParent 	= window.getSelection().anchorNode.parentElement	
+			
+			console.debug ('#selText' ) ;
+			console.debug ( window.selText ) ;	
+			console.debug ('#setHtml' ) ;
+			console.debug ( window.selHtml ) ;	
+			console.debug ('#selParent' ) ;
+			console.debug ( window.selParent ) ;	
+
+			console.log ( "###" );
+			
+			console.log ( "#selHtml" );
+			console.log ( window.selHtml );
+
+
+			var p = null ;
+			
+			// se il parente è già 'p' non ripercorre i nodi precedenti
+			if ( $(window.selParent).is( "p" ) ) 
+			{
+				p = window.selParent
+			}
+			else
+			{
+				p = $( window.selParent ).closest( 'p' )
+			}
+			console.log ( "#parente" ) ;
+			console.log ( p ) ;
+			
+			console.log ( "#p::HTML" ) ;
+			var parentHtml = 		$( p ).html()
+			console.log ( parentHtml ) ;
+
+			if ( parentHtml == undefined ) 
+			{
+				console.error ( '? parentHtml : undefined' );
+				return 
+			}
+			
+			var oldSel = 	window.selHtml
+
+/**/		
+			var x 	= null ;	// tag
+			var x0 	= null ;	// < >
+			var x1 	= null ; 	// </ >
+
+			//alert ( key ) ;
+			
+			switch ( key )
+			{
+				case 66 : 
+					x = 'b' 	;	x0='<b>'	;	x1='</b>'		; 
+					break ; // b	bold
+				case 85 : 
+					x = 'u'		;	x0='<u>'	;	x1='</u>'		; 
+					break	; // u	underline
+				case 73 : 
+					x = 'em'	;	x0='<em>'	;	x1='</em>'		; 
+					break	; // i	italic
+				case 83 : 
+					x = 's'		;	x0='<s>'	;	x1='</s>'		; 
+					break	; // s	barrato
+				case 189 : 
+					x = 'sub' 	;	x0='<sub>'	;	x1='</sub>'	; 
+					break	; // +	apice
+				case 187 : 
+					x = 'sup' 	;	x0='<sup>'	;	x1='</sup>'	; 
+					break	; // -	pedice
+				case 81 : 
+					x = 'q' 	;	x0='<q>'	;	x1='</q>'	; 
+					break	; // -	quote		
+	
+				/**/	
+				
+				case 65 : 
+					x = 'span' 	;	x0='<div style="text-align:'+wbFormat.AlignValue+';">'	;				x1='</div>'	; 
+					break	; // a	align					
+				case 67 : 
+					x = 'span' 	;	x0='<span style="color:'+wbFormat.ColorValue+';">'	;					x1='</span>'	; 
+					break	; // c	color
+				case 70 : 
+					x = 'span' 	;	x0='<span style="font-family:'+wbFormat.FontFamilyValue+';">'	;		x1='</span>'	; 
+					break	; // f	font-family	
+				case 72 : 
+					x = 'h' 	;	x0='<'+wbFormat.HeaderValue+'>'	;										x1='</'+wbFormat.HeaderValue+'>'	; 
+					break	; // h	header	
+				case 75 : 
+					x = 'span' 	;	x0='<span style="background-color:'+wbFormat.ColorValue+';">'	;		x1='</span>'	; 
+					break	; // k	background-color	
+				case 84 : 
+					x = 'span' 	;	x0='<span style="padding:10%;">'	;									x1='</span>'	; 
+					break	; // t	padding 10%						
+				case 90 : 
+					x = 'span' 	;	x0='<span style="font-size:'+wbFormat.SizeValue+';">'	;				x1='</span>'	; 
+					break	; // z	font-size						
+					
+					
+			}
+			
+			console.log ( '#ElementAfterKeyCode' ) ;			
+			console.log ( key,x ) ;
+			
+			if (x!=null)
+			{
+				if ( window.selHtml.search(x0) == -1 )
+				{
+					console.log ( "#insert::"+x );				
+					window.selHtml = x0+window.selHtml+x1				
+				}
+				else
+				{
+					console.log ( "#remove::"+x );	
+					window.selHtml = window.selHtml.replaceAll ( x0  , ''  );
+					window.selHtml = window.selHtml.replaceAll ( x1 , ''  );
+				}
+
+				console.log ( "window.selParent.search('"+x0+"')" );
+
+				temp = "'"+x+"'"
+				console.log ( $(window.selParent).is( x ) );
+
+				// eliminare SPAN con clear in quanto ci sono diversi span in catena
+
+				if ($(window.selParent).is('span') == false )
+				{
+					if ( $(window.selParent).is(x) == true )
+					{
+						console.log ( "#remove::"+x );	
+						window.selHtml = window.selHtml.replaceAll ( x0 , ''  );
+						window.selHtml = window.selHtml.replaceAll ( x1 , ''  );			
+					}
+				}
+
+			}
+
+/**/
+			
+			var newSel = window.selHtml
+			
+			// sostituisci la vecchia selezione con la vecchia
+			// nell innerHtml , del padre
+			// TODO occorre identificare la corretta posizione, perfezionare 
+			
+			parentHtml = parentHtml.replaceAll( oldSel , newSel ) ;
+		
+			$( p ).html( parentHtml )		
+
+
+		}); 
+	
+		e.preventDefault();
+});
+
+$("#wbWorkAreaVisualHtml").mouseleave(function()
+{
+	console.debug ("#wbWorkAreaEditorHtml::leave" ) 
+	$(document).unbind('keydown') 
+});
+
+
+// **********************************************************************  selectable  widget
+
+$('#wbCMselect').click(function()
+{
+
+	console.log ( '#wbCMselect' ) ;
+	
+    if ( window.onContextMenuElement != null ) 
+	{
+		var id  = '#'+$(window.onContextMenuElement).attr('id');
+		
+		var html = null ;
+		html = $(id).html();
+		
+		if ( html.search('<p>') != -1 ) // <p> true , remove it 1234
+		{
+			html = html.replaceAll ( '<p>' , '' ) ;
+			html = html.replaceAll ( '</p>' , '' ) ;	
+			$('#wbCMselect').css( "color", "red" );	
+		}
+		else // <p> false , add it
+		{
+			html = '<p>' + html + '</p>' ;
+			$('#wbCMselect').css( "color", "green" );			
+		}
+
+		$(id).html(html);
+		
+	}
+	
+	
+	$('#wbCMselect').effect( "bounce", "slow" );
+});
+
+// **********************************************************************  clear  widget
+
+$('#wbCMclear').click(function()
+{
+	console.log ( '#wbCMclear' ) ;
+	
+    if ( window.onContextMenuElement != null ) 
+	{
+		var StringaRicerca = null ;
+
+		var id  = '#'+$(window.onContextMenuElement).attr('id');
+
+		console.debug ( '#string search::ID' )			
+		console.debug ( id )	
+
+		console.debug ( '#string search::ID::html' )			
+		StringaRicerca = $(id).html()		// ID + HTML
+
+		console.log ( '#html before' )
+		console.log ( StringaRicerca )
+
+		var arr = [ 'b' , 'u' , 'em' , 's' , 'sub','sup','q','s','h1','h2','h3','h4','h5','h6' ]
+		
+		for ( i=0; i < arr.length ; i++ )
+		{
+
+			temp = '<'+arr[i]+'>'
+			StringaRicerca = StringaRicerca.replaceAll(temp,'')
+			temp = '</'+arr[i]+'>'	
+			StringaRicerca = StringaRicerca.replaceAll(temp,'')		
+
+		}
+		
+		$(id).html(StringaRicerca)
+		
+		console.log ( '#html after' )
+		console.log ( StringaRicerca )			
+
+
+		// ...................................... unwrap
+		console.log ( "#before unwrap" )
+		console.log ( $(id).html() )
+		
+		var arr = [ 'span','div','p' ]		
+
+		for ( i=0; i < arr.length ; i++ )
+		{
+			temp = id + ' ' + arr[i]
+			$(temp).contents().unwrap();
+		}		
+		console.log ( "#afer unwrap" )
+		console.log ( $(id).html() )		
+/*		
+		// ........................................ unwrap ( span )
+		
+		console.log ( "#before unwrap" )
+		console.log ( $(id).html() )
+		
+		$(id + ' span').contents().unwrap();
+		
+		console.log ( "#afer unwrap" )
+		console.log ( $(id).html() )		
+
+		// ........................................ unwrap ( div )
+		
+		console.log ( "#before unwrap" )
+		console.log ( $(id).html() )
+		
+		$(id + ' div').contents().unwrap();
+		
+		console.log ( "#afer unwrap" )
+		console.log ( $(id).html() )			
+*/		
+		
+		/**/
+		
+		makeDraggableResizable() ;
+	}
+	
+}) ;
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,152 @@
+
+							<select  id="wbCodeTemplateSelectJS" class="dd" style="width:200px;max-height:24;">
+									<option value="" disabled="disabled" selected="selected" style="display:none;"data-image="img/tabs/js.png">Javascript</option>
+									<optgroup label="Code">
+										<option value="timer"  data-image="img/tabs/ico-default.png"  >Timer</option>
+									</optgroup>
+									<optgroup label="Async Loop">
+										<option value="aw1"    data-image="img/tabs/ico-default.png"  >While i</option>
+										<option value="aw2"    data-image="img/tabs/ico-default.png"  >While i , j</option>
+										<option value="aw3"    data-image="img/tabs/ico-default.png"  >While i , j , k</option>
+										<option value="aw4"    data-image="img/tabs/ico-default.png"  >While i , j , k , m</option>
+										<option value="aru1"   data-image="img/tabs/ico-default.png"  >Repeat Until i</option>
+										<option value="aru2"   data-image="img/tabs/ico-default.png"  >Repeat Until i , j</option>
+										<option value="aru3"   data-image="img/tabs/ico-default.png"  >Repeat Until i , j , k</option>
+										<option value="aru4"   data-image="img/tabs/ico-default.png"  >Repeat Until i , j , k , m</option>
+									</optgroup>
+									<optgroup label="Async.js">
+										<option value="asw1"    data-image="img/tabs/ico-default.png"  >While i</option>
+										<option value="asw2"    data-image="img/tabs/ico-default.png"  >While i , j</option>
+										<option value="asw3"    data-image="img/tabs/ico-default.png"  >While i , j , k</option>
+										<option value="asru1"   data-image="img/tabs/ico-default.png"  >Repeat Until i</option>
+										<option value="asru2"   data-image="img/tabs/ico-default.png"  >Repeat Until i , j</option>
+										<option value="asru3"   data-image="img/tabs/ico-default.png"  >Repeat Until i , j , k</option>
+									</optgroup>
+									<optgroup label="Parallel">
+										<option value="apphp"    data-image="img/tabs/ico-default.png"  >Parallel PHP</option>
+										<option value="mt"  	 data-image="img/tabs/ico-default.png"  >Parallel Javascript</option>
+										<option value="aworker"  data-image="img/tabs/ico-default.png"  >Web Worker</option>
+									</optgroup>
+									<optgroup label="Chart.js">
+										<option value="chart.barh"  	data-image="img/tabs/ico-default.png"  >Bar Horizontal</option>
+										<option value="chart.bars"  	data-image="img/tabs/ico-default.png"  >Bar Stacked</option>
+										<option value="chart.barv"  	data-image="img/tabs/ico-default.png"  >Bar Vertical</option>
+										<option value="chart.barb"  	data-image="img/tabs/ico-default.png"  >Bar Bubble</option>
+										<option value="chart.barcl" 	data-image="img/tabs/ico-default.png"  >Bar Combo Line</option>
+										<option value="chart.diffp" 	data-image="img/tabs/ico-default.png"  >Different Point</option>
+										<option value="chart.doughnut" 	data-image="img/tabs/ico-default.png"  >Doughnut</option>
+										<option value="chart.line" 		data-image="img/tabs/ico-default.png"  >Line</option>
+										<option value="chart.lineleg" 	data-image="img/tabs/ico-default.png"  >Line Legend</option>
+										<option value="chart.lines" 	data-image="img/tabs/ico-default.png"  >Line Stacked</option>
+										<option value="chart.pie" 		data-image="img/tabs/ico-default.png"  >Pie</option>
+										<option value="chart.piep" 		data-image="img/tabs/ico-default.png"  >Pie Polar</option>
+										<option value="chart.radar" 	data-image="img/tabs/ico-default.png"  >Radar</option>
+										<option value="chart.scatter" 	data-image="img/tabs/ico-default.png"  >Scatter</option>
+										<option value="chart.log" 		data-image="img/tabs/ico-default.png"  >Logarithmic</option>
+									</optgroup>	
+									<optgroup label="Widget">
+										<option value="jqimgslider" 	data-image="img/tabs/ico-default.png"  >jquery image slider</option>
+										<option value="jqcookiebar" 	data-image="img/tabs/ico-default.png"  >jquery cookie bar</option>
+										<option value="jqdd" 			data-image="img/tabs/ico-default.png"  >Drop Down</option>										
+									</optgroup>
+									<optgroup label="canvas">
+										<option value="canvasex1" 		data-image="img/tabs/ico-default.png"  >Canvas Ex.</option>
+										<option value="twoex1" 			data-image="img/tabs/ico-default.png"  >Two Ex.</option>
+										<option value="threeex1" 		data-image="img/tabs/ico-default.png"  >Three Ex.</option>
+										<option value="wbcanvas" 		data-image="img/tabs/ico-default.png"  >wbCanvas Ex.</option>
+									</optgroup>
+									<optgroup label="Javascript">
+										<option value="jsrem"  			data-image="img/tabs/ico-default.png" >Remark</option>
+									</optgroup> 
+							</select>
+								
+<script>
+
+
+// ........................................................... wb_javascript_code_template ( scelta ) ;
+
+$('#wbCodeTemplateSelectJS').change( function()
+{
+    var scelta =  $(this).val() ;
+	console.debug ( 'wb_javascript_select' , scelta ) ;
+	wb_javascript_code_template ( scelta ) 
+});
+
+//*********************
+//                      Code Template javascript
+//*********************
+
+function wb_javascript_code_template( scelta )
+{
+		console.debug  ( 'wb_javascript_code_template : ' , scelta) 
+		var	finput = "template/code/javascript/"
+
+		$('#wbCodeTemplateSelectJS').val("");
+
+		switch ( scelta )
+		{
+			// Timer
+			case 'timer' 			: finput += 'timer.js'  					; break ;
+			// Chart.js
+			case 'chart.barh' 		: finput += 'chart.js.bar.horizontal.js'  	; break ;
+			case 'chart.bars' 		: finput += 'chart.js.bar.stacked.js'  		; break ;
+			case 'chart.barv' 		: finput += 'chart.js.bar.vertical.js'  	; break ;
+			case 'chart.barb' 		: finput += 'chart.js.bar.bubble.js'  		; break ;
+			case 'chart.barcl' 		: finput += 'chart.js.bar.combo.line.js' 	; break ;
+			case 'chart.diffp' 		: finput += 'chart.js.diff.point.js' 		; break ;
+			case 'chart.doughnut' 	: finput += 'chart.js.doughnut.js' 			; break ;
+			case 'chart.line' 		: finput += 'chart.js.line.js' 				; break ;
+			case 'chart.lineleg' 	: finput += 'chart.js.line.legend.js' 		; break ;
+			case 'chart.lines' 	    : finput += 'chart.js.line.stacked.js' 		; break ;
+			case 'chart.pie' 	    : finput += 'chart.js.pie.js' 				; break ;
+			case 'chart.piep' 	    : finput += 'chart.js.pie.polar.js' 		; break ;
+			case 'chart.radar' 	    : finput += 'chart.js.radar.js' 		    ; break ;
+			case 'chart.scatter' 	: finput += 'chart.js.scatter.js' 		    ; break ;
+			case 'chart.log' 		: finput += 'chart.js.logarithmic.js' 	    ; break ;
+			// Async Loop
+			case 'aw1' 	    		: finput += 'a.loop.while.1.js' 			; break ;
+			case 'aw2' 	    		: finput += 'a.loop.while.2.js' 			; break ;
+			case 'aw3' 	    		: finput += 'a.loop.while.3.js' 			; break ;
+			case 'aw4' 	    		: finput += 'a.loop.while.4.js' 			; break ;
+			case 'aru1' 	    	: finput += 'a.loop.repeat.until.1.js' 		; break ;
+			case 'aru2' 	    	: finput += 'a.loop.repeat.until.2.js' 		; break ;
+			case 'aru3' 	    	: finput += 'a.loop.repeat.until.3.js' 		; break ;
+			case 'aru4' 	    	: finput += 'a.loop.repeat.until.4.js' 		; break ;
+			// Parallel
+			case 'apphp' 	    	: finput += 'a.parallel.php.js' 		    ; break ;
+			case 'aworker' 	    	: finput += 'a.worker.js' 		    	    ; break ;
+			case 'mt' 	    		: finput += 'a.threadpool.js' 		   	    ; break ;
+			// async.js Loop
+			case 'asw1' 	    	: finput += 'async.js.while1.js' 			; break ;
+			case 'asw2' 	    	: finput += 'async.js.while2.js' 			; break ;
+			case 'asw3' 	    	: finput += 'async.js.while3.js' 			; break ;
+			case 'asru1' 	    	: finput += 'async.js.dowhile1.js' 			; break ;
+			case 'asru2' 	    	: finput += 'async.js.dowhile2.js' 			; break ;
+			case 'asru3' 	    	: finput += 'async.js.dowhile3.js' 			; break ;
+			// WIDGET 
+			case 'jqimgslider' 	   	: finput += 'wjqimgslider.js' 				; break ;
+			case 'jqcookiebar' 	   	: finput += 'wjqcookiebar.js' 				; break ;
+			case 'jqdd' 	   		: finput += 'dd.js' 						; break ;			
+			// Canvas
+			case 'canvasex1' 	   	: finput += 'canvasex1.js' 					; break ;	// canvas
+			case 'twoex1' 	   		: finput += 'twoex1.js' 					; break ;	// two
+			case 'threeex1' 	   	: finput += 'threeex1.js' 					; break ;	// three
+			case 'wbcanvas' 	   	: finput += 'wbcanvas.js' 					; break ;	// wbCanvas
+			// rem
+			case 'jsrem' 			: finput += 'jsrem.js'  					; break ;			
+		}
+
+		console.debug ( 'file input : ' , finput  );
+		
+		$.get(finput,{ "_": $.now() }, function(data) 
+		{
+			wbEditInsertTextAtCursor (  window.wbWorkAreaEditorHtml , data ) ;
+
+		}, "text"); // carica il file come un .txt ( forzatura ) per impedire che venga eseguito in runtime.
+
+}
+
+
+
+</script>								
+								

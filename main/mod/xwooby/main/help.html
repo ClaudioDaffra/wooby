@@ -1,0 +1,61 @@
+<!-- #### -->
+<!-- HELP -->
+<!-- #### -->
+	
+		<select class="dd" id="html_select_help" style="max-height:24px;width:150px" >
+			<option data-image="img/tabs/help.png" value="" disabled selected style="display:none;"><small>Help</small></option>	
+			<optgroup label="Wooby">
+				<option data-image="img/tabs/wooby.png" 		value='manual'		><small>Manual</small></option>
+				<option data-image="img/tabs/wooby.png" 		value='wooby.js'	><small>Library</small></option>
+			</optgroup> 
+			<optgroup label="Three.js">
+				<option data-image="img/tabs/xyz.png" 			value='three.js'	><small>docs</small></option>
+				<option data-image="img/tabs/xyz.png" 			value='threeex.js'	><small>Example</small></option>
+			</optgroup>	
+			<optgroup label="Two.js">
+				<option data-image="img/tabs/two.png" 			value='two.js'		><small>docs</small></option>
+				<option data-image="img/tabs/two.png" 			value='twoex.js'	><small>Example</small></option>
+			</optgroup>
+			<optgroup label="Chart.js">
+				<option data-image="img/tabs/chart.png" 		value='chart.js'	><small>Chart.js</small></option> 
+			</optgroup>
+			<optgroup label="JQuery.js">
+				<option data-image="img/tabs/jquery.png" 		value='jquery.js'	><small>jQuery.js</small></option>
+				<option data-image="img/tabs/jqueryui.png" 		value='jqueryui.js'	><small>jQuery UI.js</small></option>
+				<option data-image="img/tabs/jqueryui.png" 		value='jquiicon.js'	><small>Icon</small></option>				
+			</optgroup>
+		</select>
+
+<script>
+
+		
+// ************************************ html select help
+$('#html_select_help').change ( function(e) 
+{
+    var text = $("#html_select_help").val()
+	var W=1024;
+	var H=768;
+
+	if  ( text=="manual" 		)	wbPopUpWindow( 'doc/wbManual.xhtml' 								,text, W,H ); 
+	if  ( text=="wooby.js" 		)	wbPopUpWindow( 'doc/wbFunction.xhtml' 								,text, W,H ); 
+	
+	if  ( text=="three.js" 		)	wbPopUpWindow( 'https://threejs.org/docs/' 							,text, W,H ); 
+	if  ( text=="threeex.js" 	)	wbPopUpWindow( 'http://threejs.org/examples/' 						,text, W,H ); 	
+	
+	if  ( text=="two.js" 		)	wbPopUpWindow( 'https://jonobr1.github.io/two.js/#documentation'  	,text, W,H );	
+	if  ( text=="twoex.js" 		)	wbPopUpWindow( 'http://jonobr1.github.io/two.js/examples/'  		,text, W,H );	
+	
+	if  ( text=="chart.js" 		)	wbPopUpWindow( 'http://www.chartjs.org/docs/' 						,text, W,H ); 
+	
+	if  ( text=="jquery.js" 	)	wbPopUpWindow( 'https://api.jquery.com/' 							,text, W,H ); 
+	if  ( text=="jqueryui.js" 	)	wbPopUpWindow( 'http://api.jqueryui.com/' 							,text, W,H ); 
+	if  ( text=="jquiicon.js" 	)	wbPopUpWindow( 'https://api.jqueryui.com/theming/icons/' 			,text, W,H ); 	
+		
+	$("#html_select_help").val("") 
+});
+		
+</script>
+		
+		
+		
+		

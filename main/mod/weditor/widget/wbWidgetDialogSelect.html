@@ -1,0 +1,149 @@
+
+<style>
+ 
+.no-close .ui-dialog-titlebar-close {display: none }
+
+</style>
+
+<div id="wbDialogGetButtonIcon" title="Select Value" style="width:50px;overflow:hidden;background:ivory" hidden>
+	<select id="wbDialogGetValueSelectIcon" style="max-width:90%;">
+		<option value="&#8226;">&#8226; Bullet</option>
+		<option value="&#8718;">&#8718; Square</option>
+		<option value="&#8734;">&#8734; Infinity</option>
+		<option value="&#10067;">&#10067; Black Quest.</option>
+		<option value="&#10068;">&#10068; White Quest.</option>
+		<option value="&#10071;">&#10071; Black Escl.</option>
+		<option value="&#10069;">&#10069; White Escl.</option>
+		<option value="&#8263;">&#8263; Double Question Mark</option>
+		<option value="&#8263;">&#8264; Quest. Escl. Mark</option>
+		<option value="&#8265;">&#8265; Escl. Ques. Mark</option>
+		<option value="&#8461;">&#8461; CAPITAL H</option>
+		<option value="&#8213;">&#8213; Horizontal Bar</option>
+		<option value="&#8224;">&#8224; Croce Chiesa</option>
+		<option value="&#8258;">&#8258; Neve</option>
+		<option value="&#8451;">&#8451; Degree Celsius</option>
+		<option value="&#8481;">&#8481; TEL</option> 
+		<option value="&#8507;">&#8507; FAX </option>  
+		<option value="&#8635;">&#8635; Anti clock Wise</option> 
+		<option value="&#8679;">&#8679; NORTH </option>  
+		<option value="&#8681;">&#8681; SOUTH </option> 
+		<option value="&#8678;">&#8678; WEST </option>  
+		<option value="&#8680;">&#8680; EAST </option> 
+		<option value="&#8801;">&#8801; 3 Lines</option>  
+		<option value="&#8803;">&#8803; 4 Lines</option> 
+		<option value="&#8810;">&#8810; Back</option>  
+		<option value="&#8811;">&#8811; Forward</option>  
+		<option value="&#8864;">&#8864; Cross Square</option> 
+		<option value="&#9743;">&#9743; White Phone </option> 
+		<option value="&#9745;"> &#9745; Check  Box </option>  
+		<option value="&#9875;">&#9875; Anchor </option> 
+		<option value="&#9889;">&#9889; High voltage </option>  
+		<option value="&#9940;">&#9940; Deny </option> 
+		<option value="&#9989;">&#9989; Allow </option> 
+		<option value="&#9990;">&#9990; Telephone</option> 
+		<option value="&#9993;"> &#9993; Mail</option>  
+		<option value="&#10004;">&#10004; OK </option> 
+		<option value="&#10006;">&#10006; KO</option>  
+		<option value="&#10024;">&#10024; Sparkles </option> 
+		<option value="&#10060;">&#10060; Cross Mark </option>  
+		<option value="&#9634;">&#9634; Rounded Square</option>  
+		<option value="&#9671;">&#9671; Diamond</option> 
+		<option value="&#9733;">&#9733; White Star</option>  
+		<option value="&#9734;">&#9734; Black Star</option> 
+		<option value="&#9760;">&#9760; Skull</option>  
+		<option value="&#9762;">&#9762; Radioactive</option> 
+		<option value="&#9951;">&#9951; Black truck</option> 
+	</select>
+</div>
+
+<div id="wbDialogGetInputType" title="Select Value" style="width:50px;overflow:hidden;background:ivory" hidden>
+	<select id="wbDialogGetValueSelectInputType" style="max-width:90%;">
+		<option value="text">text</option>	
+		<option value="button">button</option>
+		<option value="checkbox">checkbox</option>
+		<option value="color">color</option>
+		<option value="date">date</option>
+		<option value="datetime-local">datetime-local</option>
+		<option value="email">email</option>
+		<option value="file">file</option>
+		<option value="hidden">hidden</option>
+		<option value="image">image</option>
+		<option value="month">month</option>
+		<option value="number">number</option>
+		<option value="password">password</option>
+		<option value="radio">radio</option>
+		<option value="range">range</option>
+		<option value="reset">reset</option>
+		<option value="search">search</option>
+		<option value="submit">submit</option>
+		<option value="tel">tel</option>
+		<option value="time">time</option>
+		<option value="url">url</option>
+		<option value="week">week</option>
+	</select>
+</div>
+		
+
+
+
+<script>
+
+
+function wbDialogGetValue ( id,sel,callback ) 
+{
+	$('#wbDivFullScreenTranparent').show();
+	
+	var scelta ="" ;
+
+	$(id).show() ;
+	var dialog = $( id ).dialog(
+	{
+		dialogClass: 'no-close',
+		autoOpen: false,
+		height: 150,
+		width: 200,
+		modal: true,
+		buttons: 
+		{
+			Ok: 	function ()
+			{
+				var selectedItem = $( sel+" option:selected" ).text();
+				var scelta = ""
+				scelta = selectedItem;
+				dialog.dialog( "close" );
+				console.debug ( scelta ) ;
+				
+				
+				$('#wbDivFullScreenTranparent').hide();
+				if ( callback!=undefined ) callback(scelta) ;
+			}
+			,
+			Cancel: function() 
+			{
+				dialog.dialog( "close" );
+				var scelta = "?"
+				console.debug ( scelta ) ;	
+				$('#wbDivFullScreenTranparent').hide();
+			}
+		},
+		close: function() 
+		{
+			//Do Something
+		}
+	});
+	
+	dialog.dialog( "open" );	
+
+}
+
+//wbDialogGetValue("#wbDialogGetButtonIcon","#wbDialogGetValueSelectIcon" ) ;
+//wbDialogGetValue("#wbDialogGetInputType","#wbDialogGetValueSelectInputType" ) ;
+	
+/**/
+	
+
+
+</script>
+
+
+

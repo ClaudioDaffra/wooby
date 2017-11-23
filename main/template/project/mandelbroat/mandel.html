@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en" >
+
+<head>
+<title> wooby </title>
+<link rel="shortcut icon" type="image/x-icon" href="img/logo.png" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+<script type="text/javascript" src ="lib/jQuery/jquery-3.2.1.min.js"></script>
+<link type="text/css"	href="lib/jQuery/jquery-ui-1.12.1/jquery-ui.min.css" rel="stylesheet" >
+<script type="text/javascript" src ="lib/jQuery/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+<script type="text/javascript" src ="lib/jQuery/jquery.touch/jquery.ui.touch-punch.min.js"></script>
+
+<link type="text/css"	href="lib/jQueryImgAreaSelect/css/imgareaselect-animated.css" rel="stylesheet" >
+<script type="text/javascript" src ="lib/jQueryImgAreaSelect/scripts/jquery.imgareaselect.min.js"></script>
+
+<link href="css/wbSkinOneR.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript" src="lib/wooby.js"></script>
+
+<script type="text/javascript" src="lib/async.js"></script>
+<script type="text/javascript" src="lib/wb.parallel.js.min.js"></script>
+<script type="text/javascript" src ="lib/fileSaver.min.js"></script>
+
+<script type="text/javascript" src ="js/mandelbroat_calc.js"></script>
+<script type="text/javascript" src ="js/mandelbroat_PoolThread.js"></script>
+<script type="text/javascript" src ="js/mandelbroat_Async.js"></script>
+
+
+
+</head>
+
+<body>
+<div class="widget wbmPage" style="border: none; left: 0%; top: 0%; position: absolute;">
+	<div class="wbGradH wbmPageHeader">
+		<div class="widget wbfimageDIV" style="position: absolute; left: 0%; top: 0%; width: 20%; height: 100%; border: none;">
+			<img class="wbfimage" src="img/picture/w1.png" alt="HTML 5" style="position: absolute; top: 0%; left: 0%; width: 100%; height: 100%; ">
+		</div> 
+		<div class="widget wbDIV" style="position: absolute; left: 0%; top: 0%; width: 80%; height: 100%; border: none; ">
+			<div class="widget wbDIV" style="position: absolute; left: 25%; top: 0%; width: 99%; height: 100%; border: none;">
+				<div id="_id_divVert2-j6w30cco">
+					<div class="wbDIV wbDIVo2Top">
+						<div id="_id_divHoriz2-j6w31709"> 
+							<div class="wbDIV wbDIV2Left">
+								<div id="_id_divHoriz2-j6w31e8i">
+									<div class="wbDIV wbDIV2Left">
+										<button id="calc" style="width:100%;height:100%;">calc</button>
+									</div>
+									<div class="wbDIV wbDIV2Right" style="text-align: center; ">
+										Res.
+									</div>
+								</div>
+							</div>
+							<div class="wbDIV wbDIV2Right" style="text-align: center;">
+								<div id="_id_divHoriz2-j6w31guy">
+									<div class="wbDIV wbDIV2Left" style="text-align: center; ">
+										iT Max
+									</div>
+									<div class="wbDIV wbDIV2Right" style="text-align: center;">
+										Alg.
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="wbDIV wbDIVo2Bottom">
+						<div id="_id_divHoriz2-j6w31a16">
+							<div class="wbDIV wbDIV2Left">
+								<div id="_id_divHoriz2-j6w31mps">
+									<div class="wbDIV wbDIV2Left">
+										<button id="viewPGN"  style="width:100%;height:100%;">PNG</button>
+									</div>
+									<div class="wbDIV wbDIV2Right">
+										<select id="resolution" style="width: 100%; ">
+											<option value="300x300">300x300</option>
+											<option value="640x480">640x480</option>
+											<option value="1024x768">1024x768</option>
+											<option value="1920x1080">1920x1080</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							<div class="wbDIV wbDIV2Right">
+								<div id="_id_divHoriz2-j6w31t5a">
+									<div class="wbDIV wbDIV2Left">
+										<input id="itMax" value="1000" style="width: 100%; ">
+									</div>
+									<div class="wbDIV wbDIV2Right">
+										<select id="algorithm" style="width:100%;height:100%;">
+											<option value="seq">SEQ.</option>
+											<option value="at">a.Thread</option>
+											<option value="aa">Async.js</option>
+										</select>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div> 
+	<div class="wbGradH wbmPageBody" style="overflow: auto;">
+		<div class="widget wbAreaSelectDiv" style="position: absolute; border: none;">
+			<img id="wbAreaSelectContainer">
+			
+		</div>	
+		<div class="widget wbCanvasTransparent" style="width: 300px; height: 300px; position: absolute; left: 0%; top: 0%; border: none;">
+			<div id="_canvasp" style="position:absolute;top:0%;height:0%;width:100%;height:100%;">
+				<canvas id="_canvas" class="wbCanvas" style="position: absolute; top: 0%; left: 0%; width: 100%; height: 100%; ">
+				</canvas> 
+			</div> 
+		</div>
+	</div> 
+	<div class="wbGradH wbmPageFooter" style="text-align:center">
+		<div id="_id_divHoriz2-j6wjcef5">
+			<div class="wbDIV wbDIV2Left">
+				<div id="_id_divVert2-j6wje839">
+					<div class="wbDIV wbDIVo2Top">
+						<div id="_id_divHoriz3466-j6wjfge7">
+							<div class="wbDIV wbDIV2Left34">
+								x1
+							</div>
+							<div class="wbDIV wbDIV2Right66">
+								<input id="CxMin" value="-2.5" style="width: 95%">
+							</div>
+						</div>
+					</div>
+					<div class="wbDIV wbDIVo2Bottom">
+						<div id="_id_divHoriz3466-j6wjg3wi">
+							<div class="wbDIV wbDIV2Left34">
+								y1
+							</div>
+							<div class="wbDIV wbDIV2Right66">
+								<input id="CyMin" value="-2.0" style="width: 95%">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="wbDIV wbDIV2Right">
+				<div id="_id_divVert2-j6wjejq7">
+					<div class="wbDIV wbDIVo2Top">
+						<div id="_id_divHoriz3466-j6wjfxu5">
+							<div class="wbDIV wbDIV2Left34">
+								x2
+							</div>
+							<div class="wbDIV wbDIV2Right66">
+								<input id="CxMax" value="1.5" style="width: 95%">
+							</div>
+						</div>
+					</div>
+					<div class="wbDIV wbDIVo2Bottom">
+						<div id="_id_divHoriz3466-j6wjg8fo">
+							<div class="wbDIV wbDIV2Left34">
+								y2
+							</div>
+							<div class="wbDIV wbDIV2Right66">
+								<input id="CyMax" value="2.0" style="width: 95%">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+</body>
+
+<script>
+
+
+
+// *************************************************** Prepare PNG IMAGE
+
+$('#viewPGN').click(function (event)
+{
+	var canvas = document.getElementById("_canvas");
+	// draw to canvas...
+	canvas.toBlob(function(blob) 
+	{
+		saveAs(blob, "mandelbroat.png");
+	});
+
+});;
+
+// *************************************************** Change Canvas Resolution
+
+$('#resolution').change ( function(e) 
+{
+	var w,h ;
+	
+	
+	switch ( $('#resolution').val() )
+	{
+		case "300x300"		: w=300;h=300 ;break ;
+		case "640x480"		: w=640;h=480 ;break ;
+		case "1024x768"		: w=1024;h=768 ;break ;
+		case "1920x1080"	: w=1920;h=1080 ;break ;   
+	}
+
+	console.log ( w,h );
+	
+	$('#_canvas').css ( 'width'  , w );
+	$('#_canvas').css ( 'height' , h );
+	$('#_canvas').attr ( 'width'  , w );
+	$('#_canvas').attr ( 'height' , h );  
+
+	$('#wbAreaSelectDiv').css ( 'width'  , w );
+	$('#wbAreaSelectDiv').css ( 'height' , h );
+	
+	window.areaSelect.setOptions(
+	{ 
+		imageWidth  : w ,
+		imageHeight : h
+	});
+
+	$('#wbAreaSelectContainer').css ( 'width'  , w );
+	$('#wbAreaSelectContainer').css ( 'height' , h );
+	
+});
+ 
+//****** 
+//		wbAreaSelectEnd
+//******  
+
+window._x1 = -2.5
+window._x2 = +1.5
+window._y1 = -2.0
+window._y2 = +2.0
+
+function wbAreaSelectEnd(img,selection)
+{
+	// Ricalcola Le nuove coordinate dopo averle selezionate con Area Select
+	var obj = wbAreaSelectGetInfo ( selection ) 
+	
+	// Mandel Broat Ricalcolo Area
+
+	// Recupero Coordinate Area Mandelbroat
+	
+	var x1 = parseFloat ( $('#CxMin').val() )
+	var x2 = parseFloat ( $('#CxMax').val() )
+	var y1 = parseFloat ( $('#CyMin').val() )
+	var y2 = parseFloat ( $('#CyMax').val() )
+
+	console.log ( '#Valori iniziali' ) ;	
+	console.log ( x1,' / ',x2,' / ',y1,' / ',y2 ) ;
+	
+	// Calcolo Distanza Assi X,Y
+	
+	var dx = Math.sqrt ( Math.pow ( (x2 - x1) , 2 ) );
+	var dy = Math.sqrt ( Math.pow ( (y2 - y1) , 2 ) );
+	
+	console.log ( '#dist (x,y)' ) ;	
+	console.log ( dx,dy );
+
+	// -2 x1 , 1.5 y2 , dx = 4
+	// calcolo i valori della nuova area ( scostamento )
+
+	console.log ( '#obj.perc' ) ;		
+	console.log ( obj.perc );
+	
+	var sx1 = perc.x1 * dx / 100.0 ;
+	var sx2 = dx - ( perc.x2 * dx / 100.0 )	
+	var sy1 = perc.y1 * dx / 100.0 ;
+	var sy2 = dy - ( perc.y2 * dx / 100.0 )
+
+	console.log ( '#scostamento' ) ;	
+	console.log ( sx1 )
+	console.log ( sx2 )
+	console.log ( sy1 )
+	console.log ( sy2 )
+
+	// calcolo nuovi valori
+	
+	var tx1 = x1<0 ? sx1 : -sx1 ;
+	var tx2 = x2<0 ? sx2 : -sx2 ;	
+	var ty1 = y1<0 ? sy1 : -sy1 ;
+	var ty2 = y2<0 ? sy2 : -sy2 ;	
+
+	console.log ( '#Inc/Dec' ) ;	
+	console.log ( tx1 )
+	console.log ( tx2 )
+	console.log ( ty1 )
+	console.log ( ty2 )
+
+	x1 += tx1 ;
+	x2 += tx2 ;
+	y1 += ty1 ;
+	y2 += ty2 ;
+	
+	console.log ( '#Valori finali' ) ;	
+	console.log ( x1 )
+	console.log ( x2 )
+	console.log ( y1 )
+	console.log ( y2 )
+
+	// update Finale
+	
+	window._x1 = x1
+	window._x2 = x2
+	window._y1 = y1
+	window._y2 = y2
+
+}	
+
+ 
+//****** 
+//		READY
+//******  
+
+$( document ).ready(function() 
+{
+
+	// ************  
+	//				init
+	// ************ 
+
+		$('#_canvas').css ( 'width'  , 300 );
+		$('#_canvas').css ( 'height' , 300 );
+		$('#_canvas').attr ( 'width'  , 300 );
+		$('#_canvas').attr ( 'height' , 300 );  
+
+		$("img#wbAreaSelectContainer").css ( 'width'  , 300 );
+		$("img#wbAreaSelectContainer").css ( 'height' , 300 );		
+
+
+		window.areaSelect = $("img#wbAreaSelectContainer").imgAreaSelect(
+			{
+				instance	: true ,
+				handles		: true,
+				onSelectEnd	: wbAreaSelectEnd,
+				imageWidth	: parseInt ( $('#_canvas').css ( 'width' ) ) ,
+				imageHeight	: parseInt ( $('#_canvas').css ( 'height' ) )
+			}
+		);
+		
+	// ************  
+	//				Main Event Calc
+	// ************
+
+	$('#calc').click( function()
+	{
+	
+		$('#CxMin').val(window._x1) 
+		$('#CxMax').val(window._x2) 
+		$('#CyMin').val(window._y1) 
+		$('#CyMax').val(window._y2) 
+
+		window.areaSelect.setOptions(
+		{ 
+			hide  : true 
+
+		});	
+	
+		// **************************************************** Clear Canvas
+		var canvas = document.getElementById("_canvas");
+		var context = canvas.getContext("2d");
+		context.clearRect(0, 0, canvas.width, canvas.height);
+			
+		var a = $('#algorithm').val()
+
+		// **************************************************** Algorithm Sequential
+		
+		if (a=='seq') 
+		{
+		    console.log ('sequenziale');			
+			mandelbroat_calc() ;
+		}
+		
+		// **************************************************** Algorithm Pool Thread	
+		
+		if (a=='at' ) 
+		{
+		    console.log ('pool Thread');	
+			
+			//****************
+			//                 THREAD INIT
+			//****************	
+
+			var iXmax = 	parseInt ( $('#_canvas').css ( 'width'  ) )
+			var iYmax = 	parseInt ( $('#_canvas').css ( 'height'  ) )
+			
+			var CORE = parseInt(iYmax/2) ;
+
+			var MT = new ThreadPool();
+
+			var workerFunction = function (param, done) 
+			{
+				done();
+			};
+
+			for(var no = 1; no < CORE ; no++) 
+			{
+				MT.run(workerFunction, no, thread(no) )
+			}
+
+			//****************
+			//                 THREAD RUN
+			//****************
+			
+			function thread ( n )
+			{
+				var w = 	parseInt ( $('#_canvas').css ( 'width'  ) )
+				var h = 	parseInt ( $('#_canvas').css ( 'height'  ) )				
+				
+				var step =  parseInt ( h / (CORE-1) )
+				
+				var starth = parseInt( (n-1)*step	);	
+				var stoph  = parseInt( ((n  )*step)-1	);	
+				 
+				if ( n==CORE-1 ) stoph = h ; // correzioncina
+				
+				  console.log ( " # " + n + ' . ' + starth +' '+ stoph ) ;
+				  
+				  mandelbroat_calc_poolthread(starth,stoph) ;
+			  
+			}
+		  
+		}
+
+		// **************************************************** Algorithm Async.js	
+		
+		if (a=='aa' ) 
+		{
+		   console.log ('Async.js');
+			var c = "" ; 
+
+			var iXmax = 	parseInt ( $('#_canvas').css ( 'width'  ) )
+			var iYmax = 	parseInt ( $('#_canvas').css ( 'height'  ) )			
+			
+			c+='		async.parallel(['
+			c+=''	
+
+			for (i=0;i<iYmax;i+=1)
+			{	
+				c+='			function(callback){ mandelbroat_calc_asyncjs('+i+','+(i+1)+') ; },'
+			}
+		
+			c+=''
+			c+='		], function(err, results) 	{	});'
+
+			eval ( c ) ;			
+		}
+	});
+
+});
+
+
+
+</script>
+
+</html>

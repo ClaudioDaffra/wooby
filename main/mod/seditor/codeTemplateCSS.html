@@ -1,0 +1,80 @@
+
+							<select  id="wbCodeTemplateSelectCSS" class="dd" style="width:200px;">
+									<option value="" disabled="disabled" selected="selected" style="display:none;" data-image="img/tabs/css.png">CSS</option>
+									<optgroup label="Media Screen">
+										<option value="ms_all"  			data-image="img/tabs/ico-default.png"  >All</option>
+										<option value="ms_smartphones" 		data-image="img/tabs/ico-default.png"  >SmartPhones</option>
+										<option value="ms_desktop"  		data-image="img/tabs/ico-default.png"  >Desktop</option>	
+										<option value="ms_desktop"  		data-image="img/tabs/ico-default.png"  >Laptop</option>
+										<option value="ms_largescreen"  	data-image="img/tabs/ico-default.png"  >Large Screen</option>
+										<optgroup label="Apple">
+											<option value="ms_iphone4"  		data-image="img/tabs/ico-default.png"  >Iphone 4</option>
+											<option value="ms_iphone5"  		data-image="img/tabs/ico-default.png"  >Iphone 5</option>
+											<option value="ms_iphone6"  		data-image="img/tabs/ico-default.png"  >Iphone 6</option>
+											<option value="ms_iphone6plus"  	data-image="img/tabs/ico-default.png"  >Iphone 6+</option>	
+											<option value="ms_ipads"  			data-image="img/tabs/ico-default.png"  >Ipads</option>	
+											<option value="ms_ipad3"  			data-image="img/tabs/ico-default.png"  >Ipad3</option>												
+										</optgroup>												
+										<optgroup label="Samsumg">
+											<option value="ms_sgs3"  		data-image="img/tabs/ico-default.png"  >Galaxy S3</option>
+											<option value="ms_sgs4"  		data-image="img/tabs/ico-default.png"  >Galaxy S4</option>
+											<option value="ms_sgs5"  		data-image="img/tabs/ico-default.png"  >Galaxy S5</option>										
+										</optgroup>									
+									</optgroup>
+							<select>
+
+<script>
+
+// ........................................................... wb_css_code_template ( scelta ) ;
+
+$('#wbCodeTemplateSelectCSS').change( function()
+{
+    var scelta =  $(this).val() ;
+	console.debug ( 'wb_css_select' , scelta ) ;
+	wb_css_code_template ( scelta ) 
+});
+
+//*********************
+//                      Code Template javascript
+//*********************
+
+function wb_css_code_template( scelta )
+{
+		console.debug  ( 'wb_css_code_template : ' , scelta) 
+		var	finput = "template/code/css/"
+
+		$('#wbCodeTemplateSelectCSS').val("");
+
+		switch ( scelta )
+		{
+			case 'ms_all' 			: finput += 'ms_all.css'  				; break ;	
+			case 'ms_smartphones' 	: finput += 'ms_smartphones.css'  		; break ;	
+			case 'ms_ipads' 		: finput += 'ms_ipads.css'  			; break ;
+			case 'ms_ipad3' 		: finput += 'ms_ipad3.css'  			; break ;
+			case 'ms_desktop' 		: finput += 'ms_desktop.css'  			; break ;		
+			case 'ms_largescreen' 	: finput += 'ms_largescreen.css'  		; break ;
+			case 'ms_iphone4' 		: finput += 'ms_iphone4.css'  			; break ;
+			case 'ms_iphone5' 		: finput += 'ms_iphone5.css'  			; break ;
+			case 'ms_iphone6' 		: finput += 'ms_iphone6.css'  			; break ;
+			case 'ms_iphone6plus' 	: finput += 'ms_iphone6plus.css'  		; break ;
+			case 'ms_sgs3' 			: finput += 'ms_sgs3.css'  				; break ;
+			case 'ms_sgs4' 			: finput += 'ms_sgs4.css'  				; break ;
+			case 'ms_sgs5' 			: finput += 'ms_sgs5.css'  				; break ;
+			
+		}
+
+		console.debug ( 'file input : ' , finput  );
+		
+		$.get(finput,{ "_": $.now() }, function(data) 
+		{
+			wbEditInsertTextAtCursor (  window.wbWorkAreaEditorHtml , data ) ;
+
+		}, "text"); // carica il file come un .txt ( forzatura ) per impedire che venga eseguito in runtime.
+
+}
+
+
+
+
+
+</script>

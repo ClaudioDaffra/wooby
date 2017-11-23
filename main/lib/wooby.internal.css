@@ -1,0 +1,20 @@
+
+.ui-dialog-titlebar-close
+{
+    display: none;
+}
+.ui-state-error
+{
+	border:1px solid red;
+}
+
+.wbDialogGradientStripped
+{
+	background: repeating-linear-gradient(
+	  135deg,
+	  rgba(255,255,255,0.5),
+	  rgba(255,255,255,0.5) 10px,
+	  rgba(245,245,220,0.5) 10px,
+	  rgba(255,245,220,0.5) 20px
+	);
+}

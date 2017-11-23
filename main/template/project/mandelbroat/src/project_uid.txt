@@ -1,0 +1,1 @@
+{"x":320,"y":400		,"screen0":"woobyV","screen1":"woobyO","top":91,"right":13,"bottom":99,"left":13 }

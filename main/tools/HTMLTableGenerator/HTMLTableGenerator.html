@@ -1,0 +1,656 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Table Generator</title>
+
+<link rel="icon" href="./table.png" type="image/x-icon" />
+
+<script type="text/javascript">
+ 
+/////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////
+/////  Javascript-based HTML Table Code Generator Version 2.0                        
+/////  Copyright (c) 2009 by Louis Lazaris.                                         
+/////
+/////  Modified :
+/////  Claudio Daffra : daffra.claudio@gmail.com
+/////
+/////  You may copy this code and use it wherever you like,                          
+/////  as long as you give me credit, provide a link back to my site,              
+/////  and let me know if you make any modifications/improvements                    
+/////  Report bugs in the comments at the link below.                                
+/////  http://www.impressivewebs.com/javascript-powesilver-html-table-code-generator    
+/////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////
+
+function addLoadListener(fn)
+{
+	if (typeof window.addEventListener != 'undefined')
+	{
+	window.addEventListener('load', fn, false);
+}
+else if (typeof document.addEventListener != 'undefined')
+{
+	document.addEventListener('load', fn, false);
+}
+else if (typeof window.attachEvent != 'undefined')
+{
+	window.attachEvent('onload', fn);
+}
+else
+{
+	var oldfn = window.onload;
+	if (typeof window.onload != 'function')
+	{
+	window.onload = fn;
+	}
+	else
+	{
+	window.onload = function()
+	{
+	oldfn();
+	fn();
+	};
+	}
+	}
+}
+
+addLoadListener(createCells);
+
+function createCells() {
+
+var myRows = document.getElementById("rows");
+var myColumns = document.getElementById("columns");
+var tableSummary = document.getElementById("table_summary");
+var tableCaption = document.getElementById("table_caption");
+var tableClass = document.getElementById("table_class");
+var tableID = document.getElementById("table_id");
+var cellsSubmit = document.getElementById("button_cells");
+var numberPattern = /^(\(\d+\) ?)?(\d+[\- ])*\d+$/;
+var cellsHolder = document.getElementById("cells_holder");
+var buttonGenerateHolder = document.getElementById("button_generate_holder");
+var myColumnsHTML = "";
+var myRowsHTML = "";
+var myTHCheckbox = document.forms["table_generator_form"]["TH"];
+var codeResultHolder = document.getElementById("code_result");
+var codeResult = document.getElementById("code_result_text");
+var myFinalHTML = "";
+var myTextAreaID = 1;
+var THDone = 0;
+var THFinal = "";
+var tableClassValue = "";
+var tableIDValue = "";
+var myRadioValue = "";
+var myRadioNone = document.getElementById("th_none");
+var myRadioRow = document.getElementById("th_row");
+var myRadioColumn = document.getElementById("th_column");
+var myTableExtrasHolder = document.getElementById("table_extras_holder");
+var myTableExtrasCheckbox = document.forms["table_generator_form"]["table_extras"];
+var numericPattern = /\d/;
+var myTab = "";
+
+	cellsSubmit.onclick = function()
+	{
+
+		myColumnsHTML = "";
+		myTextAreaID = 1;
+		
+		if (myRows.value == "" || /^\s+$/.test(myRows.value))
+			{
+			alert("Please enter number of Rows");
+			return false;
+			}
+
+		if (numberPattern.test(myRows.value) == false || myRows.value > 50)
+			{
+			alert('Only numeric data below 50 allowed for Rows');
+			return false;
+			}
+
+		if (myColumns.value == "" || /^\s+$/.test(myColumns.value))
+			{
+			alert("Please enter number of Columns");
+			return false;
+			}
+
+		if (numberPattern.test(myColumns.value) == false || myColumns.value > 11)
+			{
+			alert('Only numeric data below 12 allowed for Columns');
+			return false;
+			}
+
+		if (tableSummary.value == "" || /^\s+$/.test(tableSummary.value))
+			{
+			alert("Please enter a Summary for your table");
+			return false;
+			}
+
+			var HHH = parseInt ( 100/myRows.value) -1;
+			var WWW = parseInt ( 100/myColumns.value ) -1;
+			
+			for (r=0;r<myRows.value;r++)
+			{
+				for (c=0;c<myColumns.value;c++) 
+				{
+					//myColumnsHTML += "<textarea rows='5' cols='15' id='text_box"+myTextAreaID+"' style='width:"+WWW+"%;height:"+HHH+"%;'></textarea>";
+					myColumnsHTML += "<textarea id='text_box"+myTextAreaID+"' style='width:"+WWW+"%;height:"+HHH+"%;'></textarea>";					
+					if(c+1 == myColumns.value) {
+						myColumnsHTML = myColumnsHTML + "<br />";
+					}
+					myTextAreaID = myTextAreaID + 1;
+				}
+			}
+
+		cellsHolder.innerHTML = myColumnsHTML;
+
+		makeOpacityZero(cellsHolder.id);
+		cellsHolder.style.display = "block";
+		opacity(cellsHolder.id, 0, 100, 800);
+
+		makeOpacityZero(buttonGenerateHolder.id);
+		buttonGenerateHolder.style.display = "block";
+		opacity(buttonGenerateHolder.id, 0, 100, 800);
+
+		codeResultHolder.style.display = "block";
+		codeResult.value = "";
+		
+		// trigger events
+		
+		document.getElementById("button_generate").click(); 
+		
+		
+	}
+	
+	var buttonGenerate = document.getElementById("button_generate");
+	
+	buttonGenerate.onclick = function ()
+	{
+	
+	if (myTableExtrasCheckbox.checked) {
+		myTab = "	";
+	}
+	
+	if (tableSummary.value == "" || /^\s+$/.test(tableSummary.value))
+		{
+		alert("Table Summary is requisilver");
+		return false;
+		}
+
+	if (tableID.value.indexOf(" ") !== -1)
+		{
+		alert("You cannot use a space in the Table ID");
+		return false;
+		}
+
+	if (numericPattern.test(tableID.value.charAt("0")) == true)
+		{
+		alert("The Table ID cannot begin with a numeric character");
+		return false;
+		}
+
+	for (var z=0; z < myTHCheckbox.length; z++) {
+	if (myTHCheckbox[z].checked)
+		{
+			myRadioValue = myTHCheckbox[z].value;
+		}
+	}
+
+	codeResult.value = "";
+	THDone = 0;
+	THFinal = "";
+	tableClassValue = "";
+	tableIDValue = "";
+
+	if (tableClass.value !== "") {
+		tableClassValue = " class=\""+tableClass.value+"\"";
+	}
+
+	if (tableID.value !== "") {
+		tableIDValue = " id=\""+tableID.value+"\"";
+	}
+	
+	myFinalHTML = "<table style='width:100%;height:100%;' cellspacing=\"0\" summary=\""+tableSummary.value+"\""+tableClassValue+tableIDValue+">\n";
+	
+	if (tableCaption.value !== "") {
+	myFinalHTML += "	<caption>"+tableCaption.value+"</caption>\n";
+	}
+	var myIncrement = 1;
+		for (r2=0;r2<myRows.value;r2++)
+		{
+			if (r2==0 && myTableExtrasCheckbox.checked) {
+			myFinalHTML = myFinalHTML + "	<thead>\n		<tr>\n";
+			}
+			else
+			{
+			
+				if (r2==myRows.value - 1 && myTableExtrasCheckbox.checked) {
+				myFinalHTML = myFinalHTML + "	</tbody>\n	<tfoot>\n		<tr>\n";
+				}
+				else
+				{
+				myFinalHTML = myFinalHTML + "	" + myTab + "<tr>\n";
+				}
+
+			}
+			
+			for (c2=0;c2<myColumns.value;c2++) 
+			{
+				if (myRadioValue=="th_row_selected" && c2 < myColumns.value && THDone < myColumns.value + 1 && THFinal == "") {
+					myFinalHTML += "		" + myTab + "<th>"+document.getElementById("text_box"+myIncrement).value+"</th>\n";
+					THDone = THDone + 1;
+					myIncrement = myIncrement + 1;
+					if (THDone == myColumns.value) {
+						THFinal = "end";
+					}
+				}
+				else
+				{
+				if (c2==0 && myRadioValue=="th_column_selected") {
+					myFinalHTML += "		" + myTab + "<th>"+document.getElementById("text_box"+myIncrement).value+"</th>\n";
+					myIncrement = myIncrement + 1;
+					}
+					else
+					{
+				myFinalHTML += "		" + myTab + "<td>"+document.getElementById("text_box"+myIncrement).value+"</td>\n";
+				myIncrement = myIncrement + 1;
+				}
+				}
+		}
+
+			if (r2==0 && myTableExtrasCheckbox.checked) {
+			myFinalHTML = myFinalHTML + "		</tr>\n	</thead>\n	<tbody>\n";
+			}
+			else
+			{
+			if (r2==myRows.value - 1 && myTableExtrasCheckbox.checked) {
+			myFinalHTML = myFinalHTML + "		</tr>\n	</tfoot>\n";
+			}
+			else
+			{
+			myFinalHTML = myFinalHTML + "	" + myTab + "</tr>\n";
+			}
+			}
+			
+		}
+
+		myFinalHTML = myFinalHTML + "</table>";
+
+		makeOpacityZero(codeResult.id);
+		codeResult.value = myFinalHTML;
+		opacity(codeResult.id, 0, 100, 400);
+		myTab = "";
+/*		
+		codeResult.style.width = '100%' ;
+		codeResult.style.height = '100%' ;
+*/		
+	}
+	
+	codeResult.onclick = function() {
+		this.select();		
+	}
+	
+	myRadioRow.onclick = function() {
+		myTableExtrasHolder.style.display = "block";
+	}
+
+	myRadioNone.onclick = function() {
+		myTableExtrasCheckbox.checked = false;
+		myTableExtrasHolder.style.display = "none";
+	}
+
+	myRadioColumn.onclick = function() {
+		myTableExtrasCheckbox.checked = false;
+		myTableExtrasHolder.style.display = "none";
+	}
+	
+	myTableExtrasCheckbox.onclick = function () {
+		if (myTableExtrasCheckbox.checked && myRows.value < 3) {
+			alert('You must have more than 2 rows in order to have a TBODY');
+			return false;
+		}
+	}
+
+}
+
+function opacity(id, opacStart, opacEnd, millisec) { 
+    //speed for each frame 
+    var speed = Math.round(millisec / 100); 
+    var timer = 0; 
+
+	//determine the direction for the blending, if start and end are the same nothing happens 
+    if(opacStart > opacEnd) { 
+        for(var i = opacStart; i >= opacEnd; i--) { 
+            setTimeout("changeOpac(" + i + ",'" + id + "')",(timer * speed)); 
+            timer++; 
+        } 
+    } else if(opacStart < opacEnd) { 
+        for(i = opacStart; i <= opacEnd; i++) 
+            { 
+            setTimeout("changeOpac(" + i + ",'" + id + "')",(timer * speed)); 
+            timer++; 
+        } 
+    } 
+} 
+
+//change the opacity for different browsers 
+function changeOpac(opacity, id) { 
+    var object = document.getElementById(id).style; 
+    object.opacity = (opacity / 100); 
+    object.MozOpacity = (opacity / 100); 
+    object.KhtmlOpacity = (opacity / 100); 
+    object.filter = "alpha(opacity=" + opacity + ")"; 
+} 
+
+function shiftOpacity(id, millisec) { 
+    //if an element is invisible, make it visible, else make it ivisible 
+    if(document.getElementById(id).style.opacity == 0) { 
+        opacity(id, 0, 100, millisec); 
+    } else { 
+        opacity(id, 100, 0, millisec); 
+    } 
+}
+
+function makeOpacityZero(id) {
+	var thisZero = document.getElementById(id);
+	thisZero.style.opacity = (0 / 100); 
+	thisZero.style.MozOpacity = (0 / 100); 
+	thisZero.style.KhtmlOpacity = (0 / 100); 
+	thisZero.style.filter = "alpha(opacity=0)";
+}
+-->
+</script>
+
+<style type="text/css">
+
+textarea 
+{
+    resize: none;
+	width:100%;
+	height:100%;
+}
+
+html, body, div,
+h1, h2, p,
+a, fieldset, form, label,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-weight: inherit;
+	font-style: inherit;
+	font-size: 100%;
+	line-height: inherit;
+	font-family: inherit;
+	text-align: left;
+	vertical-align: baseline;
+}
+a img, :link img, :visited img {
+	border: 0;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+ul {
+	list-style: none;
+}
+q:before, q:after,
+blockquote:before, blockquote:after {
+	content: "";
+}
+
+html {
+	width: 100%;
+	text-align: center;
+	background: #fff;
+	font: normal 13px Arial, Helvetica, sans-serif;
+	color: #636363;
+	min-height: 100%;
+	margin: 0 0 1px 0;
+}
+
+body {
+	font: normal 13px Arial, Helvetica, sans-serif;
+	width: 100%;
+	margin: auto;
+	color: #636363;
+	overflow:hidden;
+}
+
+form {
+	padding: 20px;
+	position: relative;
+}
+
+form label {
+	float: left;
+	width: 250px;
+	text-align: right;
+	padding: 0 10px 0 0;
+	height: 25px;
+}
+
+form input.txt {
+	height: 15px;
+	font-size: 13px;
+	color: #636363;
+	border: solid 1px #bbb;
+	float: left;
+}
+
+textarea 
+{
+	border: solid 1px #ccc;
+	color: #777;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	width: 100%;
+	height: 100%;
+}
+
+form div {
+	clear: left;
+	float: left;
+}
+
+#cells_holder {
+	display: none;
+	background: #fff;
+}
+
+#button_cells {
+	height: auto;
+	width: 250px;
+	border: solid 1px #ccc;
+	background: #777;
+	color: #fff;
+	margin: 0 0 20px 100px;
+	font-size: 13px;
+	padding: 2px 4px 2px 4px;
+}
+
+#button_generate_holder {
+	display: none;
+	background: #fff;
+}
+	
+#button_generate {
+	height: auto;
+	border: solid 1px #ccc;
+	background: #777;
+	color: #fff;
+	margin: 15px 0 20px 100px;
+	font-size: 13px;
+	padding: 2px 4px 2px 4px;
+	width: 250px;
+}
+
+#code_result {
+	display: none;
+	overflow: hidden;
+}
+
+#code_result_text {
+	width: auto;
+	height: auto;
+}
+
+h1 {
+	font-family: "Times New Roman", Times, serif;
+	font-size: 24px;
+	color: #888;
+	padding: 0 0 15px 70px;
+	font-weight: normal;
+}
+
+h2 {
+	font-family: "Times New Roman", Times, serif;
+	font-size: 24px;
+	color: #888;
+	font-weight: normal;
+}
+
+#table_extras_holder {
+	display: none;
+	overflow: hideen;
+}
+
+#instructions 
+{
+/*
+	position: fixed;
+	top: 0;
+	left: 500px;
+	width: 450px;
+	border: solid 1px #c2c2c2;
+
+*/	
+	padding: 20px;
+	margin: 24px 0 0 0;
+
+}
+
+ol {
+	margin-bottom: 4px;
+}
+
+ol li {
+	padding: 3px 0 3px 0;
+
+}
+
+li {
+
+word-wrap: break-word;	
+}
+
+.bordo
+{
+	border:1px solid darkgray;
+}
+</style>
+
+</head>
+<body >
+
+<form id="table_generator_form" action="index.html" method="get" style="background:silver">
+
+		<div style="position:fixed;height:100%;width:50%;top:0%;left:0%;background:silver;">
+		
+			<div class="bordo" style="position:fixed;height:50%;width:50%;top:0%;left:0%;background:silver;">
+			
+				<h1 style="color:blue">HTML Table Code Generator 2.0</h1>
+				<br>
+				<div>
+				<label for="rows">Number of Rows:</label> <input type="text" id="rows" size="2" maxlength="2" class="txt" value="3" placeholder="3"/>
+				</div>
+				
+				<div>
+				<label for="columns">Number of Columns:</label> <input type="text" id="columns" size="2" maxlength="2" class="txt" value="3" placeholder="3"/>
+				</div>
+				
+				<div>
+				<label for="table_summary">Table Summary: (for screen readers)</label> <input type="text" id="table_summary" class="txt" value="wbTable" placeholder="wbTable"/>
+				</div>
+				
+				<div>
+				<label for="table_caption">Table Caption: (optional)</label> <input type="text" id="table_caption" class="txt" />
+				</div>
+				
+				<div>
+				<label for="table_class">CSS Class Name for Table: (optional)</label> <input type="text" id="table_class" class="txt" />
+				</div>
+				
+				<div>
+				<label for="table_id">CSS ID for Table: (optional)</label> <input type="text" id="table_id" class="txt" />
+				</div>
+
+				<div>
+				<label for="th_none">No &lt;th&gt;</label> <input type="radio" name="TH" id="th_none" value="th_none_selected" class="checkbox" checked="checked" />
+				</div>
+				
+				<div>
+				<label for="th_row">First row as &lt;th&gt;</label> <input type="radio" name="TH" id="th_row" value="th_row_selected" class="checkbox" /> 
+				</div>
+				
+				<div id="table_extras_holder">
+				<label for="table_extras">Include &lt;tbody&gt;, &lt;thead&gt;, &amp; &lt;tfoot&gt;	</label> <input type="checkbox" name="table_extras" id="table_extras" value="table_extras_selected" /> 
+				</div>
+
+				<div>
+				<label for="th_column">First column as &lt;th&gt;</label> <input type="radio" name="TH" id="th_column" value="th_column_selected" class="checkbox" />
+				</div>
+				
+				<div class="bordo" style="width:100%;" id="button_cells_holder">
+					<input type="button" id="button_cells" value="Prepare Cells for Data Insertion" />
+					<input type="button" id="button_generate" value="Generate Table Code"  />				
+				</div>
+
+			</div>
+
+		</div>
+		
+		
+		<div  class="bordo" id="cells_holder" style="position:fixed;height:50%;width:50%;top:50%;left:0%;background:silver;overflow:none" ></div>
+		<!-- cells holder ends -->
+				
+
+		<div  class="bordo"  style="position:fixed;height:50%;width:50%;top:00%;left:50%;background:silver;">
+			<h2 style="color:blue">Instructions:</h2>
+			<ol>
+				<li>Enter number of Rows (between 1 - 50) and columns (1 - 11)</li>
+				<li>Enter other parameters (Summary is required)</li>
+				<li>Click the "Prepare Cells for Data Insertion" button </li>
+				<li>Enter data into individual cells</li>
+				<li>Click the "Generate Table Code" button</li>
+				<li>Make modifications as necessary, then press "Generate..." button to include changes</li>
+				<li>NOTE: If rows or columns are changed, the "Prepare Cells" button needs to be clicked again</li>
+				<li>Offer suggestions for improvements on the <a href="http://www.impressivewebs.com/javascript-powesilver-html-table-code-generator/">original article</a></li>
+			</ol>
+		</div>
+		
+ 	
+		<div style="position:fixed;height:50%;width:50%;top:50%;left:50%;background:silver;"  class="bordo" >
+			<div id="button_generate_holder" hidden>
+			    <!--
+				<input type="button" id="button_generate" value="Generate Table Code"  />
+				-->
+			</div>	
+			<div id="code_result"  style="padding:1%;width:96%;height:96%;">
+				<textarea rows="25" cols="70" style="width:100%;height:100%;" id="code_result_text"></textarea>
+			</div>	
+		</div>
+	
+</form>
+
+
+</body>
+</html>
+
+
+

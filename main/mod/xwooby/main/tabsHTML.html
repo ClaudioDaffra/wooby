@@ -1,0 +1,929 @@
+
+<style >
+
+.wb_tab_html_textarea
+{
+	width:98%;
+	height:50px;
+	overflow-y: scroll;
+	resize: none;
+}
+.wb_tab_html_input
+{
+	width:99%;
+	height:25px;
+}
+wb_tab_html_select
+{
+	float:right;
+	width:200px;
+	max-width:200px;	
+	max-height:100px
+}
+.wb_tab_html_edit
+{
+	width:99%;
+}
+
+
+</style>
+
+<script>
+
+
+$('textarea,input').mouseenter(function()
+{
+	$(this).css('background','#e5fff3' ) ;
+	$(this).css('border','1px solid cyan' ) ;		
+});
+
+$('textarea,input').mouseleave(function()
+{
+	$(this).css('background','white' ) ;
+	$(this).css('border','' ) ;	
+	
+});
+
+
+</script>
+
+<table  width="100%" height="100%" style="color:blue;background:lightgray">
+<tbody>
+<tr>
+<!-- ########### -->
+<!-- 	XML		 -->
+<!-- ########### -->
+<td style="width: 70px;color:red" >&lt;?xml&gt;</td>
+<td style="width: 70px;">&nbsp;</td>
+<td style="width: 70px;">&nbsp;</td>
+<td style="width: 100%; height: 25px;">
+	<select id="wb_xml_select" class="dd wb_tab_html_select" style="float:right">
+		<option style="display: none;" disabled="disabled" selected="selected" value="" data-image="img/tabs/ico-default.png">select</option>
+		<optgroup label="version">
+			<option value="version=&quot;1.0&quot;" data-image="img/tabs/ico-default.png">version 1.0</option>
+		</optgroup>
+		<optgroup label="encoding">
+			<option value="encoding=&quot;UTF-8&quot;" 				data-image="img/tabs/ico-default.png">UTF-8</option>
+			<option value="encoding=&quot;UTF-16&quot;" 			data-image="img/tabs/ico-default.png">UTF-16</option>
+			<option value="encoding=&quot;ISO-10646-UCS-2&quot;" 	data-image="img/tabs/ico-default.png">ISO-10646-UCS-2</option>
+			<option value="encoding=&quot;ISO-10646-UCS-4&quot;" 	data-image="img/tabs/ico-default.png">ISO-10646-UCS-4</option>
+			<option value="encoding=&quot;ISO-8859-1&quot;" 		data-image="img/tabs/ico-default.png">ISO-8859-1</option>
+			<option value="encoding=&quot;ISO-8859-9&quot;" 		data-image="img/tabs/ico-default.png">ISO-8859-9</option>
+			<option value="encoding=&quot;ISO-2022-JP&quot;" 		data-image="img/tabs/ico-default.png">ISO-2022-JP</option>
+			<option value="encoding=&quot;Shift_JIS&quot;" 			data-image="img/tabs/ico-default.png">Shift_JIS</option>
+			<option value="encoding=&quot;EUC-JP&quot;" 			data-image="img/tabs/ico-default.png">EUC-JP</option>
+		</optgroup>
+		<optgroup label="standalone">
+			<option value="standalone=&quot;yes&quot;" 				data-image="img/tabs/ico-default.png">yes</option>
+			<option value="standalone=&quot;no&quot;" 				data-image="img/tabs/ico-default.png">no</option>
+		</optgroup>
+	</select>
+</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td style="width: 100%;">
+	<textarea id="wb_xml_edit" class="wb_tab_html_textarea" rows="5" cols="80" ></textarea>
+</td>
+</tr>
+<tr>
+<!-- ########### -->
+<!--  DOCTYPE	 -->
+<!-- ########### -->
+<td style="color:black">&lt;!doctype&gt;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td style="height: 25px;">
+	<select id="wb_doctype_select" class="dd wb_tab_html_select" style="float:right">
+		<option style="display: none;" disabled="disabled" selected="selected" value="" data-image="img/tabs/ico-default.png">select</option>
+		<optgroup label="HTML 5">
+			<option value="&lt;!DOCTYPE HTML&gt;" data-image="img/tabs/ico-default.png">HTML 5</option>
+		</optgroup>
+		<optgroup label="HTML 4.01">
+			<option value="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01//EN&quot; &quot;http://www.w3.org/TR/html4/strict.dtd&quot;&gt;" data-image="img/tabs/ico-default.png">Strict</option>
+			<option value="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot; &quot;http://www.w3.org/TR/html4/loose.dtd&quot;&gt;" data-image="img/tabs/ico-default.png">Transitional</option>
+			<option value="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Frameset//EN&quot; &quot;http://www.w3.org/TR/html4/frameset.dtd&quot;&gt;" data-image="img/tabs/ico-default.png">Frameset</option>
+		</optgroup>
+		<optgroup label="XHTML 1.0">
+			<option value="&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Strict//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&quot;&gt;" data-image="img/tabs/ico-default.png">Strict</option>
+			<option value="&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;" data-image="img/tabs/ico-default.png">Transitional</option>
+			<option value="&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Frameset//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd&quot;&gt;" data-image="img/tabs/ico-default.png">Frameset</option>
+		</optgroup>
+		<optgroup label="XHTML 1.1 - DTD">
+			<option value="&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.1//EN&quot; &quot;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&quot;&gt;" data-image="img/tabs/ico-default.png">XHTML 1.1</option>
+		</optgroup>
+		<optgroup label="XHTML Basic 1.1">
+			<option value="&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML Basic 1.1//EN&quot; &quot;http://www.w3.org/TR/xhtml-basic/xhtml-basic11.dtd&quot;&gt;" data-image="img/tabs/ico-default.png">XHTML Basic 1.1</option>
+		</optgroup>
+		<optgroup label="MathML Doctype">
+			<option value="&lt;!DOCTYPE math PUBLIC &quot;-//W3C//DTD MathML 2.0//EN&quot; &quot;http://www.w3.org/Math/DTD/mathml2/mathml2.dtd&quot;&gt;" data-image="img/tabs/ico-default.png">MathML 2.0 - DTD</option>
+			<option value="&lt;!DOCTYPE math SYSTEM &quot;http://www.w3.org/Math/DTD/mathml1/mathml.dtd&quot;&gt;" data-image="img/tabs/ico-default.png">MathML 1.01 - DTD</option>
+		</optgroup>
+		<optgroup label="Compound documents doctype ">
+			<option value="&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.1 plus MathML 2.0 plus SVG 1.1//EN&quot; &quot;http://www.w3.org/2002/04/xhtml-math-svg/xhtml-math-svg.dtd&quot;&gt;" data-image="img/tabs/ico-default.png">XHTML + MathML + SVG - DTD</option>
+			<option value="&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.1 plus MathML 2.0 plus SVG 1.1//EN&quot; &quot;http://www.w3.org/2002/04/xhtml-math-svg/xhtml-math-svg.dtd&quot;&gt;" data-image="img/tabs/ico-default.png">XHTML + MathML + SVG Profile (XHTML host)-DTD</option>
+			<option value="&lt;!DOCTYPE svg:svg PUBLIC &quot;-//W3C//DTD XHTML 1.1 plus MathML 2.0 plus SVG 1.1//EN&quot; &quot;http://www.w3.org/2002/04/xhtml-math-svg/xhtml-math-svg.dtd&quot;&gt;" data-image="img/tabs/ico-default.png">XHTML + MathML + SVG Profile (SVG host)-DTD</option>
+		</optgroup>
+		<optgroup label="Optional doctype">
+			<option value="&lt;!DOCTYPE svg PUBLIC &quot;-//W3C//DTD SVG 1.1//EN&quot; &quot;http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd&quot;&gt;" data-image="img/tabs/ico-default.png">SVG 1.1 Full - DTD</option>
+			<option value="&lt;!DOCTYPE svg PUBLIC &quot;-//W3C//DTD SVG 1.0//EN&quot; &quot;http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd&quot;&gt;" data-image="img/tabs/ico-default.png">SVG 1.0 - DTD</option>
+			<option value="&lt;!DOCTYPE svg PUBLIC &quot;-//W3C//DTD SVG 1.1 Basic//EN&quot; &quot;http://www.w3.org/Graphics/SVG/1.1/DTD/svg11-basic.dtd&quot;&gt;" data-image="img/tabs/ico-default.png">SVG 1.1 Basic - DTD</option>
+			<option value="&lt;!DOCTYPE svg PUBLIC &quot;-//W3C//DTD SVG 1.1 Tiny//EN&quot; &quot;http://www.w3.org/Graphics/SVG/1.1/DTD/svg11-tiny.dtd&quot;&gt;" data-image="img/tabs/ico-default.png">SVG 1.1 Tiny - DTD</option>
+		</optgroup>
+	</select>
+</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>
+	<input id="wb_doctype_edit" class="wb_tab_html_input" value="<!DOCTYPE html>"></input>
+</td>
+</tr>
+<tr>
+<!-- ########### -->
+<!-- 	HTML 	 -->
+<!-- ########### -->
+<td style="color:blue">&lt;html&gt;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>
+		<select id="wb_html_select" class="dd wb_tab_html_select" style="float:right">
+			<option data-image="img/tabs/ico-default.png" value="" disabled selected style="display:none;">select</option>		
+			<optgroup label="html">
+				<option data-image="img/tabs/ico-default.png" value='xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"'>default</option>
+			</optgroup>		
+			<optgroup label="html">
+				<option data-image="img/tabs/ico-default.png" value='xmlns="http://www.w3.org/1999/xhtml"'>xmlns_1999</option>
+				<option data-image="img/tabs/ico-default.png" value='lang="en"'>language_EN</option>
+				<option data-image="img/tabs/ico-default.png" value='xml:lang="en"'>xml:lang_EN</option>		
+			</optgroup>	
+		</select>
+</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>
+		<textarea id="wb_html_edit" value="" class="wb_tab_html_textarea" rows="5" cols="80"></textarea>
+</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td style="color:green">&nbsp;&lt;head&gt;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td style="color:black">&lt;title&gt;&nbsp;</td>
+<td>
+		<input type="edit" id="wb_title_edit" value="wooby" class="wb_tab_html_edit" ></input>
+</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td style="color:orange">&nbsp;&lt;icon&gt;</td>
+<td>
+		<input type="edit" id="wb_icon_edit"	value='&lt;link rel="shortcut icon" type="image/x-icon" href="img/logo.png" />' 
+		class="wb_tab_html_edit"></input>
+</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<!-- ########### -->
+<!-- 	META 	 -->
+<!-- ########### -->
+<td style="color:black">&nbsp;&lt;meta&gt;</td>
+<td>
+			<select id="wb_meta_select" class="dd wb_tab_html_select" style="float:right">
+				<option data-image="img/tabs/ico-default.png" value="" disabled selected style="display:none;">select</option>	
+				<optgroup label="meta">
+					<option data-image="img/tabs/ico-default.png" value='<meta http-equiv="Content-Type" content="text/html; charset=utf-8">'>charset utf8</option>
+					<option data-image="img/tabs/ico-default.png" value='<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">'>charset ISO-8859-1</option>		
+					<option data-image="img/tabs/ico-default.png" value='<meta http-equiv="Content-Style-Type" content="text/css">'>text/css</option>
+					<option data-image="img/tabs/ico-default.png" value='<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">'>viewport</option>
+					<option data-image="img/tabs/ico-default.png" value='<meta>NoCache</meta>'>No Cache</option>
+				</optgroup>
+				<optgroup label="refresh">		
+					<option data-image="img/tabs/ico-default.png" value='<meta http-equiv="Refresh " content="30"/>'>refresh origin</option>	
+					<option data-image="img/tabs/ico-default.png" value='<meta http-equiv="Refresh " content="15;URL=http://...">'>refresh url</option>		
+				</optgroup>
+				<optgroup label="name">
+					<option data-image="img/tabs/ico-default.png" value='<meta name="copyright" 		content="(C) W3C">'>copyright</option>
+					<option data-image="img/tabs/ico-default.png" value='<meta name="author" lang="en" 	content="">'>author</option>	
+					<option data-image="img/tabs/ico-default.png" value='<meta name="robots" 			content="Index,Follow">'>robots</option>
+					<option data-image="img/tabs/ico-default.png" value='<meta name="description" 		content="The b standards.">'>description</option>	
+					<option data-image="img/tabs/ico-default.png" value='<meta name="keyword" 			content="W3C, HTML, CSS, SVG, Web standards">'>keyword</option>
+				</optgroup>
+				<optgroup label="project">
+					<option data-image="img/tabs/ico-default.png" value='<meta name="name" content="...">'>name</option>
+					<option data-image="img/tabs/ico-default.png" value='<meta name="id"   content="...">'>id</option>	
+					<option data-image="img/tabs/ico-default.png" value='<meta name="key"  content="...">'>key</option>
+					<option data-image="img/tabs/ico-default.png" value='<meta name="ver"  content="...">'>version</option>
+				</optgroup>	
+				<optgroup label="company">
+					<option data-image="img/tabs/ico-default.png" value='<meta name="company"      content="...">'>name</option>
+					<option data-image="img/tabs/ico-default.png" value='<meta name="product"      content="...">'>product</option>	
+					<option data-image="img/tabs/ico-default.png" value='<meta name="license"      content="...">'>license</option>
+					<option data-image="img/tabs/ico-default.png" value='<meta name="description"  content="...">'>description</option>
+				</optgroup>					
+			</select>
+</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>
+<textarea id="wb_meta_edit" value="" class="wb_tab_html_textarea" style="height:100px;" rows="5" cols="80">&lt;meta http-equiv="Content-type" content="text/html; charset=utf-8" /&gt;</textarea>
+</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<!-- ########### -->
+<!-- 	INCLUDE	 -->
+<!-- ########### -->
+<td style="color:black">&nbsp;&lt;include&gt;</td>
+<td>
+		<select id="wb_include_select" class="dd wb_tab_html_select" style="float:right">
+			<option data-image="img/tabs/ico-default.png" value="" disabled selected style="display:none;">select</option>
+			<optgroup label="js txt ecm app vbs">
+				<option data-image="img/tabs/ico-default.png" value='§<script src="???"></script>'>javascript</option>	
+				<option data-image="img/tabs/ico-default.png" value='§<script type="text/javascript" src="???"></script>'>text/javascript</option>
+				<option data-image="img/tabs/ico-default.png" value='§script type="text/ecmascript" src="???"></script>'>text/ecmascript</option>
+				<option data-image="img/tabs/ico-default.png" value='§<script type="application/javascript" src="???"></script>'>application/javascript</option>
+				<option data-image="img/tabs/ico-default.png" value='§<script type="application/ecmascript" src="???"></script>'>application/ecmascript</option>	
+				<option data-image="img/tabs/ico-default.png" value='§<script type="text/vbscript" src="???"></script>'>vbscript</option>	
+			</optgroup>
+			<optgroup label="link">
+				<option data-image="img/tabs/ico-default.png" value='§<link href="???" rel="stylesheet" type="text/css">'>style/css</option>
+			</optgroup>
+			<optgroup label="Responsive">
+				<option data-image="img/tabs/responsive.png" value='wbSkinOneR.css'>Skin One</option>	
+				<option data-image="img/tabs/minify.png" value='wbSkinOneR.min.css'>Skin One min</option>					
+			</optgroup>			
+			<optgroup label="Static">				
+				<option data-image="img/tabs/static.png" 	value='wbSkinOne.css' >Skin One</option>
+				<option data-image="img/tabs/minify.png" 	value='wbSkinOne.min.css' >Skin One min</option>				
+			</optgroup>
+			<optgroup label="jquery">
+				<option data-image="img/tabs/ico-default.png" value='js.jquery'>jquery</option> 				
+				<option data-image="img/tabs/ico-default.png" value='js.jqueryUI'>jquery UI+</option>	
+				<option data-image="img/tabs/ico-default.png" value='js.cookie.bar'>cookie Bar</option> 	
+				<option data-image="img/tabs/ico-default.png" value='js.msDropDown'>msDropDown</option> 
+				<option data-image="img/tabs/ico-default.png" value='js.imgAreaSelect'>Area Select</option> 				
+			</optgroup>	
+			<optgroup label="jqTheme">
+				<option data-image="img/tabs/ico-default.png" value='jqt.base'>Base</option> 				
+				<option data-image="img/tabs/ico-default.png" value='jqt.blacktie'>Black Tie</option> 	
+				<option data-image="img/tabs/ico-default.png" value='jqt.blitzer'>Blitzer</option> 				
+				<option data-image="img/tabs/ico-default.png" value='jqt.cupertino'>Cupertino</option> 	
+				<option data-image="img/tabs/ico-default.png" value='jqt.darkhive'>Dark Hive</option> 					
+				<option data-image="img/tabs/ico-default.png" value='jqt.darkness'>Darkness</option> 				
+				<option data-image="img/tabs/ico-default.png" value='jqt.dotluv'>Dot Luv</option> 	
+				<option data-image="img/tabs/ico-default.png" value='jqt.eggplant'>Egg Plant</option> 				
+				<option data-image="img/tabs/ico-default.png" value='jqt.excitebike'>Excite Bike</option> 				
+				<option data-image="img/tabs/ico-default.png" value='jqt.flick'>Flick</option> 	
+				<option data-image="img/tabs/ico-default.png" value='jqt.hotsneaks'>Hot Sneaks</option> 				
+				<option data-image="img/tabs/ico-default.png" value='jqt.humanity'>Humanity</option> 
+				<option data-image="img/tabs/ico-default.png" value='jqt.lefrog'>Le Frog</option> 				
+				<option data-image="img/tabs/ico-default.png" value='jqt.lightness'>Lightness</option> 	
+				<option data-image="img/tabs/ico-default.png" value='jqt.mintchoc'>Mint Choc</option> 				
+				<option data-image="img/tabs/ico-default.png" value='jqt.overcast'>Over Cast</option> 	
+				<option data-image="img/tabs/ico-default.png" value='jqt.peppergrinder'>Pepper Grinder</option> 				
+				<option data-image="img/tabs/ico-default.png" value='jqt.redmond'>Redmond</option> 	
+				<option data-image="img/tabs/ico-default.png" value='jqt.smoothness'>Smoothness</option> 				
+				<option data-image="img/tabs/ico-default.png" value='jqt.southstreet'>South Street</option> 
+				<option data-image="img/tabs/ico-default.png" value='jqt.start'>Start</option> 				
+				<option data-image="img/tabs/ico-default.png" value='jqt.sunny'>Sunny</option> 	
+				<option data-image="img/tabs/ico-default.png" value='jqt.swankpurse'>Swank Purse</option> 				
+				<option data-image="img/tabs/ico-default.png" value='jqt.trontastic'>Trontastic</option> 	
+				<option data-image="img/tabs/ico-default.png" value='jqt.vader'>Vader</option> 				
+			</optgroup>				
+			<optgroup label="Library">
+				<option data-image="img/tabs/ico-default.png" value='js.two'>Two.min.js</option> 			
+				<option data-image="img/tabs/ico-default.png" value='js.three'>Three.min.js</option>	
+				<option data-image="img/tabs/ico-default.png" value='js.chart'>Chart.min.js</option> 
+				<option data-image="img/tabs/ico-default.png" value='js.wooby'>Wooby.js</option> 
+				<option data-image="img/tabs/ico-default.png" value='js.FileSaver'>FileSaver.js</option> 				
+			</optgroup>	
+			<optgroup label="Parallel">
+				<option data-image="img/tabs/ico-default.png" value='js.parallel.php'>Parallel_PHP</option> 			
+				<option data-image="img/tabs/ico-default.png" value='js.parallel.js'>Parallel_JS</option> 
+				<option data-image="img/tabs/ico-default.png" value='js.async'>Async.js</option> 	
+			</optgroup>
+			<optgroup label="image">
+				<option data-image="img/tabs/ico-default.png" value='§<img   id="..." src="???" style="display: none;" >' > image </option>
+			</optgroup>
+			<optgroup label="audio">
+				<option data-image="img/tabs/ico-default.png" 
+					value='§<audio id="..." autoplay="false" src="???" type="video/ogv" style="display: none;" >Your browser does not support the audio tag.</audio>'>webm</option>
+				<option data-image="img/tabs/ico-default.png" 
+					value='§<audio id="..." autoplay="false" src="???" style="display: none;" type="audio/ogg">Your browser does not support the audio tag.</audio>' >ogg</option>
+				<option data-image="img/tabs/ico-default.png" 
+					value='§<audio id="..." autoplay="false" src="???" style="display: none;" type="audio/mpeg">Your browser does not support the audio tag.</audio>'>mpeg</option>
+				<option data-image="img/tabs/ico-default.png" 
+					value='§<audio id="..." autoplay="false" src="???" style="display: none;" type="audio/wave">Your browser does not support the audio tag.</audio>'>wave</option>
+				<option data-image="img/tabs/ico-default.png" 
+					value='§<audio id="..." autoplay="false" src="???" style="display: none;" type="audio/wav">Your browser does not support the audio tag.</audio>'>wav</option>
+				<option data-image="img/tabs/ico-default.png" 
+					value='§<audio id="..." autoplay="false" src="???" style="display: none;" type="audio/x-wav">Your browser does not support the audio tag.</audio>'>x-wav</option>
+				<option data-image="img/tabs/ico-default.png" 
+					value='§<audio id="..." autoplay="false" src="???" style="display: none;" type="audio/x-pn-wav">Your browser does not support the audio tag.</audio>'>x-pn-wav</option>		
+			</optgroup>	
+			<optgroup label="video">
+				<option data-image="img/tabs/ico-default.png" 
+					value='§<video id="..." autoplay="false" src="???" type="video/webm" style="display: none;" >Your browser does not support HTML5 video.</video>'>webm</option>	
+				<option data-image="img/tabs/ico-default.png" 
+					value='§<video id="..." autoplay="false" src="???" type="video/ogg"  style="display: none;">Your browser does not support HTML5 video.</video>'>ogg</option>	
+				<option data-image="img/tabs/ico-default.png" 
+					value='§<video id="..." autoplay="false" src="???" type="video/mp4"  style="display: none;">Your browser does not support HTML5 video.</video>'>mp4</option>
+				<option data-image="img/tabs/ico-default.png" 
+					value='§<video id="..." autoplay="false" src="???" type="video/ogv"  style="display: none;" >Your browser does not support HTML5 video.</video>'>ogv</option>
+				<option data-image="img/tabs/ico-default.png" 
+					value='§<video id="..." autoplay="false" src="???" type="video/3gpp" style="display: none;" >Your browser does not support HTML5 video.</video>'>3gp</option>		
+			</optgroup>	
+			<optgroup label="embed">
+				<option data-image="img/tabs/ico-default.png" value='§<embed id="..." src="???" type="application/pdf" style="display: none;">'>pdf</option>	
+				<option data-image="img/tabs/ico-default.png" value='§<embed id="..." src="???" style="display: none;">'>swf</option>					
+			</optgroup>	
+			<optgroup label="no script">
+				<option data-image="img/tabs/ico-default.png" value='<noscript>Your browser does not support JavaScript!</noscript>'>no script</option>
+			</optgroup>			
+		</select>
+</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>
+		<textarea id="wb_include_edit" value="" class="wb_tab_html_textarea" style="height:200px;" rows="5" cols="80"></textarea>
+</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<!-- ########### -->
+<!-- REDIRECT 	 -->
+<!-- ########### -->
+<td style="color:black">&nbsp;&lt;redirect&gt;</td>
+<td>
+			<div >
+			<label > time :</label><input id="wb_redirect_time" value="0" style="width:24px">
+			<label > page:</label> <input id="wb_redirect_page" value="page.html" style="width:300px">
+			<select id="wb_redirect_select" class="dd wb_tab_html_select" style="float:right" >
+					<option data-image="img/tabs/ico-default.png" value="" disabled selected style="display:none;">select</option>
+					<optgroup label="redirect">
+						<option data-image="img/tabs/ico-default.png" value='<meta http-equiv="refresh" content="0;URL=???.html">'>redirect_html_page</option>
+					</optgroup>
+			</select>
+			</div>
+</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>
+			<input id="wb_redirect_edit" value="" class="wb_tab_html_input" ></input>
+</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td style="color:green">&nbsp;&lt;/head&gt;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td style="color:maroon">&nbsp;&lt;body&gt;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>
+<!-- ########### -->
+<!-- 	BODY	 -->
+<!-- ########### -->
+<button id="go_body_edit">BODY</button>
+</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td style="color:maroon">&nbsp;&lt;/body&gt;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td style="color:blue">&nbsp;&lt;/html&gt;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+
+<script>
+
+
+// ............................................... go_body_edit : click
+$('#go_body_edit').click( function()
+{
+    console.debug ( '#go_body_edit' ) ;
+	// 8_body.txt :: file principale BODY
+	window.open('weditor.html?project='+window.project.name+'&module=src/8_body.txt','_blank')
+});
+
+// ............................................... wb_xml_select : change
+$('#wb_xml_select').change ( function(e) 
+{
+
+	var text = $("#wb_xml_select").val()
+	console.debug ( 'wb_xml_select : change ',text )  ;
+	
+	if ( $("#wb_xml_edit").val().length > 0 )
+	{
+		text = $("#wb_xml_edit").val() + "\n" + text
+    }
+
+	$("#wb_xml_edit").val ( text );	
+
+	wb_xml_edit.scrollTop = wb_xml_edit.scrollHeight // force scroll bottom
+		
+	$("#wb_xml_select").val("") 
+});
+
+// ............................................... wb_doctype_select : change
+$('#wb_doctype_select').change ( function(e) 
+{
+
+	var text = $("#wb_doctype_select").val()
+	console.debug ( 'wb_doctype_select : change ',text )  ;
+	
+	$("#wb_doctype_edit").val ( text );	
+});
+
+
+// ............................................... wb_html_select : change
+$('#wb_html_select').change ( function(e) 
+{
+
+	var text = $("#wb_html_select").val()
+	console.debug ( 'wb_html_select : change ',text )  ;
+	
+	if ( $("#wb_html_edit").val().length > 0 )
+	{
+		text = $("#wb_html_edit").val() + "\n" + text
+    }
+
+	$("#wb_html_edit").val ( text );	
+
+
+	wb_html_edit.scrollTop = wb_html_edit.scrollHeight // force scroll bottom
+		
+	$("#wb_html_select").val("") 
+});
+
+// ............................................... wb_meta_select : change
+$('#wb_meta_select').change ( function(e) 
+{
+
+	var scelta = $("#wb_meta_select").val()
+	
+	console.debug ( 'wb_meta_select : change ',scelta )  ;
+	
+	var text = "" ;
+
+	if ( scelta == '<meta>NoCache</meta>' )
+	{
+		var meta = '' ;			
+		meta+='<meta http-equiv="cache-control" content="max-age=0" />\n'
+		meta+='<meta http-equiv="cache-control" content="no-cache" />\n'
+		meta+='<meta http-equiv="expires" content="0" />\n'
+		meta+='<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />\n'
+		meta+='<meta http-equiv="pragma" content="no-cache" />\n'
+		text = $("#wb_meta_edit").val() + "\n" + meta ;			
+	}
+	else
+	{
+		text = $("#wb_meta_edit").val() + "\n" + scelta ;
+	}
+	
+	$("#wb_meta_edit").val ( text );		
+
+
+	wb_meta_edit.scrollTop = wb_meta_edit.scrollHeight // force scroll bottom
+		
+	$("#wb_meta_select").val("") 
+});
+
+
+// ............................................... wb_include_select : change
+$('#wb_include_select').change ( function(e) 
+{
+	var text = $("#wb_include_select").val()
+	console.debug ( 'wb_include_select : change ',text )  ;
+
+	// ........................................................ setID
+	var contatore =  ( +Date.now() ).toString(36);
+	console.debug ( '##wbProjectSelect : contatore : '  ) ;	
+	console.debug ( contatore ) ;	
+	
+	var fileFrom 	= null
+	var fileTo		= null  
+
+ 
+	if ( text.substring(0,4) == 'jqt.' ) // Linguagio JS ignorante substring da , a ( non compreso ) 
+	{
+		var THEME = text.replace ( 'jqt.' , ''  ) ;
+ 
+        var text = "" ;
+ 		//	jquery-3.1.1.min.js	
+		text += '<'+'script type="text/javascript" src ="lib/jQuery/jquery-3.2.1.min.js"><'+'/script>\n'
+		//	jquery-ui.min.css		
+		text += '<link type="text/css"	href="lib/jQuery/'+THEME+'/jquery-ui.min.css" rel="stylesheet" >\n'
+		//	jquery-ui.min.js		
+		text += '<'+'script type="text/javascript" src ="lib/jQuery/'+THEME+'/jquery-ui.min.js"><'+'/script>\n'
+		//	jquery.ui.touch-punch.min.js
+		text += '<'+'script type="text/javascript" src ="lib/jQuery/jquery.touch/jquery.ui.touch-punch.min.js"><'+'/script>\n'
+		//	wbSkinOne.css
+		text += '<link type="text/css" href="css/wbSkinOneR.css"	rel="stylesheet" >\n'
+
+		wbFileCopyTree ( 'lib/jQueryProject/','../'+window.project.name+'/lib/jQuery'  )  ;
+		
+		wbFileCopyTree ( 'lib/jQueryTheme/jquery-ui-1.12.1.'+THEME+'/' ,'../'+window.project.name+'/lib/jQuery/'+THEME  )  ;		
+
+		
+	}
+	
+    if ( text=='wbSkinOne.css')
+	{
+		fileFrom 	= 'skin/wbSkinOne.css'
+		fileTo		= '../'+window.project.name+'/css/wbSkinOne.css'
+	
+		wbFileCopy ( fileFrom , fileTo ,false ) ;  
+		
+		text = 'css/wbSkinOne.css' ; // ..................... path relativo progetto
+		text = '<link href="'+text+'" rel="stylesheet" type="text/css">' // . css progetto
+	}
+
+    if ( text=='wbSkinOneR.css')
+	{
+		fileFrom 	= 'skin/wbSkinOneR.css'
+		fileTo		= '../'+window.project.name+'/css/wbSkinOneR.css'
+	
+		wbFileCopy ( fileFrom , fileTo ,false ) ;  
+		
+		text = 'css/wbSkinOneR.css' ; // ..................... path relativo progetto
+		text = '<link href="'+text+'" rel="stylesheet" type="text/css">' // . css progetto
+	}
+	
+	if ( text=='js.jquery') 
+	{
+	    text = "" ;
+		
+		//  lib/jQuery/jquery-3.1.1.min.js		
+		text += '<script type="text/javascript" src="lib/jquery-3.2.1.min.js"><'+'/script>\n'  ;	
+
+		fileFrom 	= 'lib/jQuery/jquery-3.2.1.min.js'
+		fileTo		= '../'+window.project.name+'/lib/jquery-3.2.1.min.js'
+	
+		wbFileCopy ( fileFrom , fileTo ,false ) ;  
+	
+	}
+	
+    if ( text=='js.jqueryUI') 
+	{
+	    text = "" ;
+
+		//	jquery-3.1.1.min.js	
+		text += '<'+'script type="text/javascript" src ="lib/jQuery/jquery-3.2.1.min.js"><'+'/script>\n'
+		//	jquery-ui.min.css		
+		text += '<link type="text/css"	href="lib/jQuery/jquery-ui-1.12.1/jquery-ui.min.css" rel="stylesheet" >\n'
+		//	jquery-ui.min.js		
+		text += '<'+'script type="text/javascript" src ="lib/jQuery/jquery-ui-1.12.1/jquery-ui.min.js"><'+'/script>\n'
+		//	jquery.ui.touch-punch.min.js
+		text += '<'+'script type="text/javascript" src ="lib/jQuery/jquery.touch/jquery.ui.touch-punch.min.js"><'+'/script>\n'
+		//	wbSkinOne.css
+		text += '<link type="text/css" href="css/wbSkinOneR.css"	rel="stylesheet" >\n'
+
+
+		wbFileCopyTree ( 'lib/jQueryProject/','../'+window.project.name+'/lib/jQuery'  )  ;
+	
+		
+	}
+
+    if ( text=='js.cookie.bar')
+	{
+		// lib/jquery.cookieBar/jquery.cookiebar.css
+		// lib/jquery.cookieBar/jquery.cookiebar.js
+	
+		text = "" ;
+		
+		wbFileCopy ( 'lib/jquery.cookieBar/jquery.cookiebar.css' , '../'+window.project.name+'/lib/jquery.cookiebar.css'  ) ;  
+		text += '<link href="lib/jquery.cookiebar.css" rel="stylesheet" type="text/css">\n'  ; 
+		
+		wbFileCopy  ( 'lib/jquery.cookieBar/jquery.cookiebar.js' , '../'+window.project.name+'/lib/jquery.cookiebar.js'  ) ;  
+		text += '<script type="text/javascript" src="lib/jquery.cookiebar.js"><'+'/script>'  ;
+	
+	}
+
+    if ( text=='js.msDropDown')
+	{
+		//	lib/msDropDown/css/msdropdown/dd.css	
+		//	lib/msDropDown/js/msdropdown/jquery.dd.min.js
+	
+		text = "" ;
+		
+		wbFileCopy ( 'lib/msDropDown/css/msdropdown/dd.css' , '../'+window.project.name+'/lib/dd.css'  ) ;  
+		text += '<link href="lib/dd.css" rel="stylesheet" type="text/css">\n'  ; 
+		
+		wbFileCopy ( 'lib/msDropDown/js/msdropdown/jquery.dd.min.js' , '../'+window.project.name+'/lib/jquery.dd.min.js'  ) ;  
+		text += '<script type="text/javascript" src="lib/jquery.dd.min.js"><'+'/script>'  ;
+	}	
+
+    if ( text=='js.imgAreaSelect') // 1234
+	{
+	
+		text = "" ;
+
+		//
+		text += '<link type="text/css"	href="lib/jQueryImgAreaSelect/css/imgareaselect-animated.css" rel="stylesheet" >\n'
+		//	jquery-ui.min.js		
+		text += '<'+'script type="text/javascript" src ="lib/jQueryImgAreaSelect/scripts/jquery.imgareaselect.min.js"><'+'/script>\n'
+
+		wbFileCopyTree ( 'lib/jQueryImgAreaSelect/','../'+window.project.name+'/lib/jQueryImgAreaSelect/'  )  ;
+	}	
+	
+    if ( text=='js.image.slider')
+	{
+		//	lib/jquery.imageSlider/jquery/jquery.imgslider.js
+	
+		text = "" ;
+		wbFileCopy ( 'lib/jquery.imageSlider/jquery.imgslider.js' , '../'+window.project.name+'/lib/jquery.imgslider.js'  ) ;  
+		text += '<script type="text/javascript" src="lib/jquery.imgslider.js"><'+'/script>'  ;	
+	}
+	
+
+    if ( text=='js.two')
+	{
+		//	lib/Two.js/two.min.js
+	
+		text = "" ;
+		wbFileCopy ( 'lib/Two.js/two.min.js' , '../'+window.project.name+'/lib/two.min.js'  ) ;  
+		text += '<script type="text/javascript" src="lib/two.min.js"><'+'/script>'  ;	
+	}
+
+    if ( text=='js.three')
+	{
+		//	lib/three.js/build/three.min.js
+	
+		text = "" ;
+		wbFileCopy ( 'lib/three.js/build/three.min.js' , '../'+window.project.name+'/lib/three.min.js'  ) ;  
+		text += '<script type="text/javascript" src="lib/three.min.js"><'+'/script>'  ;	
+	}
+
+    if ( text=='js.chart')
+	{
+		//	lib/chart.js/dist/Chart.min.js
+	
+		text = "" ;
+		wbFileCopy ( 'lib/chart.js/dist/Chart.min.js' , '../'+window.project.name+'/lib/Chart.min.js'  ) ;  
+		text += '<script type="text/javascript" src="lib/Chart.min.js"><'+'/script>'  ;	
+	}
+
+
+    if ( text=='js.parallel.php')
+	{
+		//	lib/jslib.parallel/wb.parallel.php.js
+	
+		text = "" ;
+		wbFileCopy ( 'lib/jslib.parallel/wb.parallel.php.js' , '../'+window.project.name+'/lib/wb.parallel.php.js'  ) ;  
+		text += '<script type="text/javascript" src="lib/wb.parallel.php.js"><'+'/script>'  ;
+	}
+	
+    if ( text=='js.parallel.js')
+	{
+		//	lib/threadpool/threadpool.min.js
+	
+		text = "" ;
+		wbFileCopy ( 'lib/threadpool/wb.parallel.js.min.js' , '../'+window.project.name+'/lib/wb.parallel.js.min.js'  ) ;  
+		text += '<script type="text/javascript" src="lib/wb.parallel.js.min.js"><'+'/script>'  ;	
+	}
+    if ( text=='js.async')
+	{
+		//	lib/async.js/async.js
+	
+		text = "" ;
+		wbFileCopy ( 'lib/async.js/async.js' , '../'+window.project.name+'/lib/async.js'  ) ;  
+		text += '<script type="text/javascript" src="lib/async.js"><'+'/script>'  ;	
+	}	
+
+    if ( text=='js.wooby')
+	{
+		//	lib/wooby.js
+	
+		text = "" ;
+		wbFileCopy ( 'lib/wooby.js' , '../'+window.project.name+'/lib/wooby.js'  ) ;  
+		text += '<script type="text/javascript" src="lib/wooby.js"><'+'/script>'  ;	
+	}	
+
+	 if ( text=='js.FileSaver')
+	{
+		//	lib/FileSaver.min.js
+	
+		text = "" ;
+
+		wbFileCopy ( 'lib/FileSaver.js/FileSaver.min.js' , '../'+window.project.name+'/lib/FileSaver.min.js'  ) ;  
+		text += '<script type="text/javascript" src="lib/FileSaver.min.js"><'+'/script>'  ;	
+	}	
+
+
+	// ############################################################################# casi speciali
+
+    if ( text.search('§') != -1 )
+	{
+		text = text.replace ( '§' , '' );	
+		
+		// ............................................................ script
+		if ( text.search('script') != -1 )
+		{
+
+			wbGetFile  ( '.js,.txt,.ecm,.app,.vbs', function (data)
+			{
+				console.log ( 'tabsHtml::select::script::fileName' ) ;		
+				console.log ( data ) ;	
+				
+				if ( data==null ) return ;
+
+				data = 'js/' +  data
+				
+				text = text.replace ( '???' , data ) ;
+				aggiorna();
+			}) ;
+			return 
+		}
+
+		// ............................................................ link
+		if ( text.search('link') != -1 )
+		{
+
+			wbGetFile  ( '.css', function (data)
+			{
+				console.log ( 'tabsHtml::select::script::fileName' ) ;		
+				console.log ( data ) ;
+
+				if ( data==null ) return ;
+
+				data = 'css/' +  data
+				
+				text = text.replace ( '???' , data ) ;
+				aggiorna();
+			}) ;
+			return 
+		}
+
+		// ............................................................ img
+		if ( text.search('img') != -1 )
+		{
+			wbGetFile  ( '.jpg,.jpeg,.bmp,.png,.gif', function (data)
+			{
+				console.log ( 'tabsHtml::select::script::fileName' ) ;		
+				console.log ( data ) ;
+
+				if ( data==null ) return ;
+
+				data = 'img/' +  data
+				
+				text = text.replace ( '???' , data ) ;
+				contatore = 'id_img_' + contatore ;
+				text = text.replace ( '...' , contatore ) ;				
+				aggiorna();
+			}) ;
+			return 
+		}
+
+		// ............................................................ audio
+		if ( text.search('audio') != -1 )
+		{
+			wbGetFile  ( '.webm,.ogg,.mpeg,.mp3,.wave,.wav,.x-wav,.x-pn-wav,.mp4,.mpg', function (data)
+			{
+				console.log ( 'tabsHtml::select::script::fileName' ) ;		
+				console.log ( data ) ;	
+				
+				if ( data==null ) return ;
+
+				data = 'sound/' +  data
+				
+				text = text.replace ( '???' , data ) ;
+				contatore = 'id_audio_' + contatore ;
+				text = text.replace ( '...' , contatore ) ;				
+				aggiorna();
+			}) ;
+			return 
+		}
+		// ............................................................ video
+		if ( text.search('video') != -1 )
+		{
+			wbGetFile  ( '.webm,.ogg,.mp4,.ogv,.3gp', function (data)
+			{
+				console.log ( 'tabsHtml::select::script::fileName' ) ;		
+				console.log ( data ) ;
+
+				if ( data==null ) return ;
+
+				data = 'media/' +  data
+				
+				text = text.replace ( '???' , data ) ;
+				contatore = 'id_video_' + contatore ;
+				text = text.replace ( '...' , contatore ) ;				
+				aggiorna();
+			}) ;
+			return 
+		}	
+
+		// ............................................................ embed
+		if ( text.search('embed') != -1 )
+		{
+			wbGetFile  ( '.pdf,.swf', function (data)
+			{
+				console.log ( 'tabsHtml::select::script::fileName' ) ;		
+				console.log ( data ) ;	
+				
+				if ( data==null ) return ;
+
+				data = 'media/' +  data
+				
+				text = text.replace ( '???' , data ) ;
+				contatore = 'id_embed_' + contatore ;
+				text = text.replace ( '...' , contatore ) ;				
+				aggiorna();
+			}) ;
+			return 
+		}	
+		
+		return ;
+	}	
+
+	// #############################################################################
+	
+	function aggiorna()	
+	{
+		// ......................................... Aggiorna INCLUDE EDIT
+
+		var prevText = 	$("#wb_include_edit").val ();
+
+		var nextText = "" ;
+		if (prevText.length==0)
+		{
+			nextText = text ;		
+		}
+		else
+		{
+			nextText = prevText + '\n' +text ;	
+		}
+
+		$("#wb_include_edit").val ( nextText );	
+
+		wb_include_edit.scrollTop = wb_include_edit.scrollHeight // force scroll bottom
+
+		$("#wb_include_select").val("") ;
+
+	}
+	aggiorna();
+
+});
+
+// ............................................... wb_redirect_select : change
+$('#wb_redirect_select').change ( function(e) 
+{
+
+	var text = $("#wb_redirect_select").val()
+	console.debug ( 'wb_redirect_select : change ',text )  ;
+
+
+	$("#wb_redirect_edit").val ( text );	
+});
+
+
+</script>
+
+
+
+
+
+
+

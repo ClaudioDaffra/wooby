@@ -1,0 +1,714 @@
+
+<!-- 
+
+	Modulo : WidgetNew
+
+-->
+
+
+
+<!-- ### -->
+<!-- CSS -->
+<!-- ### -->
+
+<style>
+
+
+</style>
+
+<!-- #### -->
+<!-- BODY -->
+<!-- #### -->
+
+<!-- ############# -->
+<!-- widget Select -->
+<!-- ############# -->
+
+<select class="dd" id="widgetSelect" style="width:100%;	font-size: 75%;"> 
+	<option value="default" selected="selected"	data-image="img/widget_select/1-ico-default.png">WIDGET</option>
+	<optgroup label="Panel">	
+		<option value="pmain" 		data-image="img/widget_select/1-ico-panel-p0.png">pMain</option>
+		<option value="pvert2" 		data-image="img/widget_select/1-ico-panel-v2.png">pVert2</option>
+		<option value="pvert3" 		data-image="img/widget_select/1-ico-panel-v3.png">pVert3</option>
+		<option value="phoriz2" 	data-image="img/widget_select/1-ico-panel-o2.png">pHoriz2</option>
+		<option value="phoriz3" 	data-image="img/widget_select/1-ico-panel-o3.png">pHoriz3</option>
+		<option value="pnav" 		data-image="img/widget_select/1-ico-panel-nav.png">pNav</option>
+		<option value="pstd" 		data-image="img/widget_select/1-ico-panel-p1.png">pPanel</option>
+		<option value="pMobilepage" data-image="img/widget_select/ico-default.png">pMobile</option>	
+		<option value="pBlogpage"   data-image="img/widget_select/ico-default.png">pBlog</option>
+	</optgroup>		
+	<optgroup label="Slide">
+		<option value="pslideleft"  data-image="img/widget_select/ico-default.png">pSlide Left</option>	
+	</optgroup>
+	<optgroup label="Semantic">
+		<option value="sstd" 		data-image="img/widget_select/1-ico-panel-s1.png">sPanel</option>
+		<option value="stitle" 		data-image="img/widget_select/ico-default.png">sTitle</option>
+		<option value="smain" 		data-image="img/widget_select/1-ico-panel-nav.png">sMain</option>
+		<option value="sarticle" 	data-image="img/widget_select/ico-article.png">sArticle</option>
+		<option value="sdetails" 	data-image="img/widget_select/ico-details.png">sDetails</option>
+		<option value="snav" 		data-image="img/widget_select/1-ico-panel-nav.png">sNav</option>
+		<option value="saside" 		data-image="img/widget_select/ico-default.png">sAside</option>
+		<option value="sfigure" 	data-image="img/widget_select/ico-figure.png">sFigure</option>
+		<option value="saddress" 	data-image="img/widget_select/ico-default.png">sAddress</option>
+		<option value="shr" 		data-image="img/widget_select/ico-default.png">sHR</option>
+	</optgroup>	
+			<optgroup label="Container">	
+			<option value="div" 			data-image="img/widget_select/1-ico-div.png">Div []</option>
+			<option value="divHoriz2" 		data-image="img/widget_select/1-ico-div.png">Div Vert |.|</option>	
+			<option value="divVert2" 		data-image="img/widget_select/1-ico-div.png">Div Horiz  -.-</option>	
+			<option value="divHoriz3466" 	data-image="img/widget_select/1-ico-div.png">Div Vert |.||</option>	
+			<option value="divHoriz6634" 	data-image="img/widget_select/1-ico-div.png">Div Vert ||.|</option>	
+			<option value="divVert3466" 	data-image="img/widget_select/1-ico-div.png">Div Horiz -.--</option>	
+			<option value="divVert6634" 	data-image="img/widget_select/1-ico-div.png">Div Horiz --.-</option>				
+			<option value="console" 		data-image="img/widget_select/1-ico-div.png">Div Console</option>
+	</optgroup>
+	<optgroup label="Form">
+			<option value="fpost" 			data-image="img/widget_select/1-ico-form.png">form Post</option>
+			<option value="fget" 			data-image="img/widget_select/1-ico-form.png">form Get</option>
+			<option value="fset" 			data-image="img/widget_select/1-ico-fieldset.png">Fieldset</option>
+			<option value="fset" 			data-image="img/widget_select/1-ico-fieldset.png">fGroup Boxes</option>			
+			<option value="flabel" 			data-image="img/widget_select/1-ico-label.png">fLabel</option>
+			<option value="finput" 			data-image="img/widget_select/ico-default-red.png">fInput +</option>
+			<option value="button" 			data-image="img/widget_select/1-ico-button.png">fButton</option>
+			<option value="fselect" 		data-image="img/widget_select/1-ico-select.png">fSelect</option>
+			<option value="fcombobox" 		data-image="img/widget_select/1-ico-select.png">fCombox</option>
+			<option value="fimage" 			data-image="img/widget_select/ico-image.png">fImage</option>
+			<option value="ftextarea" 		data-image="img/widget_select/1-ico-input.png">fText Area</option>
+			<option value="checkBox" 		data-image="img/widget_select/1-ico-input.png">fCheck Radio</option>
+			<option value="checkMultiBox" 	data-image="img/widget_select/1-ico-input.png">fCheck MultiBox</option>
+	</optgroup>	
+		<optgroup label="Canvas">
+			<option value="canvas"  		data-image="img/widget_select/ico-default.png" >Canvas</option>
+			<option value="canvas2" 		data-image="img/widget_select/ico-default.png" >Canvas Two</option>
+			<option value="canvas3" 		data-image="img/widget_select/ico-default.png" >Canvas Three</option>
+			<option value="canvasc" 		data-image="img/widget_select/ico-default.png" >Canvas Chart</option>
+			<option value="wbcanvas" 		data-image="img/widget_select/ico-default.png" >Canvas Wooby</option>
+	</optgroup>
+ 		<optgroup label="Media">
+			<option value="audio"   		data-image="img/widget_select/icon_music.gif" >Audio</option>
+			<option value="video"   		data-image="img/widget_select/icon_video.gif" >Video</option>
+			<option value="poster"  		data-image="img/widget_select/icon_video.gif" >Poster</option>
+		</optgroup>   
+		<optgroup label="Embed">
+			<option value="flash"   		data-image="img/widget_select/ico-default.png" >Flash</option>
+			<option value="youtube" 		data-image="img/widget_select/ico-default.png" >Youtube</option>
+			<option value="pdf"     		data-image="img/widget_select/ico-default.png" >PDF</option>
+		</optgroup>
+		<optgroup label="Web">
+			<option value="anchor" 	 		data-image="img/widget_select/ico-href.png" >Anchor</option>
+			<option value="href"     		data-image="img/widget_select/ico-href.png" >Href</option>
+		</optgroup> 		
+</select>
+
+<select class="dd" id="widgetSelectJQ" style="width:100%;	font-size: 75%;"> 
+	<option value="default" selected="selected"	data-image="img/widget_select/1-ico-default.png">jQueryUI</option>
+	<optgroup label="jQuery UI">
+		<option value="jqTabs" 					data-image="img/widget_select/ico-default.png" >jTabs</option>
+		<option value="jqAccordion" 			data-image="img/widget_select/ico-default.png" >jAccordion</option>
+		<option value="jqButton" 				data-image="img/widget_select/ico-default.png" >jButton</option>
+		<option value="jqButtonIcon" 			data-image="img/widget_select/ico-default.png" >jButton Icon</option>		
+		<option value="jqAutoComplete" 			data-image="img/widget_select/ico-default.png" >jAuto Complete</option>
+		<option value="jqDataPicker" 			data-image="img/widget_select/ico-default.png" >jData Picker</option>
+		<option value="jqProgressBar" 			data-image="img/widget_select/ico-default.png" >jProgress Bar</option>
+		<option value="jqcheckbox" 				data-image="img/widget_select/1-ico-input.png" >jCheck Radio</option>
+		<option value="jqcheckMultibox" 		data-image="img/widget_select/1-ico-input.png" >jCheck MultiBox</option>
+		<option value="jqspinner" 				data-image="img/widget_select/1-ico-input.png" >jSpinner</option>
+		<option value="jqsliderh" 				data-image="img/widget_select/ico-default.png" >jSlider Horiz</option>
+		<option value="jqsliderv" 				data-image="img/widget_select/ico-default.png" >jSlider Vert</option>
+		<option value="jqareaselect" 			data-image="img/widget_select/ico-default.png" >jArea Select</option>		
+	</optgroup>
+</select>
+
+<!-- ########### -->
+<!-- widget Unit -->
+<!-- ########### -->
+
+<select class="dd ui-select" id="widgetUnit" style="width:100%"> 
+	<option value="%" 		>%</option>
+	<option value="px" 		>px</option>	
+</select>
+
+<!-- ############### -->
+<!-- widget Position -->
+<!-- ############### -->
+
+<select class="dd ui-select" id="widgetPosition" style="width:100%" > 
+	<option value="absolute" 	>absolute</option>	
+	<option value="static" 		>static</option>
+	<option value="relative" 	>relative</option>
+	<option value="fixed" 		>fixed</option>
+	<option value="inherit" 	>inherit</option>
+</select>
+
+<!-- ############# -->
+<!-- Snap to Grid  -->
+<!-- ############# -->
+
+<select class="dd" id="wb_snap_to_grid_select" style="width:100%;" onchange="wb_snap_to_grid_onchange()">
+		<option value='{"x":1,"y":1}'  		data-image="img/widget_toolbar/ico-snapToGrid.png">1x1</option>
+		<option value='{"x":2,"y":2}'  		data-image="img/widget_toolbar/ico-snapToGrid.png">2x2</option>
+		<option value='{"x":5,"y":5}' 		data-image="img/widget_toolbar/ico-snapToGrid.png">5x5</option>
+		<option value='{"x":10,"y":10}'  	data-image="img/widget_toolbar/ico-snapToGrid.png">10x10</option>	
+		<option value='{"x":10,"y":20}'  	data-image="img/widget_toolbar/ico-snapToGrid.png">10x20</option>	
+		<option value='{"x":20,"y":40}'  	data-image="img/widget_toolbar/ico-snapToGrid.png">20x40</option>	
+		<option value='{"x":50,"y":50}'  	data-image="img/widget_toolbar/ico-snapToGrid.png">50x50</option>			
+</select>	
+
+<!-- ################## -->
+<!-- wbBodyChangeScreen -->
+<!-- ################## -->
+
+<div id="wbBodyChangeScreen">
+</div>	
+
+<!-- ############ -->
+<!-- wbMiniEditor -->
+<!-- ############ -->
+
+<div id="wbMiniEditor">
+</div>	
+ 
+ 
+ 
+<!-- ############ -->
+<!-- Change Skin  -->
+<!-- ############ --> 
+
+<select class="dd" id="wbChangeSkin" style="width:100%;max_height:24px;" >
+	<optgroup label="Responsive">
+ 		<option value='wbSkinOneR.css'  	data-image="img/tabs/responsive.png">Skin One</option>	
+	</optgroup>	
+	<optgroup label="Static">
+		<option value='wbSkinOne.css'  		data-image="img/tabs/static.png">Skin One</option>
+	</optgroup>		
+</select>
+ 
+<script>
+
+$('#wbChangeSkin').change(function()
+{
+	var option  = $("option:selected", this);
+	var value   = 'skin/' + this.value;
+	
+	$('#idWoobySkin').empty() ;
+	
+	wbChangeCss ( value,'idWoobySkin' ) 
+
+  // qui non va riazzerato, perchè evidenzia la skin caricata
+});
+ 
+</script>
+ 
+<!-- ############ -->
+<!-- jQuery Theme -->
+<!-- ############ --> 
+  
+<select class="dd" id="wbChangejQueryTheme" style="width:100%;max_height:24px;" >
+				<option data-image="img/tabs/jqueryui.png" value='jqt.base'>Base</option> 				
+				<option data-image="img/tabs/jqueryui.png" value='jqt.blacktie'>Black Tie</option> 	
+				<option data-image="img/tabs/jqueryui.png" value='jqt.blitzer'>Blitzer</option> 				
+				<option data-image="img/tabs/jqueryui.png" value='jqt.cupertino'>Cupertino</option> 	
+				<option data-image="img/tabs/jqueryui.png" value='jqt.darkhive'>Dark Hive</option> 					
+				<option data-image="img/tabs/jqueryui.png" value='jqt.darkness'>Darkness</option> 				
+				<option data-image="img/tabs/jqueryui.png" value='jqt.dotluv'>Dot Luv</option> 	
+				<option data-image="img/tabs/jqueryui.png" value='jqt.eggplant'>Egg Plant</option> 				
+				<option data-image="img/tabs/jqueryui.png" value='jqt.excitebike'>Excite Bike</option> 				
+				<option data-image="img/tabs/jqueryui.png" value='jqt.flick'>Flick</option> 	
+				<option data-image="img/tabs/jqueryui.png" value='jqt.hotsneaks'>Hot Sneaks</option> 				
+				<option data-image="img/tabs/jqueryui.png" value='jqt.humanity'>Humanity</option> 
+				<option data-image="img/tabs/jqueryui.png" value='jqt.lefrog'>Le Frog</option> 				
+				<option data-image="img/tabs/jqueryui.png" value='jqt.lightness'>Lightness</option> 	
+				<option data-image="img/tabs/jqueryui.png" value='jqt.mintchoc'>Mint Choc</option> 				
+				<option data-image="img/tabs/jqueryui.png" value='jqt.overcast'>Over Cast</option> 	
+				<option data-image="img/tabs/jqueryui.png" value='jqt.peppergrinder'>Pepper Grinder</option> 				
+				<option data-image="img/tabs/jqueryui.png" value='jqt.redmond'>Redmond</option> 	
+				<option data-image="img/tabs/jqueryui.png" value='jqt.smoothness'>Smoothness</option> 				
+				<option data-image="img/tabs/jqueryui.png" value='jqt.southstreet'>South Street</option> 
+				<option data-image="img/tabs/jqueryui.png" value='jqt.start'>Start</option> 				
+				<option data-image="img/tabs/jqueryui.png" value='jqt.sunny'>Sunny</option> 	
+				<option data-image="img/tabs/jqueryui.png" value='jqt.swankpurse'>Swank Purse</option> 				
+				<option data-image="img/tabs/jqueryui.png" value='jqt.trontastic'>Trontastic</option> 	
+				<option data-image="img/tabs/jqueryui.png" value='jqt.vader'>Vader</option> 	
+</select> 
+
+<script>
+
+$('#wbChangejQueryTheme').change(function()
+{
+	var option  = $("option:selected", this);
+	var value   = this.value;
+
+	var THEME = value.replace ( 'jqt.' , ''  ) ;
+	
+	$('#id_jQueryTheme').empty() ;	
+	
+	wbChangeCss ( "lib/jQueryTheme/jquery-ui-1.12.1."+THEME+"/jquery-ui.min.css" , "id_jQueryTheme" ) 
+
+  // qui non va riazzerato, perchè evidenzia la skin caricata
+});
+</script>
+ 
+<!-- ########## -->
+<!-- JAVASCRIPT -->
+<!-- ########## -->
+
+<script>
+
+
+/******************************
+	(drag/resize)-able Widget
+******************************/
+
+window.wbWorkAreaVisualHtmlFlag = false ;
+window.wbWorkAreaEditorHtmlFlag = false ;
+
+$('#wbWorkAreaVisualHtml').mousemove(function()
+{
+    //console.log ( '#wbWorkAreaVisualHtml.mousemove 2 ' ) ;
+
+	window.wbWorkAreaVisualHtmlFlag = true ;
+	window.wbWorkAreaEditorHtmlFlag = false ;
+
+	var x = $('#wbWorkAreaVisualHtml').html()
+	window.wbWorkAreaEditorHtml.setValue( x ) ;	
+	
+	// CodeMirrorAutoFormat (window.wbWorkAreaEditorHtml )	;	
+	
+});
+
+//********** 
+//			makeDraggableResizable
+//**********
+
+// drag disable in 'p', so you can 'select text'
+
+function makeDraggableResizable()
+{
+	
+	$( ".widget" ).draggable(
+	{ 
+		cancel: 'p',containment: "#wbWorkAreaVisualHtml",
+		grid: [ window.wb_snap.x, window.wb_snap.y ] ,
+		
+		stop: function ()
+		{
+			console.log ( "#dragging::stop::widgetUnit" );
+			console.log ( widget.unit );			
+			if ( widget.unit == '%' )
+			{
+				// posiziona il widget in base alla percentuale
+				var l = ( 100 * parseFloat($(this).css("left")) / parseFloat($(this).parent().css("width")) )+ "%" ;
+				var t = ( 100 * parseFloat($(this).css("top")) / parseFloat($(this).parent().css("height")) )+ "%" ;
+				$(this).css("left" , l);
+				$(this).css("top" , t);
+			}
+		}
+	 
+	}).resizable() 
+
+}
+
+//**********
+// Questa funzione elimina quello che jquery resizable aggiunde in tempo reale,
+// va fatto per evitare di traspostare il codice cha andrà a finire in aggiunta +=
+//**********
+
+function wbFormattaHtml ( x )
+{
+	x = x.replaceAll ( '<div class=\"ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se\" style=\"z-index: 90;\"></div>' , '' ) 
+	x = x.replaceAll ( '<div class=\"ui-resizable-handle ui-resizable-e" style="z-index: 90;\"></div>' , '' );
+	x = x.replaceAll ( '<div class=\"ui-resizable-handle ui-resizable-s" style="z-index: 90;\"></div>' , '' );
+	x = x.replaceAll ( '<div class=\"ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se\" style=\"z-index: 90; display: block;\"></div>' , '' ) ;
+ 
+	return x ;
+}
+
+function CodeMirrorAutoFormat ( editor ) 
+{
+	//
+	// REPULISTA
+	//
+	var text = window.wbWorkAreaEditorHtml.getValue() ;
+
+	text = text.replaceAll (  ' ui-draggable ui-draggable-handle ui-resizable' , ''  );
+	text = text.replaceAll (  'ui-draggable ui-draggable-handle ui-resizable' , ''  );	
+	text = text.replaceAll (  'style="box-shadow: rgb(136, 136, 136) 10px 10px 5px;"' , '' );
+	text = text.replaceAll (  'box-shadow: rgb(136, 136, 136) 10px 10px 5px;' , '' );
+	text = text.replaceAll (  'style=""',  '' )	
+	text = text.replaceAll (  'class=""',  '' )	
+
+	window.wbWorkAreaEditorHtml.setValue(text) ;	
+	//
+	// AUTOFORMAT
+	//	
+	var totalLines = editor.lineCount();  
+	editor.autoFormatRange({line:0, ch:0}, {line:totalLines});
+
+}
+$('#wbWorkAreaEditorHtml').mouseenter(function()
+{
+	x = wbFormattaHtml ( x ) ;
+	
+	window.wbWorkAreaEditorHtml.setValue( x ) ;	
+});
+
+$('#wbWorkAreaVisualHtml').mouseenter(function()
+{
+	window.wbWorkAreaVisualHtmlFlag = true ;
+	window.wbWorkAreaEditorHtmlFlag = false ;
+	
+	var x = $('#wbWorkAreaVisualHtml').html()
+
+	x = wbFormattaHtml ( x ) ;
+	
+	window.wbWorkAreaEditorHtml.setValue( x ) ;	
+
+	CodeMirrorAutoFormat (window.wbWorkAreaEditorHtml )	;
+	
+	// ...................................... draggable resizable +
+
+	makeDraggableResizable() ;
+
+});
+
+$('#wbWorkAreaVisualHtml').mouseleave(function()
+{
+   	window.wbWorkAreaVisualHtmlFlag = false ;
+	window.wbWorkAreaEditorHtmlFlag = true ;
+	
+	var x = $('#wbWorkAreaVisualHtml').html()
+
+	x = wbFormattaHtml ( x )	
+	
+	window.wbWorkAreaEditorHtml.setValue( x ) ;		
+	
+	CodeMirrorAutoFormat (window.wbWorkAreaEditorHtml )	;
+	
+});
+
+//#######
+// GLOBAL
+//#######
+
+mouse = {} ; // .x .y .px .py (posizione assoulta) 
+elementUnderMouse = {} ; // .target .id .x .y .px .py .width .height (posizione relativa)
+
+widget = {} ; // .target .count
+widget.target = "default" ;
+widget.unit = "%" ;
+widget.count = 0 ;
+widget.position = 'absolute' ;
+ 
+//#######
+// EVENTS
+//#######
+
+// ############################################################################# container : mouse move
+
+
+$('#wbWorkAreaVisualHtml').mousemove(function(e) 
+{
+   // console.log ( '#wbWorkAreaVisualHtml.mousemove 1 ' ) ;
+	
+ 	// ................................................................. get mouse position
+	
+	mouse.x  =  ( e.pageX - $(document).scrollLeft() - $('#wbWorkAreaVisualHtml').offset().left ) ;
+	mouse.y  =  ( e.pageY - $(document).scrollTop()  - $('#wbWorkAreaVisualHtml').offset().top  ) ; 
+	mouse.px =  ( mouse.x * 100 / $('#wbWorkAreaVisualHtml').width() ) ;
+	mouse.py =  ( mouse.y * 100 / $('#wbWorkAreaVisualHtml').height() ) ;
+	
+	// ................................................................. get element under mouse in wbWorkAreaVisualHtml
+	
+	var elementUnderMouseNodeList = document.querySelectorAll( ":hover" );
+	elementUnderMouse.start = elementUnderMouseNodeList[elementUnderMouseNodeList.length-1]
+
+	// ................................................................. per evitare 'undefined element' quando 'scroll'
+	
+	if (elementUnderMouse.start==undefined		) return ; 
+	if (elementUnderMouse.start=='wbWorkAreaVisualHtml'	) return ;
+	
+    // l'elemento deve essere figlio di wbWorkAreaVisualHtml con un ID e non riferito al ruler senza ID
+	// if ( $(elementUnderMouse.start).attr('id') == undefined ) return ;
+	
+	if ( widget.position == "fixed" ) // se posizione fissa v agganciato a wbWorkAreaVisualHtml e diventa pos. absolute; 
+	{
+		window.elementUnderMouse.target 	= $('#wbWorkAreaVisualHtml')
+		widget.position = 'absolute';
+	}
+	else // ............. padre = elemento sotto il cursore
+	{
+		window.elementUnderMouse.target 	= elementUnderMouseNodeList[elementUnderMouseNodeList.length-1] ;	
+	}
+	elementUnderMouse.x  		= ( e.pageX - $(document).scrollLeft() - $(elementUnderMouse.start).offset().left ) ;
+	elementUnderMouse.y  		= ( e.pageY - $(document).scrollTop()  - $(elementUnderMouse.start).offset().top  ) ;
+	
+	elementUnderMouse.width  	= ( $(elementUnderMouse.target).outerWidth(true)  ) ;
+	elementUnderMouse.height 	= ( $(elementUnderMouse.target).outerHeight(true) ) ;	
+	elementUnderMouse.px 		= ( elementUnderMouse.x * 100.0 / elementUnderMouse.width  ) ;
+	elementUnderMouse.py 		= ( elementUnderMouse.y * 100.0 / elementUnderMouse.height ) ;	
+
+	// console.debug ( "#wbContainerWorkAreaVisualHtml mousemove() : element Under Mouse : "  ) ;
+	// console.debug ( $(elementUnderMouse.target) ) ;
+    // 1234
+	//console.log ( 'element under mouse'  );
+	//console.log ( window.elementUnderMouse.target  );
+	
+	// ............................................. evidenzia elemento target
+	if  ( window.elementUnderMousePrev != undefined )  
+	{	
+		$(window.elementUnderMousePrev).css (  'box-shadow' ,'' ) ;
+	}
+
+	//console.debug ( "#elementUnderMouse.target" ) ;
+	
+	// ....................... a seguenti elementi viene tolta l'ombreggiatura
+	// ....................... la selezione può essere fatto solo su elementi <p> 
+	
+	// TODO
+	// ....................... <p> <b> <u> <em> <s> <sub> <sup> <q> <span> <s>
+	var t = $(elementUnderMouse.target).is('p,b,u,em,s,sub,sup,q,span,s,h1,h2,h3,h4,h5,h6') 
+	//console.debug ( t ) ;
+	
+	if (  t == false ) 
+	{
+		$(elementUnderMouse.target).css (  'box-shadow' ,'10px 10px 5px #888888' ) ;
+		window.elementUnderMousePrev = elementUnderMouse.target ;
+	}
+
+
+	if ( widget.unit == 'px' ) 
+	{
+		var mousePos 	= ' Mouse :' + mouse.x +' / ' + mouse.y + ' x/y' ;
+		var childPPos 	= $(elementUnderMouse.target).attr('id') + ' ' + elementUnderMouse.x +' / ' + elementUnderMouse.y +' x%/y%' ;
+	}
+	else
+	{
+		var mousePos 	= ' Mouse :' + parseInt(mouse.px) +' / ' + parseInt(mouse.py) + ' x/y' ;
+		var childPPos 	= $(elementUnderMouse.target).attr('id') + ' ' + parseInt(elementUnderMouse.px) +' / ' + parseInt(elementUnderMouse.py) +' x%/y%' ;
+	}
+	
+	//console.debug ( "#wbContainerWorkAreaVisualHtml::ElementUnderMouse::"  );
+	//console.debug ( elementUnderMouse.target );
+
+	//********
+	// info
+	//********
+		
+	if ( widget.unit == 'px' ) 
+	{
+		W = 	$('#wbBorderWorkAreaVisualHtml').width()
+		H = 	$('#wbBorderWorkAreaVisualHtml').height()
+		X = mouse.x
+		Y = mouse.y
+		$('.wbUnitWH').html('px');
+	}
+	else
+	{
+		W = 100
+		H = 100
+		X = mouse.px
+		Y = mouse.py
+		$('.wbUnitWH').html('%');		
+	}	
+
+	if (X>W) X=W;
+	if (X<0) X=0;	
+	if (Y>H) Y=H;
+	if (Y<0) Y=0;	
+	
+	$('#wbGetWidth').val ( parseInt(X) + ' / ' + parseInt(W) )
+	$('#wbGetHeight').val ( parseInt(Y) + ' / ' + parseInt(H) )
+	
+});
+
+// ..................................................................... wbWorkAreaVisualHtml : click
+
+$("#wbWorkAreaVisualHtml").click ( function(e) 
+{
+	console.log ( '#wbWorkAreaVisualHtml::click.widget.target' );
+	console.log ( widget.target 	)
+	console.log ( '#wbWorkAreaVisualHtml::click.widgetSelect'  );
+	console.log (  $( "#widgetSelect" ).val()  )
+	
+    if ( ( widget.target != undefined )  )
+	{
+		wbWidgetCreate ( widget.target ) ;
+		$('#wbWorkAreaVisualHtml').css('cursor', 'default')
+	}
+
+});
+
+
+$("#wbWorkAreaVisualHtml").mousedown ( function(e) 
+{
+	$('#wbWorkAreaVisualHtml').css('cursor','default') ;
+});
+
+
+// ..................................................................... widgetSelect : change
+
+$( "#widgetSelect" ).change(function() 
+{
+    var optionSelected = $("option:selected", this);
+    var valueSelected = this.value;
+	
+    widget.target = valueSelected ;
+
+	console.debug ( "#widgetSelect change() : widget.target:" ) ;
+	console.debug ( widget.target) ;
+	
+	$('#wbWorkAreaVisualHtml').css('cursor','pointer') ;
+
+	$("#widgetSelect").val("default");
+});
+
+// ..................................................................... widgetSelectJQ : change
+
+$( "#widgetSelectJQ" ).change(function() 
+{
+    var optionSelected = $("option:selected", this);
+    var valueSelected = this.value;
+	
+    widget.target = valueSelected ;
+
+	console.debug ( "#widgetSelectJQ change() : widget.target:" ) ;
+	console.debug ( widget.target) ;
+	
+	$('#wbWorkAreaVisualHtml').css('cursor','pointer') ;
+
+	$("#widgetSelectJQ").val("default");
+});
+
+
+// ************************
+// Widget Unit Position
+// ************************ 
+
+// ..................................................................... widgetUnit : change
+
+$( "#widgetUnit" ).change(function() 
+{
+    var optionSelected = $("option:selected", this);
+    var valueSelected = this.value;
+	
+    widget.unit = valueSelected ;
+
+	$('.wbUnitWH').html( widget.unit ) 
+
+	if ( widget.unit=='%')
+	{
+		$('#wbGetWidth').val( '100' ) 
+		$('#wbGetHeight').val( '100' ) 	
+	}
+	else		
+	{
+		$('#wbGetWidth').val( $('#wbWorkAreaVisualHtml').width() ) 
+		$('#wbGetHeight').val( $('#wbWorkAreaVisualHtml').height() ) 
+	}
+
+
+	console.debug ( "#widgetUnit change() : widget.unit:",widget.unit) ;
+});
+
+
+// ..................................................................... widgetPosition : change
+
+$( "#widgetPosition" ).change(function() 
+{
+    var optionSelected = $("option:selected", this);
+    var valueSelected = this.value;
+	
+    widget.position = valueSelected ;
+
+	console.debug ( "widgetPosition change() : widget.position:",widget.position) ;
+});
+
+// ************************
+// wb_snap_to_grid_onchange
+// ************************ 
+
+// wb_snap = {}
+// wb_snap.x = 1 ;
+// wb_snap.y = 1 ;
+
+window.wb_snap = {} ;
+window.wb_snap.x = 1 ;
+window.wb_snap.y = 1 ;
+
+function wb_snap_to_grid_onchange()
+{
+	var temp = document.getElementById("wb_snap_to_grid_select").value 
+	window.wb_snap =  JSON.parse( temp  )
+	console.debug ( '#wb_snap_to_grid_onchange' );
+	console.debug ( wb_snap );
+	
+}
+
+// ************************
+// DBLCLICK
+// ************************ 
+
+window.flagCodeMirrorCustomSearch = false
+window.textCodeMirrorCustomSearch = null
+
+function wbVisualizzaWidgetInCM( x ) 
+{
+		if ( x == undefined ) 
+		{
+			console.error ( '? wbWorkAreaVisualHtml :: ID undefined' ) ;
+		}
+		else
+		{
+			window.flagCodeMirrorCustomSearch = true
+			window.textCodeMirrorCustomSearch = x
+			window.wbWorkAreaEditorHtml.execCommand("find"); 
+			window.flagCodeMirrorCustomSearch = false	
+		}	
+}
+
+$("#wbWorkAreaVisualHtml").dblclick ( function(e) 
+{
+	console.log ( '#wbWorkAreaVisualHtml::dbclick' ) ;
+
+	var ID = null ;
+    if ( elementUnderMouse.target != undefined ) 
+	{
+		ID = $(elementUnderMouse.target).attr('id');
+		wbVisualizzaWidgetInCM( ID ) ;
+	}
+
+});
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

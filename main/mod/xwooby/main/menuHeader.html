@@ -1,0 +1,421 @@
+
+<!-- MenuHeader.html -->
+
+
+<style>
+
+select
+{
+	width:200px !important;
+}
+
+#wbProjectSelect
+{
+	float:right;
+	max-width:150px;
+ 
+}
+
+</style>
+
+
+<select id="wbProjectSelect" class="dd" >
+	<option style="display: none;" disabled="disabled" selected="selected" value="" data-image="img/tabs/project.png">Project</option>
+
+			<option value="new.base" 		data-image="img/tabs/ico-default.png">New</option>
+			<option value="load" 			data-image="img/tabs/ico-default.png">Load</option>
+			<option value="save" 			data-image="img/tabs/ico-default.png">Save</option>
+			<option value="delete" 			data-image="img/tabs/ico-default.png">Delete</option>	
+ 
+		<optgroup label="Template">
+			<option value="new.include" 	data-image="img/tabs/ico-default.png">Include</option>		
+		</optgroup> 
+		
+		<optgroup label="demo">
+			<option value="mandelbroat" 	data-image="img/tabs/mandelbroat.png">Mandelbroat</option>		
+		</optgroup> 
+		
+		<optgroup label="Release">
+			<option value="build" 			data-image="img/tabs/build.png" >Build</option>
+			<option value="run" 			data-image="img/tabs/run.png" >Run</option>
+			<option value="minify" 			data-image="img/tabs/minify.png" >Minify</option>
+			<option value="deploy"			data-image="img/tabs/ico-default.png" >Deploy</option>
+		</optgroup> 
+		
+</select>
+
+<select id="wbModuleSelect" class="dd" >
+	<option style="display: none;" disabled="disabled" selected="selected" value="" data-image="img/tabs/module.png">Module</option>
+		<option value="mod.body" 			data-image="img/tabs/ico-default.png">BODY</option>
+		<optgroup label="Module">		
+			<option value="mod.html" 		data-image="img/tabs/ico-default.png">html</option>
+			<option value="mod.js" 			data-image="img/tabs/ico-default.png">javascript</option>
+			<option value="mod.css" 		data-image="img/tabs/ico-default.png">css</option>	
+			<option value="mod.doc" 		data-image="img/tabs/ico-default.png">doc</option>
+			<option value="mod.php" 		data-image="img/tabs/ico-default.png">php</option>			
+		</optgroup> 		
+</select>
+
+<select id="wbToolsSelect" class="dd" >
+	<option style="display: none;" disabled="disabled" selected="selected" value="" data-image="img/tabs/tools.png">Tools</option>
+
+		<option value="webColor" 			data-image="img/tabs/color.png">Web Color</option>
+		<option value="tableGen" 			data-image="img/tabs/table.png">Table Generator</option>	
+		<option value="fileManager" 		data-image="img/tabs/favicon.png">File Manager</option>		
+		<option value="editor3d" 			data-image="img/tabs/xyz.png">Editor 3D</option>
+		<option value="server" 				data-image="img/tabs/adminer.png">Server</option>
+		<option value="ckEditor" 			data-image="img/tabs/ck.png">CK Editor</option>
+		<option value="w3cValidation" 		data-image="img/tabs/w3c.png">w3c Validation</option>		
+		
+</select>
+<!--
+<select id="wbCordovaSelect" class="dd" >
+	<option style="display: none;" disabled="disabled" selected="selected" value="" data-image="img/tabs/cordova.png">Cordova</option>
+
+		<option value="cordova.menu" 		data-image="img/tabs/shell.png">Menu</option>
+		<option value="cordova.resizer" 	data-image="img/tabs/resizer.png">Resizer</option>	
+		
+</select>
+-->
+<div id="wbHelpMenu" style="display:inline-block;float:right;"></div>
+
+<script>
+
+
+	
+function wbProjectSave( f )
+{
+	console.log  ( '#wbwbFileSave ( file,data,dialog,callback  )' );  
+
+	wbFileSave ( '../'+window.project.name+'/src/0_xml.txt'			,	$('#wb_xml_edit').val() 			,false )	 ;
+	wbFileSave ( '../'+window.project.name+'/src/1_doctype.txt'		,	$('#wb_doctype_edit').val()			,false ) 	 ;
+	wbFileSave ( '../'+window.project.name+'/src/2_html.txt'		,	$('#wb_html_edit').val()			,false )	 ;
+	wbFileSave ( '../'+window.project.name+'/src/3_title.txt'		,	$('#wb_title_edit').val()			,false ) 	 ;
+	wbFileSave ( '../'+window.project.name+'/src/4_icon.txt'		,	$('#wb_icon_edit').val()			,false )	 ;
+	wbFileSave ( '../'+window.project.name+'/src/5_meta.txt'		,	$('#wb_meta_edit').val()			,false )	 ;
+	wbFileSave ( '../'+window.project.name+'/src/6_include.txt'		,	$('#wb_include_edit').val()			,false )	 ;
+	wbFileSave ( '../'+window.project.name+'/src/7_redirect.txt'	,	$('#wb_redirect_edit').val()		,false )	 ;
+
+/*
+	//wbFileSave ( '../'+window.project.name+'/src/8_body.txt'		,	window.wb_editor_javascript.getValue() 				) ;
+*/	
+	wbFileSave ( '../'+window.project.name+'/src/9_webMain.txt'		,	window.wbWorkAreaEditorHtml.getValue() 	)	 ;
+
+
+	wbFileSave ( '../'+window.project.name+'/src/project_name.txt'			,	$('#wbProjectField_Name').val() 			)	 ;
+	wbFileSave ( '../'+window.project.name+'/src/project_id.txt'			,	$('#wbProjectField_id').val() 				)	 ;
+	//wbFileSave ( '../'+window.project.name+'/src/project_uid.txt'			,	$('#wbProjectField_uid').val() 				)	 ;
+	wbFileSave ( '../'+window.project.name+'/src/project_version.txt'		,	$('#wbProjectField_version').val() 			)	 ;
+	wbFileSave ( '../'+window.project.name+'/src/project_lastchange.txt'	,	$('#wbProjectField_lastchange').val() 		)	 ;
+	
+	wbFileSave ( '../'+window.project.name+'/authors.txt'					,	$('#wbProjectField_authors').val() 			)	 ;
+	wbFileSave ( '../'+window.project.name+'/readMe.txt'					,	$('#wbProjectField_readme').val() 			)	 ;
+	wbFileSave ( '../'+window.project.name+'/changeLog.txt'					,	$('#wbProjectField_changelog').val() 		)	 ;
+	wbFileSave ( '../'+window.project.name+'/license.txt'					,	$('#wbProjectField_license').val() 			)	 ;
+	
+
+	wbMessage ( 'Project' , '<br><<< '+window.project.name+' >>><br> Saved.'  ) ;
+	
+}
+
+
+//................................................... wbProjectLoad
+
+function wbProjectLoad(  )
+{
+	console.debug('wbProjectLoad::',window.project.name )
+
+	$.get( '../'+window.project.name+'/src/0_xml.txt'			, function( data ) {  $('#wb_xml_edit').val(data)		}	);
+	$.get( '../'+window.project.name+'/src/1_doctype.txt'		, function( data ) {  $('#wb_doctype_edit').val(data)	}	);
+	$.get( '../'+window.project.name+'/src/2_html.txt'			, function( data ) {  $('#wb_html_edit').val(data)	 	}	);
+	$.get( '../'+window.project.name+'/src/3_title.txt'			, function( data ) {  $('#wb_title_edit').val(data)	 	}	);
+	$.get( '../'+window.project.name+'/src/4_icon.txt'			, function( data ) {  $('#wb_icon_edit').val(data)		}	);
+	$.get( '../'+window.project.name+'/src/5_meta.txt'			, function( data ) {  $('#wb_meta_edit').val(data)		}	);
+	$.get( '../'+window.project.name+'/src/6_include.txt'		, function( data ) {  $('#wb_include_edit').val(data)	}	);
+	$.get( '../'+window.project.name+'/src/7_redirect.txt'		, function( data ) {  $('#wb_redirect_edit').val(data)	}	);
+
+	$.get( '../'+window.project.name+'/src/9_webMain.txt'		, function( data ) 
+	{  
+		window.wbWorkAreaEditorHtml.setValue(data) ;
+	});
+
+	$.get( '../'+window.project.name+'/src/project_name.txt'		, function( data ) {  $('#wbProjectField_Name').val(data)			}	);
+	$.get( '../'+window.project.name+'/src/project_id.txt'			, function( data ) {  $('#wbProjectField_id').val(data)				}	);
+
+//	
+	$.get( '../'+window.project.name+'/src/project_uid.txt'			, function( data ) 
+	{  
+		var s = "{}" ;
+		s =  JSON.parse( data )	
+		var temp = '{ ' +s.x + ' / ' + s.y + ' }'
+		$('#wbProjectField_uid').val(temp)			
+	}	);
+//
+	$.get( '../'+window.project.name+'/src/project_version.txt'		, function( data ) {  $('#wbProjectField_version').val(data) 		}	);
+	$.get( '../'+window.project.name+'/src/project_lastchange.txt'	, function( data ) {  $('#wbProjectField_lastchange').val(data) 	}	);
+
+	$.get( '../'+window.project.name+'/authors.txt'					, function( data ) {  $('#wbProjectField_authors').val(data) 		}	);
+	$.get( '../'+window.project.name+'/readMe.txt'					, function( data ) {  $('#wbProjectField_readme').val(data) 		}	);
+	$.get( '../'+window.project.name+'/changeLog.txt'				, function( data ) {  $('#wbProjectField_changelog').val(data) 		}	);
+	$.get( '../'+window.project.name+'/license.txt'					, function( data ) {  $('#wbProjectField_license').val(data) 		}	);
+
+	wbMessage( 	'Project','<br> <<< ' + window.project.name + ' >>><br> Loaded ' ) ;
+
+}
+
+//................................................... wbProjectSelect : change
+
+$('#wbProjectSelect').change ( function(e) 
+{
+
+	var scelta = $("#wbProjectSelect").val()
+	console.debug ( 'wbProjectSelect : change ',scelta )  ;
+
+	// ............................................ NEW ( base , include );
+	
+	if ( 
+		( scelta == 'new.base' ) 	|| 
+		( scelta == 'new.include' ) || 
+		( scelta == 'mandelbroat' )
+	)
+	{
+			var form = ''
+
+			form += '<br><br>'
+			form += '<br>New Project Name:'
+			form += '<br>'		
+			form += '<br><input type="Data" name="projectName" value="project">'
+			form += '<br><br>'
+
+			wbForm ( 'Project',form , function ( data ) 
+			{ 
+				console.debug ( '#wbForm::ProjectName::') ;
+				console.debug ( data ) ;			
+		 
+				if ( ( data.projectName != 'main' ) ) // no questo è la directory di WOOBY
+				{
+				
+					window.project.name  = data.projectName ;				
+					var source  = 'template/project/' + scelta ;
+					var dest    = '../'+window.project.name ;
+					
+					console.debug ( 'copy from ' + source + ' to ' + dest  );
+					
+					wbFileCopyTree ( source , dest , function (data)
+					{
+						wbMessage ( 'Project' , '<br><<< ' + window.project.name + ' >>><br> Created. ' );
+						Update();
+					})
+				}
+				else
+				{
+					wbError ( ' Project Name :<br> <<< <b>main</b> >>> <br>Not Allowed ' );
+				}
+
+			}) ; 
+
+			
+	}
+	// ............................................ DELETE
+	if ( scelta == 'delete' ) 
+	{
+			wbConfirm ( 'Confim' , 'Deletetion <br><<< ' + window.project.name + ' >>> <br>Project ?' , function (data)
+			{
+				var dir = '../' + window.project.name
+				wbRemoveDirTree ( dir , function (data)
+				{
+					console.debug ( 'Project' , '<<< ' + window.project.name + ' >>> Deleted. '  );
+					wbMessage ( 'Project' , '<br><<< ' + window.project.name + ' >>> <br>Deleted. ' );
+					Update();
+				})			
+			});
+	}	
+ 	// ............................................ LOAD
+	if ( scelta == 'load' ) 
+	{
+		wbProjectLoad();	
+	}	
+	// ............................................ SAVE
+	if ( scelta == 'save' ) 
+	{
+		wbProjectSave();	
+	}	
+	// ............................................ BUILD
+	if ( scelta == 'build' ) 
+	{
+		wbProjectBuild();
+	}		
+	// ............................................ RUN
+	if ( scelta == 'run' ) 
+	{
+		window.open('../'+window.project.name+'/index.html','_blank')
+	}	
+	// ............................................ MINIFY
+	if ( scelta == 'minify' ) 
+	{
+		window.open('lib/htmlMinifier/index.html?project='+window.project.name,'_blank')
+	}	
+	
+    //
+	
+	$('#wbProjectSelect').val("");
+	
+});
+
+//................................................... wbProjectSelect : change
+
+$('#wbModuleSelect').change ( function(e) 
+{
+
+	var scelta = $("#wbModuleSelect").val()
+	console.debug ( 'wbModuleSelect : change ',scelta )  ;
+	
+
+	// ................................................ passa direttamente al file predefinito
+	if (  scelta == 'mod.body'   )
+	{
+		console.debug ( '##module#go_body_edit' ) ;
+		// 8_body.txt :: file principale BODY
+		window.open('weditor.html?project='+window.project.name+'&module=src/8_body.txt','_blank')
+		$('#wbModuleSelect').val("");		
+		return 		
+	}
+
+	// ............................................................... mod.html mod.cjs mod.css
+ 	if (  scelta.substring(0,4) == 'mod.'   )
+	{
+		console.debug ( '##module#get_file' ) ;
+		console.debug ( scelta.substring(0,4) ) ;
+
+		var editor = 'seditor.html' ;
+		var ext = 'doc' ;
+		
+		if ( scelta == 'mod.html' )
+		{
+			editor = 'weditor.html'
+			ext = 'mod'
+		}
+		if ( scelta == 'mod.js' )
+		{
+			editor = 'seditor.html'
+			ext = 'js'
+		}
+		if ( scelta == 'mod.css' )
+		{
+			editor = 'seditor.html'
+			ext = 'css'
+		}		
+		if ( scelta == 'mod.doc' )
+		{
+			editor = 'seditor.html'
+			ext = 'doc'
+		}
+		if ( scelta == 'mod.php' )
+		{
+			editor = 'seditor.html'
+			ext = 'php'
+		}
+		
+		wbGetFile ( '.'+ext , function (data) 
+		{
+			console.log ( '::fileName' ) ;		
+			console.log ( data ) ;
+	
+			if ( data != null )
+			{
+				console.debug ( '##module#seditor' ) ;
+				// 8_body.txt :: file principale BODY
+				window.open(editor+'?project='+window.project.name+'&module='+ext+'/'+data+'','_blank')	;
+			}
+		
+		});
+	}
+
+	$('#wbModuleSelect').val("");	
+});
+
+//*************
+//				wbToolsSelect
+//*************
+
+$('#wbToolsSelect').change ( function(e) 
+{
+	var scelta = $("#wbToolsSelect").val()
+	console.debug ( 'wbToolsSelect : change ',scelta )  ;
+	
+	if ( scelta ==  'webColor' )
+	{
+		console.debug ( '#webColor' ) ;
+		window.open( 'tools/webColor/00 color.html','_blank')	;
+	}
+	if ( scelta ==  'tableGen' )
+	{
+		console.debug ( '#tableGen' ) ;
+		window.open( 'tools/HTMLTableGenerator/HTMLTableGenerator.html','_blank')	;
+	}		
+	
+	if ( scelta ==  'editor3d' )
+	{
+		console.debug ( '#webColor' ) ;
+		window.open( 'lib/three.js/editor/index.html','_blank')	;
+	}
+	if ( scelta ==  'server' )
+	{
+		console.debug ( '#server' ) ;
+		window.open( 'lib/server/adminer-4.3.1.php','_blank')	;
+	}	
+	if ( scelta ==  'fileManager' )
+	{
+		console.debug ( '#fileManager' ) ;
+		window.open( 'lib/phpFileManager-0.9.9/index.php','_blank')	;
+	}
+	if ( scelta ==  'ckEditor' )
+	{
+		console.debug ( '#CKEditor' ) ;
+		window.open( 'lib/ckeditor_4.6.2_full/samples/index.html','_blank')	;
+	}
+
+	if ( scelta ==  'w3cValidation' )
+	{
+		console.debug ( '#w3cValidation' ) ;
+		window.open( 'https://validator.w3.org/#validate_by_uri','_blank')	;
+	}
+		
+	
+	$('#wbToolsSelect').val("");
+	
+});
+
+//*************
+//				wbToolsSelect
+//*************
+
+$('#wbCordovaSelect').change ( function(e) 
+{
+	var scelta = $("#wbCordovaSelect").val()
+	console.debug ( 'wbCordovaSelect : change ',scelta )  ;
+	
+	if ( scelta ==  'cordova.menu' )
+	{
+		console.debug ( '#cordova.menu' ) ;
+		window.open( '../../cordovaX/mainMenu/main.html?project='+window.project.name,'_blank')	;
+	}
+	if ( scelta ==  'cordova.resizer' )
+	{
+		console.debug ( '#cordova.resizer' ) ;
+		window.open( '../../cordovaX/mainResizer/main.html?project='+window.project.name,'_blank')	;
+	}	
+	$('#wbCordovaSelect').val("");
+	
+});
+</script>
+
+
+
+
+
+
+
+
+
+

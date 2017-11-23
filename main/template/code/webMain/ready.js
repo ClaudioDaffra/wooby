@@ -1,0 +1,11 @@
+
+
+//****** 
+//		READY
+//****** 
+
+$( document ).ready(function() 
+{
+
+});
+

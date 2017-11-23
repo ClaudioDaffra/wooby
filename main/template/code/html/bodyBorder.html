@@ -1,0 +1,75 @@
+
+
+<!-- ### -->
+<!-- CSS -->
+<!-- ### -->
+
+<style>
+
+#top, #bottom, #left, #right 
+{
+	background: white;
+}
+#left, #right 
+{
+	position: fixed;
+	top: 0; bottom: 0;
+	width: 5px;
+}
+#left 
+{ 
+	left: 0; 
+}
+#right 
+{ 
+	right: 0; 
+}
+
+#top, #bottom 
+{
+	position: fixed;
+	left: 0; right: 0;
+	height: 5px;
+}
+#top 
+{ 
+	top: 0; 
+}
+#bottom 
+{ 
+	bottom: 0; 
+}
+#main
+{
+	position:absolute;
+	left:5px;
+	top:5px;
+	width: calc(100% - 12px);
+	height: calc(100% - 12px);
+	border: 1px solid red;
+}
+
+body
+{
+	overflow:hidden;
+}
+
+</style>
+
+
+<!-- #### -->
+<!-- BODY -->
+<!-- #### -->
+
+
+
+<div id="main">
+</div>
+	
+<div id="left"></div>
+<div id="right"></div>
+<div id="top"></div>
+<div id="bottom"></div>
+	
+
+

@@ -1,0 +1,137 @@
+
+<!-- 
+
+	Modulo : WebMainEditor.html
+
+-->
+
+
+<!-- ### -->
+<!-- CSS -->
+<!-- ### -->
+
+
+<style>
+
+#wbWorkAreaEditorHtmlDiv
+{
+	position:relative;
+	top:0px;
+	left:00%;
+	width:100%;
+	height:100%;
+	
+	background:silver;
+	border: 1px solid black;
+    box-sizing: border-box;	
+	z-index:90;	
+}
+
+#wbWorkAreaEditorHtml
+{
+
+	width:100%;
+	height:90%;
+	border: 1px solid black;
+    box-sizing: border-box;	
+	
+}
+</style>
+ 
+
+<!-- #### -->
+<!-- BODY -->
+<!-- #### -->
+
+<div id="wbWorkAreaEditorHtmlDiv">
+
+
+<select class="dd" id="wbFileHtmlCM" style="width:150px;max-height:5%;;" onchange="wbEditorHtmlCM(this)">
+
+		<option value="default" selected="selected"	data-image="img/widget_CM/filedefault.png">File</option>
+
+		<option value='clearAll' 			data-image="img/widget_CM/new.png">New</option>	
+	
+
+</select>
+
+<select class="dd" id="wbEditorHtmlCM" style="width:150px;max-height:5%;;" onchange="wbEditorHtmlCM(this)">
+
+		<option value="default" selected="selected"	data-image="img/widget_CM/editdefault.png">Edit</option>
+
+		<option value='undo' 				data-image="img/widget_CM/undo.png">undo</option>			
+		<option value='redo' 				data-image="img/widget_CM/redo.png">redo</option>
+		
+		<option value='undoSelection' 		data-image="img/widget_CM/undo.png">undo sel</option>			
+		<option value='redoSelection' 		data-image="img/widget_CM/redo.png">redo sel</option>	
+
+		<option value='indentMore' 			data-image="img/widget_CM/indenton.png">indent +</option>			
+		<option value='indentLess' 			data-image="img/widget_CM/indentoff.png">indent -</option>	
+		
+		<option value='selectAll' 			data-image="img/widget_CM/selectAll.png">SelectAll</option>			
+
+		
+</select>
+
+<select class="dd" id="wbSearchHtmlCM" style="width:150px;max-height:5%;;" onchange="wbEditorHtmlCM(this)">
+
+		<option value="default" selected="selected"	data-image="img/widget_CM/finddefault.png">Search</option>
+
+		<option value='find'  				data-image="img/widget_CM/find.png">Find</option>
+		<option value='findNext'  			data-image="img/widget_CM/findNext.png">Next</option>
+		<option value='findPrev'  			data-image="img/widget_CM/findPrev.png">Prev</option>	
+		<option value='findPersistentNext'  data-image="img/widget_CM/findNextx.png">Next+</option>
+		<option value='findPersistentPrev' 	data-image="img/widget_CM/findPrevx.png">Prev+</option>	
+		<option value='clearSearch' 		data-image="img/widget_CM/Clear.png">Clear</option>
+		<option value='replace'  			data-image="img/widget_CM/replace.png">Replace</option>
+		<option value='replaceAll' 			data-image="img/widget_CM/replaceAll.png">ReplaceALL</option>
+		<option value='jumpToLine' 			data-image="img/widget_CM/goto.png">Line</option>
+	
+		<option value='goDocStart' 			data-image="img/widget_CM/gotostart.png">Start</option>			
+		<option value='goDocEnd' 			data-image="img/widget_CM/gotoend.png">End</option>
+		
+</select>
+
+<div id="wbIncludeCodeTemplateWebMain" 		style="display:inline-block"></div>
+<div id="wbIncludeCodeTemplateJavascript" 	style="display:inline-block"></div>
+
+<textarea id="wbWorkAreaEditorHtml"></textarea>
+
+
+</div>
+ 
+<!-- ########## -->
+<!-- Search CM  -->
+<!-- ########## -->
+
+ 
+<script>
+ 
+function wbEditorHtmlCM(sender)
+{
+	console.debug ( '#wbEditorHtmlSelect' ) 
+	
+	var value = $(sender).val()
+	
+	console.debug ( value ) 	
+	
+	if ( value=='default') return ;
+
+		$(sender).val("default")
+	
+	if ( value == 'clearAll' ) 
+	{
+		console.log ( "file::new" );
+		window.wbWorkAreaEditorHtml.setValue("");
+		window.wbWorkAreaEditorHtml.clearHistory();	
+
+		return
+	}
+	
+	window.wbWorkAreaEditorHtml.execCommand(value); 
+	
+}
+
+ </script>
+ 
+

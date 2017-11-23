@@ -1,0 +1,130 @@
+
+
+	<select  id="wbCodeTemplateSelectIncludeModule" class="dd" style="width:120px;">		
+	<option value="" disabled="disabled" selected="selected" data-image="img/tabs/html-js-css.png">Page</option>
+		<optgroup label="#include">			
+			<option class="wbMainIncludeModule"	value="hinchtml"  	data-image="img/tabs/ico-default.png"  >HTML</option>
+			<option class="wbMainIncludeModule"	value="hincjs"  	data-image="img/tabs/ico-default.png"  >JS</option>
+			<option class="wbMainIncludeModule"	value="hinccss"  	data-image="img/tabs/ico-default.png"  >CSS</option>
+			<option class="wbMainIncludeModule"	value="hincphp"  	data-image="img/tabs/ico-default.png"  >PHP</option>			
+		</optgroup>	
+		<optgroup label="HTML">			
+			<option 							value="hrem"  		data-image="img/tabs/ico-default.png"  >Remark</option>	
+			<option 	 						value="bodyBorder"  data-image="img/tabs/ico-default.png"  >Body Border</option>
+			<option 	 						value="newID"  		data-image="img/tabs/ico-default.png"  >new ID</option>					
+		</optgroup>
+	</select>
+
+
+<script>
+
+$('#wbCodeTemplateSelectIncludeModule').change(function()
+{
+	console.debug ( '#wbCodeTemplateSelectIncludeModule:',this.value) ;
+	var scelta = this.value ;
+
+	$('#wbCodeTemplateSelectIncludeModule').val("")
+
+	var data = "" ;
+	
+	// ............................................ html remark
+	if ( scelta == 'hrem' ) 
+	{
+		data += "\n<!-- ******** --"+">\n";
+		data += "<!--  Remark  --"+">\n";
+		data += "<!-- ******** --"+">\n";	
+		data += "\n" ;
+
+		wbEditInsertTextAtCursor (  window.wbWorkAreaEditorHtml , data ) ;	
+		return ;	
+	}
+	
+	// ............................................ newID
+	if ( scelta == 'newID' ) 
+	{
+		// ........................................................ setID
+		var contatore =  ( +Date.now() ).toString(36);
+
+		data += ' id="_'+contatore+'" ';
+
+		wbEditInsertTextAtCursor (  window.wbWorkAreaEditorHtml , data ) ;	
+		return ;	
+	}
+	
+	// ............................................ Border
+	if ( scelta == 'bodyBorder' ) 
+	{
+        finput = 'template/code/html/bodyBorder.html' ;
+		console.debug ( 'file input : ' , finput  );
+		
+		$.get(finput,{ "_": $.now() }, function(data) 
+		{
+			wbEditInsertTextAtCursor (  window.wbWorkAreaEditorHtml , data ) ;
+
+		}, "text"); // carica il file come un .txt ( forzatura ) per impedire che venga eseguito in runtime.
+	
+	
+
+		wbEditInsertTextAtCursor (  window.wbWorkAreaEditorHtml , data ) ;	
+		return ;	
+	}	
+	
+	wbGetFile  ( '.html,.js,.css,.php' , function (data)
+	{
+		console.log ( '::fileName' ) ;		
+		console.log ( data ) ;
+
+		if ( data != null )
+		{
+			console.debug ( '##module#include' ) ;
+			wbIncludiModulo ( scelta,data );
+		}
+	
+	});
+	
+});
+
+
+function wbIncludiModulo ( scelta,ModuloNome ) 
+{
+    var data = "\n"
+
+
+	// ............................................ include module Html
+	if ( scelta == 'hinchtml' ) 
+	{
+		data = "\n<input type='html' class='wbIncludeModule' name='mod/"+ModuloNome+"' hidden>\n";
+	}
+	// ............................................ include module JS
+	if ( scelta == 'hincjs' ) 
+	{
+
+		data = "\n<input type='js' class='wbIncludeModule' name='js/"+ModuloNome+"' hidden>\n";
+		
+	}
+	// ............................................ include module CSS
+	if ( scelta == 'hinccss' ) 
+	{
+
+		data = "\n<input type='css' class='wbIncludeModule' name='css/"+ModuloNome+"' hidden>\n";
+		
+	}
+	// ............................................ include module PHP
+	if ( scelta == 'hincphp' ) 
+	{
+
+		data = "\n<input type='php' class='wbIncludeModule' name='php/"+ModuloNome+"' hidden>\n";
+		
+	}	
+	
+	
+	data += "\n" ;
+	
+	wbEditInsertTextAtCursor (  window.wbWorkAreaEditorHtml , data ) ;	
+}
+
+</script>
+
+
+
+

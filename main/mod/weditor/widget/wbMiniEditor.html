@@ -1,0 +1,539 @@
+
+
+
+<script>
+
+// ******************************************+ wbMiniEditor
+
+wbFormat = {}
+
+wbFormat.FontFamilyPlusDataList =  0
+wbFormat.HeaderPlusDataList 	=  0
+wbFormat.ColorPlusDataList 		=  0
+wbFormat.AlignPlusDataList 		=  0
+wbFormat.SizePlusDataList 		=  0
+
+wbFormat.FontFamilyValue 	=  'Courier, monospace'
+wbFormat.HeaderValue 		=  'h6'
+wbFormat.ColorValue 		=  'black'
+wbFormat.AlignValue 		=  'left'
+wbFormat.SizeValue 			=  '10px'
+
+function wbMiniEditorHideSelectAll()
+{
+	$('#wbSelectFontFamilyPlusDataList').hide()
+	wbFormat.FontFamilyPlusDataList =  0
+	
+	$('#wbSelectHeaderPlusDataList').hide()
+	wbFormat.HeaderPlusDataList =  0	
+	
+	$('#wbSelectColorPlusDataList').hide()
+	wbFormat.ColorPlusDataList =  0	
+	
+	$('#wbSelectAlignPlusDataList').hide()
+	wbFormat.alignPlusDataList =  0	
+	
+	$('#wbSelectSizePlusDataList').hide()
+	wbFormat.SizePlusDataList =  0		
+}
+
+</script>
+
+<style>
+
+
+#wbSelectFontFamilyPlusDataInput
+{
+	position:relative;
+	top:0;
+	left:0;
+	width:70%;
+	height:15px;
+	background-color:lightgray;
+	color:black;
+
+}
+#wbSelectFontFamilyPlusDataList
+{
+	position:absolute;
+	width:250px;
+	height:300px;
+	z-index:100;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	border:3px outset;
+    background:ivory;	
+}
+
+#wbSelectFontFamilyPlusDataList div :hover
+{
+	background-color: yellow;
+}
+
+.wbSelectFontFamilyPlusData 
+{
+	height:10px;
+
+}
+
+</style>
+
+
+<div id="wbSelectFontFamilyPlusDataDIV">
+ 
+	 <input readonly id="wbSelectFontFamilyPlusDataInput" type="text"  placeholder="Courier, monospace" >
+	 <button id="wbButtonFontFamily" style="width:24px;" title="f : Font Family"><div style="color:#808080;margin-left:-3px">&#9660;</div> </button>
+ 	
+ 
+	<div id="wbSelectFontFamilyPlusDataList" hidden>
+
+		<h4 style="text-align:right">Serif</h4>	
+	
+		<div class="wbSelectFontFamilyPlusData" value="Georgia, serif" 		 >										<p style="font-family:Georgia, serif">Georgia</p></div>
+		<div class="wbSelectFontFamilyPlusData" value="'Book Antiqua', serif" 	>									<p style="font-family:'Book Antiqua', serif">'Book Antiqua'</p></div>
+		<div class="wbSelectFontFamilyPlusData" value="'Bookman Old Style', serif" > 								<p style="font-family:'Bookman Old Style', serif">'Bookman Old Style'</p></div>
+		<div class="wbSelectFontFamilyPlusData" value="Garamond, serif" > 											<p style="font-family:Garamond, serif">Garamond</p></div>	 	
+		<div class="wbSelectFontFamilyPlusData" value="Times,'Times New Roman', serif" > 							<p style="font-family:Times,'Times New Roman', serif">Times,'Times New Roman'</p></div>	 	
+		<div class="wbSelectFontFamilyPlusData" value="Palatino, serif" > 											<p style="font-family:Palatino, serif">Palatino</p></div>	 	
+		<div class="wbSelectFontFamilyPlusData" value="Bookman, serif" > 											<p style="font-family:Bookman, serif">Bookman</p></div>	 	
+		<div class="wbSelectFontFamilyPlusData" value="New Century Schoolbook, serif" > 							<p style="font-family:New Century Schoolbook, serif">New Century Schoolbook</p></div>	 	
+								
+		<h4 style="text-align:right" >Cursive</h4>
+		
+		<div class="wbSelectFontFamilyPlusData" value="'Comic Sans MS', cursive" >		 							<p style="font-family:'Bookman Old Style', serif">'Comic Sans MS</p></div>
+		<div class="wbSelectFontFamilyPlusData" value="Zapf Chancery, cursive" >		 							<p style="font-family:Zapf Chancery, cursive">Zapf Chancery</p></div>
+		<div class="wbSelectFontFamilyPlusData" value="Coronetscript, cursive" >		 							<p style="font-family:Coronetscript, cursive">Coronetscript</p></div>
+		<div class="wbSelectFontFamilyPlusData" value="Florence, cursive" >		 									<p style="font-family:Florence, cursive">Florence</p></div>
+		<div class="wbSelectFontFamilyPlusData" value="Coronetscript, cursive" >		 							<p style="font-family:Coronetscript, cursive">Coronetscript</p></div>		
+		<div class="wbSelectFontFamilyPlusData" value="Parkavenue, cursive"	 >										<p style="font-family:Parkavenue, cursive">Parkavenue</p></div>
+
+		<h4 style="text-align:right">Monospace</h4>
+		
+		<div class="wbSelectFontFamilyPlusData" value="Courier, monospace" >										<p style="font-family:'Courier, monospace">Courier</p></div>
+		<div class="wbSelectFontFamilyPlusData" value="'Courier New', Courier, monospace" > 						<p style="font-family:'Courier New', Courier, monospace">'Courier New', Courier</p></div>
+		<div class="wbSelectFontFamilyPlusData" value="'Lucida Console', Monaco, monospace"	 >						<p style="font-family:'Lucida Console', Monaco, monospace">'Lucida Console', Monaco</p></div>
+		<div class="wbSelectFontFamilyPlusData" value="Andale Mono, monospace" >									<p style="font-family:Andale Mono, monospace">Andale Mono</p></div>
+		<div class="wbSelectFontFamilyPlusData" value="Courier,'Courier New', monospace" > 							<p style="font-family:Courier,'Courier New', monospace">Courier,'Courier New'</p></div>
+		<div class="wbSelectFontFamilyPlusData" value="Lucidatypewriter, monospace"	 >								<p style="font-family:Lucidatypewriter, monospace">Lucidatypewriter</p></div>
+
+		<h4 style="text-align:right" >Sans-Serif</h4>
+		
+		<div class="wbSelectFontFamilyPlusData" value="Symbol, sans-serif" 		 >									<p style="font-family:Symbol, sans-serif">Symbol</p></div>
+		<div class="wbSelectFontFamilyPlusData" value="Tahoma, Geneva, sans-serif" 		 >							<p style="font-family:Tahoma, Geneva, sans-serif">Tahoma, Geneva</p></div>	
+		<div class="wbSelectFontFamilyPlusData" value="'Trebuchet MS', Helvetica, sans-serif" >						<p style="font-family:'Trebuchet MS', Helvetica, sans-serif">'Trebuchet MS', Helvetica</p></div>
+		<div class="wbSelectFontFamilyPlusData" value="Verdana, Geneva, sans-serif" 		 >						<p style="font-family:'Verdana, Geneva, sans-serif">Verdana, Geneva</p></div>
+		<div class="wbSelectFontFamilyPlusData" value="'MS Serif', 'New York', sans-serif" 		 >					<p style="font-family:'MS Serif', 'New York', sans-serif">'MS Serif', 'New York'</p></div>
+		<div class="wbSelectFontFamilyPlusData" value="Arial, Helvetica, sans-serif" >								<p style="font-family:Arial, Helvetica, sans-serif">Arial, Helvetica, sans-serif </p></div>
+		<div class="wbSelectFontFamilyPlusData" value="'Arial Black', Gadget, sans-serif" >							<p style="font-family:'Arial Black', Gadget, sans-serif">'Arial Black', Gadget</p></div>
+		<div class="wbSelectFontFamilyPlusData" value="Impact, Charcoal, sans-serif" 		 >						<p style="font-family:Impact, Charcoal, sans-serif">Impact, Charcoal</p></div>
+		<div class="wbSelectFontFamilyPlusData" value="'Gill Sans', sans-serif" 		 >							<p style="font-family:'Gill Sans', sans-serif">'Gill Sans'</p></div>
+		<div class="wbSelectFontFamilyPlusData" value="'Helvetica Narrow', sans-serif" 		 >						<p style="font-family:'Helvetica Narrow', sans-serif">'Helvetica Narrow'</p></div>
+		
+	</div>
+
+</div>
+ 
+
+<script>
+
+
+
+$('#wbButtonFontFamily').click(function()
+{
+	//console.log ('#wbButtonFontFamily',wbFormat.FontFamilyPlusDataList ) ;
+
+	wbMiniEditorHideSelectAll()
+
+	var left = $('#wbSelectFontFamilyPlusDataInput').css('left');
+	var top = $('#wbSelectFontFamilyPlusDataInput').css('top');
+
+	 $('#wbSelectFontFamilyPlusDataList').css('left',left+10).css('top',top+10).show()
+
+
+});
+
+$('.wbSelectFontFamilyPlusData').click(function(e)
+{
+	var val = $(this).attr('value')
+	console.log  (  val ) ;
+	$('#wbSelectFontFamilyPlusDataInput').val(  val  )
+	$('#wbSelectFontFamilyPlusDataInput').css(  'font-family',val  )
+	
+	$('#wbSelectFontFamilyPlusDataList').hide()
+
+	wbFormat.FontFamilyValue =  val
+
+});
+
+
+</script>
+
+
+<style>
+
+
+#wbSelectHeaderPlusDataInput
+{
+	position:relative;
+	top:0;
+	left:0;
+	width:70%;
+	height:15px;
+	background-color:lightgray;
+	color:black;	
+
+}
+#wbSelectHeaderPlusDataList
+{
+	position:absolute;
+	width:105px;
+	height:150px;
+	z-index:100;
+	max-height:100px;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	border:3px outset;
+	background:ivory;
+}
+
+.wbSelectHeaderPlusData
+{
+	width:100px;
+
+}
+
+#wbSelectHeaderPlusDataList div :hover
+{
+	background-color: yellow;
+}
+
+</style>
+
+<div id="wbSelectHeaderPlusDataDIV">
+
+	<input readonly id="wbSelectHeaderPlusDataInput" type="text"  placeholder="h6">
+	<button style="width:24px;" id="wbButtonHeader" title="h : Header"><div style="color:#808080;margin-left:-3px">&#9660;</div> </button>
+
+	<div id="wbSelectHeaderPlusDataList" hidden>
+
+		<div class="wbSelectHeaderPlusData" value="h1" 	><h1>Title</h1></div>
+		<div class="wbSelectHeaderPlusData" value="h2" 	><h2>Title</h1></div>
+		<div class="wbSelectHeaderPlusData" value="h3" 	><h3>Title</h1></div>
+		<div class="wbSelectHeaderPlusData" value="h4" 	><h4>Title</h1></div>
+		<div class="wbSelectHeaderPlusData" value="h5" 	><h5>Title</h1></div>
+		<div class="wbSelectHeaderPlusData" value="h6" 	><h6>Title</h1></div>
+	
+	</div>
+ 
+</div>
+ 
+
+
+<script>
+
+$('#wbButtonHeader').click(function()
+{
+	wbMiniEditorHideSelectAll()
+
+	var left = $('#wbSelectHeaderPlusDataInput').css('left');
+	var top = $('#wbSelectHeaderPlusDataInput').css('top');
+
+	 $('#wbSelectHeaderPlusDataList').css('left',left+10).css('top',top+10).show()
+
+});
+
+$('.wbSelectHeaderPlusData').click(function(e)
+{
+	var val = $(this).attr('value')
+	console.log  (  val ) ;
+
+	$('#wbSelectHeaderPlusDataInput').val(  val )	 
+
+	$('#wbSelectHeaderPlusDataList').hide()
+
+	wbFormat.HeaderValue =  val
+ 
+});
+
+
+</script>
+
+<style>
+
+
+#wbSelectColorPlusDataInput
+{
+	position:relative;
+	top:0;
+	left:0;
+	width:70%;
+	height:15px;
+	background-color:lightgray;
+	color:black;
+}
+#wbSelectColorPlusDataList
+{
+	position:absolute;	
+	width:105px;
+	height:150px;
+	z-index:100;
+	max-height:100px;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	border:3px outset;
+	background:ivory;
+}
+
+.wbSelectColorPlusData
+{
+	width:100px;
+	height:16px;
+}
+
+</style>
+
+<div id="wbSelectColorPlusDataDIV">
+
+	<input readonly id="wbSelectColorPlusDataInput" type="text"  placeholder="black" >
+	<button style="width:24px;" id="wbButtonColor" title="c : Color / ctrl+c : background-color"><div style="color:#808080;margin-left:-3px">&#9660;</div> </button>
+
+	<div id="wbSelectColorPlusDataList" hidden>
+		<div class="wbSelectColorPlusData" value="white" 	style="background-color:white;"></div>
+		<div class="wbSelectColorPlusData" value="silver" 	style="background-color:silver;"></div>
+		<div class="wbSelectColorPlusData" value="gray" 	style="background-color:gray;"></div>
+		<div class="wbSelectColorPlusData" value="black" 	style="background-color:black;"></div>
+		<div class="wbSelectColorPlusData" value="red" 		style="background-color:red;"></div>
+		<div class="wbSelectColorPlusData" value="maroon" 	style="background-color:maroon;"></div>
+		<div class="wbSelectColorPlusData" value="yellow" 	style="background-color:yellow;"></div>
+		<div class="wbSelectColorPlusData" value="olive" 	style="background-color:olive;"></div>
+		<div class="wbSelectColorPlusData" value="lime" 	style="background-color:lime;"></div>
+		<div class="wbSelectColorPlusData" value="green" 	style="background-color:green;"></div>
+		<div class="wbSelectColorPlusData" value="aqua" 	style="background-color:aqua;"></div>
+		<div class="wbSelectColorPlusData" value="teal" 	style="background-color:teal;"></div>
+		<div class="wbSelectColorPlusData" value="blue" 	style="background-color:blue;"></div>
+		<div class="wbSelectColorPlusData" value="navy" 	style="background-color:navy;"></div>
+		<div class="wbSelectColorPlusData" value="fuchsia" 	style="background-color:fuchsia;"></div>
+		<div class="wbSelectColorPlusData" value="purple" 	style="background-color:purple;"></div>		
+	</div>
+ 
+</div>
+ 
+
+
+<script>
+
+$('#wbButtonColor').click(function()
+{
+	wbMiniEditorHideSelectAll()
+
+	var left = $('#wbSelectColorPlusDataInput').css('left');
+	var top = $('#wbSelectColorPlusDataInput').css('top');
+
+	 $('#wbSelectColorPlusDataList').css('left',left+10).css('top',top+10).show()
+
+});
+
+$('.wbSelectColorPlusData').click(function(e)
+{
+	var val = $(this).attr('value')
+	console.log  (  val ) ;
+	
+	$('#wbSelectColorPlusDataInput').val(  val  )
+	$('#wbSelectColorPlusDataInput').css(  'color',val  )
+
+	$('#wbSelectColorPlusDataList').hide()
+
+
+	wbFormat.ColorValue =  val
+
+});
+
+
+</script>
+
+
+<style>
+
+
+#wbSelectAlignPlusDataInput
+{
+	position:relative;
+	top:0;
+	left:0;
+	width:70%;
+	height:15px;
+	background-color:lightgray;
+	color:black;
+}
+#wbSelectAlignPlusDataList
+{
+	position:absolute;
+	width:105px;
+	height:180px;
+	z-index:100;
+	max-height:100px;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	border:3px outset;
+	background:ivory;
+}
+
+.wbSelectAlignPlusData
+{
+	width:100px;
+	height:10px;
+}
+
+#wbSelectAlignPlusDataList div :hover
+{
+	background-color: yellow;
+}
+
+</style>
+
+<div id="wbSelectAlignPlusDataDIV">
+
+	<input readonly id="wbSelectAlignPlusDataInput" type="text"  placeholder="left">
+	<button style="width:24px;" id="wbButtonAlign" title="a : Text Align"><div style="color:#808080;margin-left:-3px">&#9660;</div> </button>
+
+	<div id="wbSelectAlignPlusDataList" hidden>
+
+		<div class="wbSelectAlignPlusData" value="left" 	style="text-align:left"><p>left<p></div>
+		<div class="wbSelectAlignPlusData" value="center" 	style="text-align:center"><p>center<p></div>
+		<div class="wbSelectAlignPlusData" value="right" 	style="text-align:right"><p>right<p></div>
+		<div class="wbSelectAlignPlusData" value="justify" 	style="text-align:justify"><p>justify<p></div>
+
+	</div>
+ 
+</div>
+ 
+
+
+<script>
+
+$('#wbButtonAlign').click(function()
+{
+	wbMiniEditorHideSelectAll()
+
+	var left = $('#wbSelectAlignPlusDataInput').css('left');
+	var top = $('#wbSelectAlignPlusDataInput').css('top');
+
+	 $('#wbSelectAlignPlusDataList').css('left',left+10).css('top',top+10).show()
+
+});
+
+$('.wbSelectAlignPlusData').click(function(e)
+{
+	var val = $(this).attr('value')
+	console.log  (  val ) ;
+
+	$('#wbSelectAlignPlusDataInput').val(  val )	 
+	$('#wbSelectAlignPlusDataInput').css(  'text-align',val )	
+	
+	$('#wbSelectAlignPlusDataList').hide()
+
+	wbFormat.AlignValue =  val
+  
+});
+
+
+</script>
+
+
+<style>
+
+
+#wbSelectSizePlusDataInput
+{
+	position:relative;
+	top:0;
+	left:0;
+	width:70%;
+	height:15px;
+	background-color:lightgray;
+	color:black;
+}
+#wbSelectSizePlusDataList
+{
+	position:absolute;
+	width:105px;
+	height:180px;
+	z-index:100;
+	max-height:100px;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	border:3px outset;
+	background:ivory;
+}
+
+.wbSelectSizePlusData
+{
+	width:100px;
+	height:10px;
+}
+
+#wbSelectSizePlusDataList div :hover
+{
+	background-color: yellow;
+}
+
+</style>
+
+
+<div id="wbSelectSizePlusDataDIV">
+
+	<input readonly id="wbSelectSizePlusDataInput" type="text"  placeholder="10px">
+	<button style="width:24px;" id="wbButtonSize" title="z : Font Size"><div style="color:#808080;margin-left:-3px">&#9660;</div> </button>
+
+	<div id="wbSelectSizePlusDataList" hidden>
+
+		<div class="wbSelectSizePlusData" value="8px" 	style="font-size:8px"><p>8<p></div>
+ 		<div class="wbSelectSizePlusData" value="9px" 	style="font-size:9px"><p>9<p></div>
+		<div class="wbSelectSizePlusData" value="10px" 	style="font-size:10px"><p>10<p></div>
+ 		<div class="wbSelectSizePlusData" value="11px" 	style="font-size:11px"><p>11<p></div>
+		<div class="wbSelectSizePlusData" value="12px" 	style="font-size:12px"><p>12<p></div>
+ 		<div class="wbSelectSizePlusData" value="14px" 	style="font-size:14px"><p>14<p></div>
+		<div class="wbSelectSizePlusData" value="16px" 	style="font-size:16px"><p>16<p></div>
+ 		<div class="wbSelectSizePlusData" value="18px" 	style="font-size:18px"><p>18<p></div>
+		<div class="wbSelectSizePlusData" value="20px" 	style="font-size:20px"><p>20<p></div>
+		<div class="wbSelectSizePlusData" value="24px" 	style="font-size:24px"><p>24<p></div>
+ 		<div class="wbSelectSizePlusData" value="32px" 	style="font-size:32px"><p>32<p></div>		
+ 		<div class="wbSelectSizePlusData" value="36px" 	style="font-size:36px"><p>36<p></div>
+		<div class="wbSelectSizePlusData" value="48px" 	style="font-size:48px"><p>48<p></div>
+ 		<div class="wbSelectSizePlusData" value="72px" 	style="font-size:72px"><p>72<p></div>
+		
+	</div>
+ 
+</div>
+ 
+
+
+<script>
+
+$('#wbButtonSize').click(function()
+{
+	wbMiniEditorHideSelectAll()
+
+	var left = $('#wbSelectSizePlusDataInput').css('left');
+	var top = $('#wbSelectSizePlusDataInput').css('top');
+
+	 $('#wbSelectSizePlusDataList').css('left',left+10).css('top',top+10).show()
+
+});
+
+$('.wbSelectSizePlusData').click(function(e)
+{
+	var val = $(this).attr('value')
+	console.log  (  val ) ;
+
+	$('#wbSelectSizePlusDataInput').val(  val )	 
+
+	$('#wbSelectSizePlusDataList').hide()
+
+	wbFormat.SizeValue =  val ;	 
+});
+
+
+</script>
+
+

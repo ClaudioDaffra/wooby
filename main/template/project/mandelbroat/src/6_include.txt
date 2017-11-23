@@ -1,0 +1,21 @@
+<script type="text/javascript" src ="lib/jQuery/jquery-3.2.1.min.js"></script>
+<link type="text/css"	href="lib/jQuery/jquery-ui-1.12.1/jquery-ui.min.css" rel="stylesheet" >
+<script type="text/javascript" src ="lib/jQuery/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+<script type="text/javascript" src ="lib/jQuery/jquery.touch/jquery.ui.touch-punch.min.js"></script>
+
+<link type="text/css"	href="lib/jQueryImgAreaSelect/css/imgareaselect-animated.css" rel="stylesheet" >
+<script type="text/javascript" src ="lib/jQueryImgAreaSelect/scripts/jquery.imgareaselect.min.js"></script>
+
+<link href="css/wbSkinOneR.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript" src="lib/wooby.js"></script>
+
+<script type="text/javascript" src="lib/async.js"></script>
+<script type="text/javascript" src="lib/wb.parallel.js.min.js"></script>
+
+
+<script type="text/javascript" src ="js/mandelbroat_calc.js"></script>
+<script type="text/javascript" src ="js/mandelbroat_PoolThread.js"></script>
+<script type="text/javascript" src ="js/mandelbroat_Async.js"></script>
+
+<script type="text/javascript" src="lib/FileSaver.min.js"></script>

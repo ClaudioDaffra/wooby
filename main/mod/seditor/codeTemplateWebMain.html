@@ -1,0 +1,58 @@
+
+							<select  id="wbCodeTemplateSelectWebMain" class="dd" style="width:200px;">
+									<option value="" disabled="disabled" selected="selected" style="display:none;" data-image="img/tabs/js.png">Web Main</option>
+
+										<option value="ready"  		data-image="img/tabs/ico-default.png"  >ready</option>									
+										<option value="include"  	data-image="img/tabs/ico-default.png"  >#include</option>
+
+									<optgroup label="Cordova">										
+										<option value="cme"  		data-image="img/tabs/ico-default.png"  >Main Events</option>
+										
+									</optgroup>
+							<select>
+
+<script>
+
+// ........................................................... wb_webMain_code_template ( scelta ) ;
+
+$('#wbCodeTemplateSelectWebMain').change( function()
+{
+    var scelta =  $(this).val() ;
+	console.debug ( 'wb_webMain_select' , scelta ) ;
+	wb_webMain_code_template ( scelta ) 
+});
+
+//*********************
+//                      Code Template javascript
+//*********************
+
+function wb_webMain_code_template( scelta )
+{
+		console.debug  ( 'wb_webMain_code_template : ' , scelta) 
+		var	finput = "template/code/webMain/"
+
+		$('#wbCodeTemplateSelectWebMain').val("");
+
+		switch ( scelta )
+		{
+			case 'ready' 			: finput += 'ready.js'  				; break ;			
+			case 'include' 			: finput += 'include.js'  				; break ;	
+			case 'cme' 				: finput += 'cordovaMainEvents.js'  	; break ;	
+			
+		}
+
+		console.debug ( 'file input : ' , finput  );
+		
+		$.get(finput,{ "_": $.now() }, function(data) 
+		{
+			wbEditInsertTextAtCursor (  window.wbWorkAreaEditorHtml , data ) ;
+
+		}, "text"); // carica il file come un .txt ( forzatura ) per impedire che venga eseguito in runtime.
+
+}
+
+
+
+
+
+</script>
