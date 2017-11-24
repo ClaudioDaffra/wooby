@@ -1,16 +1,23 @@
 
------------------------
-WOOBY
-Copyright (c) 2016 ..
-Claudio DAFFRA
-daffra.claudio@gmail.com
-------------------------
+
+ 
+# WOOBY
+
+Copyright (c) 2017 Claudio DAFFRA daffra.claudio@gmail.com
+
+ 
+
 
 W - Wysywyg  / Visual
+
 O - Object
+
 O - Oriented
+
 B - Beginner / Basic
+
 Y - Yet
+
 
 
 # work / tested
